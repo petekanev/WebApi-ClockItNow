@@ -2,5 +2,6 @@
 {
     public interface IBillableHoursWebAppData
     {
+        void SaveChanges();
     }
 }

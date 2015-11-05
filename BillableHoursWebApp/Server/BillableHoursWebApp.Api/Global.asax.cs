@@ -14,13 +14,19 @@
     {
         protected void Application_Start()
         {
-            AutoMapperConfig.RegisterMappings(Assembly.Load(new AssemblyName(Constants.DataTransferModelsAssembly)));
+            // AutoMapperConfig.RegisterMappings(Assembly.Load(new AssemblyName(Constants.DataTransferModelsAssembly)));
+
+            DatabaseConfig.Initialize();
 
             AreaRegistration.RegisterAllAreas();
+
             GlobalConfiguration.Configure(WebApiConfig.Register);
+
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            // BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
     }
 }
