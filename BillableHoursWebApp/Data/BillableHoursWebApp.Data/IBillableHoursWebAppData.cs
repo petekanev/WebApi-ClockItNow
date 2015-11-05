@@ -1,4 +1,4 @@
-﻿namespace BillableHours.WebApp.Data
+﻿namespace BillableHoursWebApp.Data
 {
     public interface IBillableHoursWebAppData
     {

@@ -1,4 +1,4 @@
-﻿namespace BillableHours.WebApp.Common.Repositories
+﻿namespace BillableHoursWebApp.Common.Repositories
 {
     using System;
     using System.Linq;

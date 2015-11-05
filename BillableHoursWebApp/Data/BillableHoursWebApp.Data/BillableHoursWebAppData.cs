@@ -1,7 +1,5 @@
-﻿namespace BillableHours.WebApp.Data
+﻿namespace BillableHoursWebApp.Data
 {
-    using System;
-
     public class BillableHoursWebAppData : IBillableHoursWebAppData
     {
     }
