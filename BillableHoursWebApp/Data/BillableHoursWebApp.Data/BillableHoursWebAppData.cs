@@ -2,18 +2,13 @@
 {
     using System;
     using System.Collections.Generic;
-    using Common.Repositories;
     using Models;
+    using Repositories;
 
     public class BillableHoursWebAppData : IBillableHoursWebAppData
     {
         private readonly IBillableHoursWebAppDbContext context;
         private readonly IDictionary<Type, object> repositories;
-
-        public void SaveChanges()
-        {
-            this.context.SaveChanges();
-        }
 
         public IRepository<Project> Projects
         {
@@ -43,6 +38,11 @@
         public IRepository<Attachment> Attachments
         {
             get { return this.GetRepository<Attachment>(); }
+        }
+
+        public void SaveChanges()
+        {
+            this.context.SaveChanges();
         }
 
         private IRepository<T> GetRepository<T>() where T : class

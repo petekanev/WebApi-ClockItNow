@@ -58,16 +58,14 @@
     <Compile Include="IBillableHoursWebAppDbContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Repositories\Repository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BillableHoursWebApp.Common\BillableHoursWebApp.Common.csproj">
-      <Project>{668888A2-1382-4F0B-8AF8-27439E7595D8}</Project>
-      <Name>BillableHoursWebApp.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BillableHoursWebApp.Data.Models\BillableHoursWebApp.Data.Models.csproj">
       <Project>{A78EBB90-F418-47F4-8B7C-CFCF9290EABD}</Project>
       <Name>BillableHoursWebApp.Data.Models</Name>

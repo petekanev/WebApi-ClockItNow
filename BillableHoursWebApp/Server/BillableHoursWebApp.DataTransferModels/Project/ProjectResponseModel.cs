@@ -1,7 +1,6 @@
 ﻿namespace BillableHoursWebApp.DataTransferModels.Project
 {
     using System;
-    using System.Collections;
     using System.Collections.Generic;
     using Common.Mapping;
     using Data.Models;

@@ -1,33 +1,111 @@
 ﻿namespace BillableHoursWebApp.Api.Controllers
 {
-    using System;
+    using System.Linq;
     using System.Web.Http;
+    using AutoMapper;
+    using AutoMapper.QueryableExtensions;
+    using Data;
+    using Data.Models;
+    using DataTransferModels;
 
     public class CategoriesController : ApiController
     {
+        private IBillableHoursWebAppData data;
+
+        public CategoriesController(IBillableHoursWebAppData data)
+        {
+            this.data = data;
+        }
+
+        // Poor man's DI
+        // TODO: Replace with Ninject
+        public CategoriesController()
+            : this(new BillableHoursWebAppData())
+        {
+        }
+
         public IHttpActionResult Get()
         {
-            throw new NotImplementedException();
+            var result = this.data.Categories
+                .All()
+                .ProjectTo<CategoryResponseModel>()
+                .ToList();
+
+            return this.Ok(result);
         }
 
         public IHttpActionResult Get(int id)
         {
-            throw new NotImplementedException();
+            var result = this.data.Categories
+                .GetById(id);
+
+            if (result == null)
+            {
+                return this.BadRequest("No category with that id is present.");
+            }
+
+            var resultModel = Mapper.Map<CategoryResponseModel>(result);
+
+            return this.Ok(resultModel);
         }
 
-        public IHttpActionResult Post()
+        public IHttpActionResult Post([FromBody] CategoryRequestModel model)
         {
-            throw new NotImplementedException();
+            if (!this.ModelState.IsValid)
+            {
+                return this.BadRequest(this.ModelState);
+            }
+            
+            if (this.data.Categories.Find(x => x.Name.ToLowerInvariant() == model.Name.ToLowerInvariant()) != null)
+            {
+                return this.BadRequest("A category with that name exists already!");
+            }
+
+            var categoryToAdd = Mapper.Map<Category>(model);
+
+            this.data.Categories.Add(categoryToAdd);
+            this.data.SaveChanges();
+
+            return this.Ok(categoryToAdd.Id);
         }
 
-        public IHttpActionResult Put()
+        public IHttpActionResult Put(int id, [FromBody] CategoryRequestModel model)
         {
-            throw new NotImplementedException();
+            var result = this.data.Categories
+                .GetById(id);
+
+            if (result == null)
+            {
+                return this.BadRequest("No category with that id is present.");
+            }
+
+            if (this.data.Categories.Find(x => x.Name.ToLowerInvariant() == model.Name.ToLowerInvariant()) != null)
+            {
+                return this.BadRequest("A category with that name exists already!");
+            }
+
+            result.Name = model.Name;
+
+            this.data.Categories.Update(result);
+            this.data.SaveChanges();
+
+            return this.Ok(result);
         }
 
-        public IHttpActionResult Delete()
+        public IHttpActionResult Delete(int id)
         {
-            throw new NotImplementedException();
+            var result = this.data.Categories
+                   .GetById(id);
+
+            if (result == null)
+            {
+                return this.BadRequest("No category with that id is present.");
+            }
+
+            this.data.Categories.Delete(result);
+            this.data.SaveChanges();
+
+            return this.Ok(result);
         }
     }
 }

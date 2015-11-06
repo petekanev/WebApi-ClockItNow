@@ -55,13 +55,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AttachmentRequestModel.cs" />
     <Compile Include="AttachmentResponseModel.cs" />
+    <Compile Include="CategoryRequestModel.cs" />
     <Compile Include="CategoryResponseModel.cs" />
     <Compile Include="ClientResponseModel.cs" />
     <Compile Include="CommentResponseModel.cs" />
     <Compile Include="EmployeeResponseModel.cs" />
     <Compile Include="InvoiceResponseModel.cs" />
+    <Compile Include="Project\ProjectCommentRequestModel.cs" />
+    <Compile Include="Project\ProjectRequestModel.cs" />
     <Compile Include="Project\ProjectResponseModel.cs" />
+    <Compile Include="Project\ProjectWorkLogRequestModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WorkLogResponseModel.cs" />
   </ItemGroup>

@@ -1,6 +1,7 @@
 ﻿namespace BillableHoursWebApp.Data
 {
     using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Models;
 
@@ -26,6 +27,16 @@
         public virtual IDbSet<WorkLog> WorkLogs { get; set; }
 
         public virtual IDbSet<Invoice> Invoices { get; set; }
+        
+        public new IDbSet<T> Set<T>() where T : class
+        {
+            return base.Set<T>();
+        }
+
+        public new DbEntityEntry<T> Entry<T>(T entity) where T : class
+        {
+            return base.Entry(entity);
+        }
 
         public new void SaveChanges()
         {

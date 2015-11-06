@@ -7,6 +7,13 @@
     public class Repository<T> : IRepository<T> 
         where T : class
     {
+        private IBillableHoursWebAppDbContext context;
+
+        public Repository(IBillableHoursWebAppDbContext context)
+        {
+            
+        }
+
         public IQueryable<T> All()
         {
             throw new NotImplementedException();

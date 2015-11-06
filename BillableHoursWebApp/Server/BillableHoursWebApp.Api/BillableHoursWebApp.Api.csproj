@@ -219,6 +219,10 @@
       <Project>{A7CFBDA2-59BC-44E6-BCA8-ADC2AF401753}</Project>
       <Name>BillableHoursWebApp.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BillableHoursWebApp.DataTransferModels\BillableHoursWebApp.DataTransferModels.csproj">
+      <Project>{6E4E0132-E25E-4DCB-9FF5-8B44AC038189}</Project>
+      <Name>BillableHoursWebApp.DataTransferModels</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
