@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    public class Employee
+    public class Employee : User
     {
         private ICollection<Project> projects;
 
@@ -10,8 +10,6 @@
         {
             this.projects = new HashSet<Project>();
         }
-
-        public int Id { get; set; }
 
         public string Name { get; set; }
 

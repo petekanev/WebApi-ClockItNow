@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    public class Client
+    public class Client : User
     {
         private ICollection<Project> projects;
         private ICollection<Invoice> invoices;
@@ -12,10 +12,6 @@
             this.projects = new HashSet<Project>();
             this.invoices = new HashSet<Invoice>();
         }
-
-        public int Id { get; set; }
-
-        public string Name { get; set; }
 
         public bool IsOrganization { get; set; }
 
