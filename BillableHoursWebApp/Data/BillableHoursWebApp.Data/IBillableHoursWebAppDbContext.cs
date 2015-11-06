@@ -5,8 +5,6 @@
 
     public interface IBillableHoursWebAppDbContext
     {
-        IDbSet<User> Users { get; set; }
-
         IDbSet<Category> Categories { get; set; }
 
         IDbSet<Attachment> Attachments { get; set; }

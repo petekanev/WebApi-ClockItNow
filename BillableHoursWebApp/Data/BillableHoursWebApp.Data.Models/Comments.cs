@@ -6,6 +6,10 @@
     {
         public int Id { get; set; }
 
+        public string Content { get; set; }
+
+        public DateTime PostedOn { get; set; }
+
         // Either can be the author of a comment
         public int? ClientId { get; set; }
 

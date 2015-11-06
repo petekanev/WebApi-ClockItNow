@@ -11,8 +11,6 @@
             this.projects = new HashSet<Project>();
         }
 
-        public string Name { get; set; }
-
         public bool IsCompany { get; set; }
 
         public virtual ICollection<Project> Projects 

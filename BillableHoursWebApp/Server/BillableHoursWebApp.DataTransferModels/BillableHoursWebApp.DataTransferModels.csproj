@@ -33,7 +33,20 @@
     <Reference Include="AutoMapper">
       <HintPath>..\..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\..\packages\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\..\packages\Microsoft.AspNet.Identity.EntityFramework.2.1.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,13 +55,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AttachmentResponseModel.cs" />
+    <Compile Include="CategoryResponseModel.cs" />
+    <Compile Include="ClientResponseModel.cs" />
+    <Compile Include="CommentResponseModel.cs" />
+    <Compile Include="EmployeeResponseModel.cs" />
+    <Compile Include="InvoiceResponseModel.cs" />
+    <Compile Include="Project\ProjectResponseModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorkLogResponseModel.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Project\" />
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\BillableHoursWebApp.Data.Models\BillableHoursWebApp.Data.Models.csproj">
+      <Project>{A78EBB90-F418-47F4-8B7C-CFCF9290EABD}</Project>
+      <Name>BillableHoursWebApp.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BillableHoursWebApp.Common\BillableHoursWebApp.Common.csproj">
+      <Project>{A7CFBDA2-59BC-44E6-BCA8-ADC2AF401753}</Project>
+      <Name>BillableHoursWebApp.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

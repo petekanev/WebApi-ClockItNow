@@ -11,6 +11,10 @@
         {
         }
 
+        public virtual IDbSet<Employee> Employees { get; set; }
+
+        public virtual IDbSet<Client> Clients { get; set; } 
+
         public virtual IDbSet<Category> Categories { get; set; }
 
         public virtual IDbSet<Attachment> Attachments { get; set; }
