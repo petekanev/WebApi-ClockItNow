@@ -1,20 +1,21 @@
 ﻿namespace BillableHoursWebApp.Data
 {
     using Models;
+    using Repositories;
 
     public interface IBillableHoursWebAppData
     {
-        Repositories.IRepository<Project> Projects { get; }
+        IRepository<Project> Projects { get; }
 
-        Repositories.IRepository<WorkLog> WorkLogs { get; }
+        IRepository<WorkLog> WorkLogs { get; }
 
-        Repositories.IRepository<Invoice> Invoices { get; }
+        IRepository<Invoice> Invoices { get; }
 
-        Repositories.IRepository<Category> Categories { get; }
+        IRepository<Category> Categories { get; }
 
-        Repositories.IRepository<Comment> Comments { get; }
+        IRepository<Comment> Comments { get; }
 
-        Repositories.IRepository<Attachment> Attachments { get; } 
+        IRepository<Attachment> Attachments { get; } 
 
         void SaveChanges();
     }

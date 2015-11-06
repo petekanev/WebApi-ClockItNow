@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Project
     {
@@ -24,14 +25,17 @@
 
         public int CategoryId { get; set; }
 
+        [ForeignKey("CategoryId")]
         public virtual Category Category { get; set; }
 
-        public int EmployeeId { get; set; }
+        public string EmployeeId { get; set; }
 
+        [ForeignKey("EmployeeId")]
         public virtual Employee Employee { get; set; }
 
-        public int ClientId { get; set; }
+        public string ClientId { get; set; }
 
+        [ForeignKey("ClientId")]
         public virtual Client Client { get; set; }
 
         public DateTime TimePublished { get; set; }

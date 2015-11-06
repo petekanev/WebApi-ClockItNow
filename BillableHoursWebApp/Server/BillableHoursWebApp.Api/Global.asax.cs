@@ -7,6 +7,7 @@
     using System.Web.Routing;
 
     using System.Reflection;
+    using System.Web.Http.Dispatcher;
     using App_Start;
     using Common;
 
@@ -14,7 +15,7 @@
     {
         protected void Application_Start()
         {
-            // AutoMapperConfig.RegisterMappings(Assembly.Load(new AssemblyName(Constants.DataTransferModelsAssembly)));
+            AutoMapperConfig.RegisterMappings(Assembly.Load(Constants.DataTransferModelsAssembly));
 
             DatabaseConfig.Initialize();
 

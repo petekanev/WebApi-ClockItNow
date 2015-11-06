@@ -10,35 +10,35 @@
         private readonly IBillableHoursWebAppDbContext context;
         private readonly IDictionary<Type, object> repositories;
 
-        public IRepository<Project> Projects
+        public BillableHoursWebAppData(IBillableHoursWebAppDbContext context)
         {
-            get { return this.GetRepository<Project>(); }
+            this.context = context;
+            this.repositories = new Dictionary<Type, object>();
+
+            this.Projects = new Repository<Project>(this.context);
+            this.WorkLogs = new Repository<WorkLog>(this.context);
+            this.Invoices = new Repository<Invoice>(this.context);
+            this.Categories = new Repository<Category>(this.context);
+            this.Comments = new Repository<Comment>(this.context);
+            this.Attachments = new Repository<Attachment>(this.context);
         }
 
-        public IRepository<WorkLog> WorkLogs
+        public BillableHoursWebAppData()
+            : this(new BillableHoursWebAppDbContext())
         {
-            get { return this.GetRepository<WorkLog>(); }
         }
 
-        public IRepository<Invoice> Invoices
-        {
-            get { return this.GetRepository<Invoice>(); }
-        }
+        public IRepository<Project> Projects { get; set; }
 
-        public IRepository<Category> Categories
-        {
-            get { return this.GetRepository<Category>(); }
-        }
+        public IRepository<WorkLog> WorkLogs { get; set; }
 
-        public IRepository<Comment> Comments
-        {
-            get { return this.GetRepository<Comment>(); }
-        }
+        public IRepository<Invoice> Invoices { get; set; }
 
-        public IRepository<Attachment> Attachments
-        {
-            get { return this.GetRepository<Attachment>(); }
-        }
+        public IRepository<Category> Categories { get; set; }
+
+        public IRepository<Comment> Comments { get; set; }
+
+        public IRepository<Attachment> Attachments { get; set; }
 
         public void SaveChanges()
         {
@@ -53,7 +53,7 @@
             {
                 var type = typeof(IRepository<T>);
 
-                this.repositories.Add(typeOfModel, Activator.CreateInstance(type, this.context));
+                this.repositories.Add(typeOfModel, Activator.CreateInstance(type, new object[] { this.context }));
             }
 
             return (IRepository<T>)this.repositories[typeOfModel];

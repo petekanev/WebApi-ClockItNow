@@ -49,6 +49,7 @@
             return this.Ok(resultModel);
         }
 
+        [Authorize]
         public IHttpActionResult Post([FromBody] CategoryRequestModel model)
         {
             if (!this.ModelState.IsValid)
@@ -69,6 +70,7 @@
             return this.Ok(categoryToAdd.Id);
         }
 
+        [Authorize]
         public IHttpActionResult Put(int id, [FromBody] CategoryRequestModel model)
         {
             var result = this.data.Categories
@@ -89,9 +91,10 @@
             this.data.Categories.Update(result);
             this.data.SaveChanges();
 
-            return this.Ok(result);
+            return this.Ok(result.Id);
         }
 
+        [Authorize]
         public IHttpActionResult Delete(int id)
         {
             var result = this.data.Categories
@@ -105,7 +108,9 @@
             this.data.Categories.Delete(result);
             this.data.SaveChanges();
 
-            return this.Ok(result);
+            var resultModel = Mapper.Map<CategoryResponseModel>(result);
+
+            return this.Ok(resultModel);
         }
     }
 }

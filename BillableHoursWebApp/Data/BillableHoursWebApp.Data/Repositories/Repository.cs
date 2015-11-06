@@ -19,11 +19,6 @@
             this.set = context.Set<T>();
         }
 
-        public Repository()
-            : this(new BillableHoursWebAppDbContext())
-        {
-        }
-
         public IQueryable<T> All()
         {
             return this.set.AsQueryable();
