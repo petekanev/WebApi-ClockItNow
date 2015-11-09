@@ -1,0 +1,3 @@
+var userProjectsController = function() {
+
+}();

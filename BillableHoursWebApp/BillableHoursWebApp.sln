@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BillableHoursWebApp.Service
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{543466AD-2B80-4EF4-836B-771F3367F072}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BillableHoursWebApp.Client.App", "Client\BillableHoursWebApp.Client.App\BillableHoursWebApp.Client.App.csproj", "{B453F02C-86C8-4291-A49D-9B1872E25E5A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{647CD3A3-EB8A-42E1-947E-5C3A96CEA16F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{647CD3A3-EB8A-42E1-947E-5C3A96CEA16F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{647CD3A3-EB8A-42E1-947E-5C3A96CEA16F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B453F02C-86C8-4291-A49D-9B1872E25E5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B453F02C-86C8-4291-A49D-9B1872E25E5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B453F02C-86C8-4291-A49D-9B1872E25E5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B453F02C-86C8-4291-A49D-9B1872E25E5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,5 +79,6 @@ Global
 		{A7CFBDA2-59BC-44E6-BCA8-ADC2AF401753} = {06E09035-6E8F-4652-A75D-A4E5BAC130D6}
 		{BEBBE0A4-1FBA-44D7-A51B-B923D149C4A5} = {3DA83A6E-8D4F-4E90-8059-46A9D61EE068}
 		{647CD3A3-EB8A-42E1-947E-5C3A96CEA16F} = {3DB7BB2F-564C-4018-8414-F23C4445E179}
+		{B453F02C-86C8-4291-A49D-9B1872E25E5A} = {543466AD-2B80-4EF4-836B-771F3367F072}
 	EndGlobalSection
 EndGlobal

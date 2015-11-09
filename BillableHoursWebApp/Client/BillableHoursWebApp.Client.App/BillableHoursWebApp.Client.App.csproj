@@ -1,0 +1,617 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B453F02C-86C8-4291-A49D-9B1872E25E5A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BillableHoursWebApp.Client.App</RootNamespace>
+    <AssemblyName>BillableHoursWebApp.Client.App</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="scripts\lib\bootstrap\.bower.json" />
+    <Content Include="scripts\lib\bootstrap\bower.json" />
+    <Content Include="scripts\lib\bootstrap\dist\css\bootstrap-theme.css.map" />
+    <Content Include="scripts\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <Content Include="scripts\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="scripts\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="scripts\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="scripts\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="scripts\lib\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="scripts\lib\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="scripts\lib\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="scripts\lib\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="scripts\lib\bootstrap\grunt\.jshintrc" />
+    <Content Include="scripts\lib\bootstrap\grunt\configBridge.json" />
+    <Content Include="scripts\lib\bootstrap\grunt\sauce_browsers.yml" />
+    <Content Include="scripts\lib\bootstrap\js\.jscsrc" />
+    <Content Include="scripts\lib\bootstrap\js\.jshintrc" />
+    <Content Include="scripts\lib\bootstrap\less\.csscomb.json" />
+    <Content Include="scripts\lib\bootstrap\less\.csslintrc" />
+    <Content Include="scripts\lib\bootstrap\less\alerts.less" />
+    <Content Include="scripts\lib\bootstrap\less\badges.less" />
+    <Content Include="scripts\lib\bootstrap\less\bootstrap.less" />
+    <Content Include="scripts\lib\bootstrap\less\breadcrumbs.less" />
+    <Content Include="scripts\lib\bootstrap\less\button-groups.less" />
+    <Content Include="scripts\lib\bootstrap\less\buttons.less" />
+    <Content Include="scripts\lib\bootstrap\less\carousel.less" />
+    <Content Include="scripts\lib\bootstrap\less\close.less" />
+    <Content Include="scripts\lib\bootstrap\less\code.less" />
+    <Content Include="scripts\lib\bootstrap\less\component-animations.less" />
+    <Content Include="scripts\lib\bootstrap\less\dropdowns.less" />
+    <Content Include="scripts\lib\bootstrap\less\forms.less" />
+    <Content Include="scripts\lib\bootstrap\less\glyphicons.less" />
+    <Content Include="scripts\lib\bootstrap\less\grid.less" />
+    <Content Include="scripts\lib\bootstrap\less\input-groups.less" />
+    <Content Include="scripts\lib\bootstrap\less\jumbotron.less" />
+    <Content Include="scripts\lib\bootstrap\less\labels.less" />
+    <Content Include="scripts\lib\bootstrap\less\list-group.less" />
+    <Content Include="scripts\lib\bootstrap\less\media.less" />
+    <Content Include="scripts\lib\bootstrap\less\mixins.less" />
+    <Content Include="scripts\lib\bootstrap\less\mixins\alerts.less" />
+    <Content Include="scripts\lib\bootstrap\less\mixins\background-variant.less" />
+    <Content Include="scripts\lib\bootstrap\less\mixins\border-radius.less" />
+    <Content Include="scripts\lib\bootstrap\less\mixins\buttons.less" />
+    <Content Include="scripts\lib\bootstrap\less\mixins\center-block.less" />
+    <Content Include="scripts\lib\bootstrap\less\mixins\clearfix.less" />
+    <Content Include="scripts\lib\bootstrap\less\mixins\forms.less" />
+    <Content Include="scripts\lib\bootstrap\less\mixins\gradients.less" />
+    <Content Include="scripts\lib\bootstrap\less\mixins\grid-framework.less" />
+    <Content Include="scripts\lib\bootstrap\less\mixins\grid.less" />
+    <Content Include="scripts\lib\bootstrap\less\mixins\hide-text.less" />
+    <Content Include="scripts\lib\bootstrap\less\mixins\image.less" />
+    <Content Include="scripts\lib\bootstrap\less\mixins\labels.less" />
+    <Content Include="scripts\lib\bootstrap\less\mixins\list-group.less" />
+    <Content Include="scripts\lib\bootstrap\less\mixins\nav-divider.less" />
+    <Content Include="scripts\lib\bootstrap\less\mixins\nav-vertical-align.less" />
+    <Content Include="scripts\lib\bootstrap\less\mixins\opacity.less" />
+    <Content Include="scripts\lib\bootstrap\less\mixins\pagination.less" />
+    <Content Include="scripts\lib\bootstrap\less\mixins\panels.less" />
+    <Content Include="scripts\lib\bootstrap\less\mixins\progress-bar.less" />
+    <Content Include="scripts\lib\bootstrap\less\mixins\reset-filter.less" />
+    <Content Include="scripts\lib\bootstrap\less\mixins\reset-text.less" />
+    <Content Include="scripts\lib\bootstrap\less\mixins\resize.less" />
+    <Content Include="scripts\lib\bootstrap\less\mixins\responsive-visibility.less" />
+    <Content Include="scripts\lib\bootstrap\less\mixins\size.less" />
+    <Content Include="scripts\lib\bootstrap\less\mixins\tab-focus.less" />
+    <Content Include="scripts\lib\bootstrap\less\mixins\table-row.less" />
+    <Content Include="scripts\lib\bootstrap\less\mixins\text-emphasis.less" />
+    <Content Include="scripts\lib\bootstrap\less\mixins\text-overflow.less" />
+    <Content Include="scripts\lib\bootstrap\less\mixins\vendor-prefixes.less" />
+    <Content Include="scripts\lib\bootstrap\less\modals.less" />
+    <Content Include="scripts\lib\bootstrap\less\navbar.less" />
+    <Content Include="scripts\lib\bootstrap\less\navs.less" />
+    <Content Include="scripts\lib\bootstrap\less\normalize.less" />
+    <Content Include="scripts\lib\bootstrap\less\pager.less" />
+    <Content Include="scripts\lib\bootstrap\less\pagination.less" />
+    <Content Include="scripts\lib\bootstrap\less\panels.less" />
+    <Content Include="scripts\lib\bootstrap\less\popovers.less" />
+    <Content Include="scripts\lib\bootstrap\less\print.less" />
+    <Content Include="scripts\lib\bootstrap\less\progress-bars.less" />
+    <Content Include="scripts\lib\bootstrap\less\responsive-embed.less" />
+    <Content Include="scripts\lib\bootstrap\less\responsive-utilities.less" />
+    <Content Include="scripts\lib\bootstrap\less\scaffolding.less" />
+    <Content Include="scripts\lib\bootstrap\less\tables.less" />
+    <Content Include="scripts\lib\bootstrap\less\theme.less" />
+    <Content Include="scripts\lib\bootstrap\less\thumbnails.less" />
+    <Content Include="scripts\lib\bootstrap\less\tooltip.less" />
+    <Content Include="scripts\lib\bootstrap\less\type.less" />
+    <Content Include="scripts\lib\bootstrap\less\utilities.less" />
+    <Content Include="scripts\lib\bootstrap\less\variables.less" />
+    <Content Include="scripts\lib\bootstrap\less\wells.less" />
+    <Content Include="scripts\lib\bootstrap\LICENSE" />
+    <Content Include="scripts\lib\bootstrap\package.json" />
+    <Content Include="scripts\lib\bootstrap\README.md" />
+    <Content Include="scripts\lib\handlebars\.bower.json" />
+    <Content Include="scripts\lib\handlebars\bower.json" />
+    <Content Include="scripts\lib\handlebars\component.json" />
+    <Content Include="scripts\lib\handlebars\composer.json" />
+    <Content Include="scripts\lib\handlebars\handlebars-source.gemspec" />
+    <Content Include="scripts\lib\handlebars\handlebars.js.nuspec" />
+    <Content Include="scripts\lib\handlebars\lib\handlebars\source.rb" />
+    <Content Include="scripts\lib\handlebars\package.json" />
+    <Content Include="scripts\lib\handlebars\README.md" />
+    <Content Include="scripts\lib\jquery\.bower.json" />
+    <Content Include="scripts\lib\jquery\bower.json" />
+    <Content Include="scripts\lib\jquery\dist\jquery.min.map" />
+    <Content Include="scripts\lib\jquery\src\sizzle\dist\sizzle.min.map" />
+    <Content Include="scripts\lib\PACE\.bower.json" />
+    <Content Include="scripts\lib\PACE\bower.json" />
+    <Content Include="scripts\lib\PACE\install.json" />
+    <Content Include="scripts\lib\PACE\LICENSE" />
+    <Content Include="scripts\lib\PACE\pace.coffee" />
+    <Content Include="scripts\lib\PACE\README.md" />
+    <Content Include="scripts\lib\sammy\.bower.json" />
+    <Content Include="scripts\lib\sammy\bower.json" />
+    <Content Include="scripts\lib\sammy\examples\backend\app.rb" />
+    <Content Include="scripts\lib\sammy\examples\backend\config.ru" />
+    <Content Include="scripts\lib\sammy\examples\backend\public\templates\index.html.erb" />
+    <Content Include="scripts\lib\sammy\examples\backend\public\templates\task.html.erb" />
+    <Content Include="scripts\lib\sammy\examples\backend\public\templates\task_details.html.erb" />
+    <Content Include="scripts\lib\sammy\examples\backend\Rakefile" />
+    <Content Include="scripts\lib\sammy\examples\backend\README.md" />
+    <Content Include="scripts\lib\sammy\examples\backend\views\app.sass" />
+    <Content Include="scripts\lib\sammy\examples\backend\views\index.haml" />
+    <Content Include="scripts\lib\sammy\examples\ejs\what.ejs" />
+    <Content Include="scripts\lib\sammy\examples\ejs\who.ejs" />
+    <Content Include="scripts\lib\sammy\Gemfile" />
+    <Content Include="scripts\lib\sammy\Gemfile.lock" />
+    <Content Include="scripts\lib\sammy\HISTORY.md" />
+    <Content Include="scripts\lib\sammy\LICENSE" />
+    <Content Include="scripts\lib\sammy\package.json" />
+    <Content Include="scripts\lib\sammy\Rakefile" />
+    <Content Include="scripts\lib\sammy\README.md" />
+    <Content Include="scripts\lib\toastr\.bower.json" />
+    <Content Include="scripts\lib\toastr\bower.json" />
+    <Content Include="scripts\lib\toastr\README.md" />
+    <Content Include="scripts\lib\toastr\toastr.js.map" />
+    <Content Include="scripts\lib\toastr\toastr.less" />
+    <Content Include="scripts\lib\toastr\toastr.scss" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="index.html" />
+    <Content Include="scripts\app.js" />
+    <Content Include="scripts\app\data.js" />
+    <Content Include="scripts\app\templates.js" />
+    <Content Include="scripts\controllers\homeController.js" />
+    <Content Include="scripts\controllers\projectsController.js" />
+    <Content Include="scripts\controllers\userProjectsController.js" />
+    <Content Include="scripts\controllers\usersController.js" />
+    <Content Include="scripts\lib\bootstrap\dist\css\bootstrap-theme.css" />
+    <Content Include="scripts\lib\bootstrap\dist\css\bootstrap-theme.min.css" />
+    <Content Include="scripts\lib\bootstrap\dist\css\bootstrap.css" />
+    <Content Include="scripts\lib\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="scripts\lib\bootstrap\dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="scripts\lib\bootstrap\dist\js\bootstrap.js" />
+    <Content Include="scripts\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <Content Include="scripts\lib\bootstrap\dist\js\npm.js" />
+    <Content Include="scripts\lib\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="scripts\lib\bootstrap\Gruntfile.js" />
+    <Content Include="scripts\lib\bootstrap\grunt\bs-commonjs-generator.js" />
+    <Content Include="scripts\lib\bootstrap\grunt\bs-glyphicons-data-generator.js" />
+    <Content Include="scripts\lib\bootstrap\grunt\bs-lessdoc-parser.js" />
+    <Content Include="scripts\lib\bootstrap\grunt\bs-raw-files-generator.js" />
+    <Content Include="scripts\lib\bootstrap\js\affix.js" />
+    <Content Include="scripts\lib\bootstrap\js\alert.js" />
+    <Content Include="scripts\lib\bootstrap\js\button.js" />
+    <Content Include="scripts\lib\bootstrap\js\carousel.js" />
+    <Content Include="scripts\lib\bootstrap\js\collapse.js" />
+    <Content Include="scripts\lib\bootstrap\js\dropdown.js" />
+    <Content Include="scripts\lib\bootstrap\js\modal.js" />
+    <Content Include="scripts\lib\bootstrap\js\popover.js" />
+    <Content Include="scripts\lib\bootstrap\js\scrollspy.js" />
+    <Content Include="scripts\lib\bootstrap\js\tab.js" />
+    <Content Include="scripts\lib\bootstrap\js\tooltip.js" />
+    <Content Include="scripts\lib\bootstrap\js\transition.js" />
+    <Content Include="scripts\lib\bootstrap\package.js" />
+    <Content Include="scripts\lib\handlebars\.gitignore" />
+    <Content Include="scripts\lib\handlebars\handlebars.amd.js" />
+    <Content Include="scripts\lib\handlebars\handlebars.amd.min.js" />
+    <Content Include="scripts\lib\handlebars\handlebars.js" />
+    <Content Include="scripts\lib\handlebars\handlebars.min.js" />
+    <Content Include="scripts\lib\handlebars\handlebars.runtime.amd.js" />
+    <Content Include="scripts\lib\handlebars\handlebars.runtime.amd.min.js" />
+    <Content Include="scripts\lib\handlebars\handlebars.runtime.js" />
+    <Content Include="scripts\lib\handlebars\handlebars.runtime.min.js" />
+    <Content Include="scripts\lib\jquery\dist\jquery.js" />
+    <Content Include="scripts\lib\jquery\dist\jquery.min.js" />
+    <Content Include="scripts\lib\jquery\MIT-LICENSE.txt" />
+    <Content Include="scripts\lib\jquery\src\ajax.js" />
+    <Content Include="scripts\lib\jquery\src\ajax\jsonp.js" />
+    <Content Include="scripts\lib\jquery\src\ajax\load.js" />
+    <Content Include="scripts\lib\jquery\src\ajax\parseJSON.js" />
+    <Content Include="scripts\lib\jquery\src\ajax\parseXML.js" />
+    <Content Include="scripts\lib\jquery\src\ajax\script.js" />
+    <Content Include="scripts\lib\jquery\src\ajax\var\nonce.js" />
+    <Content Include="scripts\lib\jquery\src\ajax\var\rquery.js" />
+    <Content Include="scripts\lib\jquery\src\ajax\xhr.js" />
+    <Content Include="scripts\lib\jquery\src\attributes.js" />
+    <Content Include="scripts\lib\jquery\src\attributes\attr.js" />
+    <Content Include="scripts\lib\jquery\src\attributes\classes.js" />
+    <Content Include="scripts\lib\jquery\src\attributes\prop.js" />
+    <Content Include="scripts\lib\jquery\src\attributes\support.js" />
+    <Content Include="scripts\lib\jquery\src\attributes\val.js" />
+    <Content Include="scripts\lib\jquery\src\callbacks.js" />
+    <Content Include="scripts\lib\jquery\src\core.js" />
+    <Content Include="scripts\lib\jquery\src\core\access.js" />
+    <Content Include="scripts\lib\jquery\src\core\init.js" />
+    <Content Include="scripts\lib\jquery\src\core\parseHTML.js" />
+    <Content Include="scripts\lib\jquery\src\core\ready.js" />
+    <Content Include="scripts\lib\jquery\src\core\var\rsingleTag.js" />
+    <Content Include="scripts\lib\jquery\src\css.js" />
+    <Content Include="scripts\lib\jquery\src\css\addGetHookIf.js" />
+    <Content Include="scripts\lib\jquery\src\css\curCSS.js" />
+    <Content Include="scripts\lib\jquery\src\css\defaultDisplay.js" />
+    <Content Include="scripts\lib\jquery\src\css\hiddenVisibleSelectors.js" />
+    <Content Include="scripts\lib\jquery\src\css\support.js" />
+    <Content Include="scripts\lib\jquery\src\css\swap.js" />
+    <Content Include="scripts\lib\jquery\src\css\var\cssExpand.js" />
+    <Content Include="scripts\lib\jquery\src\css\var\getStyles.js" />
+    <Content Include="scripts\lib\jquery\src\css\var\isHidden.js" />
+    <Content Include="scripts\lib\jquery\src\css\var\rmargin.js" />
+    <Content Include="scripts\lib\jquery\src\css\var\rnumnonpx.js" />
+    <Content Include="scripts\lib\jquery\src\data.js" />
+    <Content Include="scripts\lib\jquery\src\data\accepts.js" />
+    <Content Include="scripts\lib\jquery\src\data\Data.js" />
+    <Content Include="scripts\lib\jquery\src\data\var\data_priv.js" />
+    <Content Include="scripts\lib\jquery\src\data\var\data_user.js" />
+    <Content Include="scripts\lib\jquery\src\deferred.js" />
+    <Content Include="scripts\lib\jquery\src\deprecated.js" />
+    <Content Include="scripts\lib\jquery\src\dimensions.js" />
+    <Content Include="scripts\lib\jquery\src\effects.js" />
+    <Content Include="scripts\lib\jquery\src\effects\animatedSelector.js" />
+    <Content Include="scripts\lib\jquery\src\effects\Tween.js" />
+    <Content Include="scripts\lib\jquery\src\event.js" />
+    <Content Include="scripts\lib\jquery\src\event\ajax.js" />
+    <Content Include="scripts\lib\jquery\src\event\alias.js" />
+    <Content Include="scripts\lib\jquery\src\event\support.js" />
+    <Content Include="scripts\lib\jquery\src\exports\amd.js" />
+    <Content Include="scripts\lib\jquery\src\exports\global.js" />
+    <Content Include="scripts\lib\jquery\src\intro.js" />
+    <Content Include="scripts\lib\jquery\src\jquery.js" />
+    <Content Include="scripts\lib\jquery\src\manipulation.js" />
+    <Content Include="scripts\lib\jquery\src\manipulation\support.js" />
+    <Content Include="scripts\lib\jquery\src\manipulation\var\rcheckableType.js" />
+    <Content Include="scripts\lib\jquery\src\manipulation\_evalUrl.js" />
+    <Content Include="scripts\lib\jquery\src\offset.js" />
+    <Content Include="scripts\lib\jquery\src\outro.js" />
+    <Content Include="scripts\lib\jquery\src\queue.js" />
+    <Content Include="scripts\lib\jquery\src\queue\delay.js" />
+    <Content Include="scripts\lib\jquery\src\selector-native.js" />
+    <Content Include="scripts\lib\jquery\src\selector-sizzle.js" />
+    <Content Include="scripts\lib\jquery\src\selector.js" />
+    <Content Include="scripts\lib\jquery\src\serialize.js" />
+    <Content Include="scripts\lib\jquery\src\sizzle\dist\sizzle.js" />
+    <Content Include="scripts\lib\jquery\src\sizzle\dist\sizzle.min.js" />
+    <Content Include="scripts\lib\jquery\src\traversing.js" />
+    <Content Include="scripts\lib\jquery\src\traversing\findFilter.js" />
+    <Content Include="scripts\lib\jquery\src\traversing\var\rneedsContext.js" />
+    <Content Include="scripts\lib\jquery\src\var\arr.js" />
+    <Content Include="scripts\lib\jquery\src\var\class2type.js" />
+    <Content Include="scripts\lib\jquery\src\var\concat.js" />
+    <Content Include="scripts\lib\jquery\src\var\hasOwn.js" />
+    <Content Include="scripts\lib\jquery\src\var\indexOf.js" />
+    <Content Include="scripts\lib\jquery\src\var\pnum.js" />
+    <Content Include="scripts\lib\jquery\src\var\push.js" />
+    <Content Include="scripts\lib\jquery\src\var\rnotwhite.js" />
+    <Content Include="scripts\lib\jquery\src\var\slice.js" />
+    <Content Include="scripts\lib\jquery\src\var\strundefined.js" />
+    <Content Include="scripts\lib\jquery\src\var\support.js" />
+    <Content Include="scripts\lib\jquery\src\var\toString.js" />
+    <Content Include="scripts\lib\jquery\src\wrap.js" />
+    <Content Include="scripts\lib\PACE\pace.js" />
+    <Content Include="scripts\lib\PACE\pace.min.js" />
+    <Content Include="scripts\lib\PACE\themes\black\pace-theme-barber-shop.css" />
+    <Content Include="scripts\lib\PACE\themes\black\pace-theme-big-counter.css" />
+    <Content Include="scripts\lib\PACE\themes\black\pace-theme-bounce.css" />
+    <Content Include="scripts\lib\PACE\themes\black\pace-theme-center-atom.css" />
+    <Content Include="scripts\lib\PACE\themes\black\pace-theme-center-circle.css" />
+    <Content Include="scripts\lib\PACE\themes\black\pace-theme-center-radar.css" />
+    <Content Include="scripts\lib\PACE\themes\black\pace-theme-center-simple.css" />
+    <Content Include="scripts\lib\PACE\themes\black\pace-theme-corner-indicator.css" />
+    <Content Include="scripts\lib\PACE\themes\black\pace-theme-fill-left.css" />
+    <Content Include="scripts\lib\PACE\themes\black\pace-theme-flash.css" />
+    <Content Include="scripts\lib\PACE\themes\black\pace-theme-flat-top.css" />
+    <Content Include="scripts\lib\PACE\themes\black\pace-theme-loading-bar.css" />
+    <Content Include="scripts\lib\PACE\themes\black\pace-theme-mac-osx.css" />
+    <Content Include="scripts\lib\PACE\themes\black\pace-theme-minimal.css" />
+    <Content Include="scripts\lib\PACE\themes\blue\pace-theme-barber-shop.css" />
+    <Content Include="scripts\lib\PACE\themes\blue\pace-theme-big-counter.css" />
+    <Content Include="scripts\lib\PACE\themes\blue\pace-theme-bounce.css" />
+    <Content Include="scripts\lib\PACE\themes\blue\pace-theme-center-atom.css" />
+    <Content Include="scripts\lib\PACE\themes\blue\pace-theme-center-circle.css" />
+    <Content Include="scripts\lib\PACE\themes\blue\pace-theme-center-radar.css" />
+    <Content Include="scripts\lib\PACE\themes\blue\pace-theme-center-simple.css" />
+    <Content Include="scripts\lib\PACE\themes\blue\pace-theme-corner-indicator.css" />
+    <Content Include="scripts\lib\PACE\themes\blue\pace-theme-fill-left.css" />
+    <Content Include="scripts\lib\PACE\themes\blue\pace-theme-flash.css" />
+    <Content Include="scripts\lib\PACE\themes\blue\pace-theme-flat-top.css" />
+    <Content Include="scripts\lib\PACE\themes\blue\pace-theme-loading-bar.css" />
+    <Content Include="scripts\lib\PACE\themes\blue\pace-theme-mac-osx.css" />
+    <Content Include="scripts\lib\PACE\themes\blue\pace-theme-minimal.css" />
+    <Content Include="scripts\lib\PACE\themes\green\pace-theme-barber-shop.css" />
+    <Content Include="scripts\lib\PACE\themes\green\pace-theme-big-counter.css" />
+    <Content Include="scripts\lib\PACE\themes\green\pace-theme-bounce.css" />
+    <Content Include="scripts\lib\PACE\themes\green\pace-theme-center-atom.css" />
+    <Content Include="scripts\lib\PACE\themes\green\pace-theme-center-circle.css" />
+    <Content Include="scripts\lib\PACE\themes\green\pace-theme-center-radar.css" />
+    <Content Include="scripts\lib\PACE\themes\green\pace-theme-center-simple.css" />
+    <Content Include="scripts\lib\PACE\themes\green\pace-theme-corner-indicator.css" />
+    <Content Include="scripts\lib\PACE\themes\green\pace-theme-fill-left.css" />
+    <Content Include="scripts\lib\PACE\themes\green\pace-theme-flash.css" />
+    <Content Include="scripts\lib\PACE\themes\green\pace-theme-flat-top.css" />
+    <Content Include="scripts\lib\PACE\themes\green\pace-theme-loading-bar.css" />
+    <Content Include="scripts\lib\PACE\themes\green\pace-theme-mac-osx.css" />
+    <Content Include="scripts\lib\PACE\themes\green\pace-theme-minimal.css" />
+    <Content Include="scripts\lib\PACE\themes\orange\pace-theme-barber-shop.css" />
+    <Content Include="scripts\lib\PACE\themes\orange\pace-theme-big-counter.css" />
+    <Content Include="scripts\lib\PACE\themes\orange\pace-theme-bounce.css" />
+    <Content Include="scripts\lib\PACE\themes\orange\pace-theme-center-atom.css" />
+    <Content Include="scripts\lib\PACE\themes\orange\pace-theme-center-circle.css" />
+    <Content Include="scripts\lib\PACE\themes\orange\pace-theme-center-radar.css" />
+    <Content Include="scripts\lib\PACE\themes\orange\pace-theme-center-simple.css" />
+    <Content Include="scripts\lib\PACE\themes\orange\pace-theme-corner-indicator.css" />
+    <Content Include="scripts\lib\PACE\themes\orange\pace-theme-fill-left.css" />
+    <Content Include="scripts\lib\PACE\themes\orange\pace-theme-flash.css" />
+    <Content Include="scripts\lib\PACE\themes\orange\pace-theme-flat-top.css" />
+    <Content Include="scripts\lib\PACE\themes\orange\pace-theme-loading-bar.css" />
+    <Content Include="scripts\lib\PACE\themes\orange\pace-theme-mac-osx.css" />
+    <Content Include="scripts\lib\PACE\themes\orange\pace-theme-minimal.css" />
+    <Content Include="scripts\lib\PACE\themes\pink\pace-theme-barber-shop.css" />
+    <Content Include="scripts\lib\PACE\themes\pink\pace-theme-big-counter.css" />
+    <Content Include="scripts\lib\PACE\themes\pink\pace-theme-bounce.css" />
+    <Content Include="scripts\lib\PACE\themes\pink\pace-theme-center-atom.css" />
+    <Content Include="scripts\lib\PACE\themes\pink\pace-theme-center-circle.css" />
+    <Content Include="scripts\lib\PACE\themes\pink\pace-theme-center-radar.css" />
+    <Content Include="scripts\lib\PACE\themes\pink\pace-theme-center-simple.css" />
+    <Content Include="scripts\lib\PACE\themes\pink\pace-theme-corner-indicator.css" />
+    <Content Include="scripts\lib\PACE\themes\pink\pace-theme-fill-left.css" />
+    <Content Include="scripts\lib\PACE\themes\pink\pace-theme-flash.css" />
+    <Content Include="scripts\lib\PACE\themes\pink\pace-theme-flat-top.css" />
+    <Content Include="scripts\lib\PACE\themes\pink\pace-theme-loading-bar.css" />
+    <Content Include="scripts\lib\PACE\themes\pink\pace-theme-mac-osx.css" />
+    <Content Include="scripts\lib\PACE\themes\pink\pace-theme-minimal.css" />
+    <Content Include="scripts\lib\PACE\themes\purple\pace-theme-barber-shop.css" />
+    <Content Include="scripts\lib\PACE\themes\purple\pace-theme-big-counter.css" />
+    <Content Include="scripts\lib\PACE\themes\purple\pace-theme-bounce.css" />
+    <Content Include="scripts\lib\PACE\themes\purple\pace-theme-center-atom.css" />
+    <Content Include="scripts\lib\PACE\themes\purple\pace-theme-center-circle.css" />
+    <Content Include="scripts\lib\PACE\themes\purple\pace-theme-center-radar.css" />
+    <Content Include="scripts\lib\PACE\themes\purple\pace-theme-center-simple.css" />
+    <Content Include="scripts\lib\PACE\themes\purple\pace-theme-corner-indicator.css" />
+    <Content Include="scripts\lib\PACE\themes\purple\pace-theme-fill-left.css" />
+    <Content Include="scripts\lib\PACE\themes\purple\pace-theme-flash.css" />
+    <Content Include="scripts\lib\PACE\themes\purple\pace-theme-flat-top.css" />
+    <Content Include="scripts\lib\PACE\themes\purple\pace-theme-loading-bar.css" />
+    <Content Include="scripts\lib\PACE\themes\purple\pace-theme-mac-osx.css" />
+    <Content Include="scripts\lib\PACE\themes\purple\pace-theme-minimal.css" />
+    <Content Include="scripts\lib\PACE\themes\red\pace-theme-barber-shop.css" />
+    <Content Include="scripts\lib\PACE\themes\red\pace-theme-big-counter.css" />
+    <Content Include="scripts\lib\PACE\themes\red\pace-theme-bounce.css" />
+    <Content Include="scripts\lib\PACE\themes\red\pace-theme-center-atom.css" />
+    <Content Include="scripts\lib\PACE\themes\red\pace-theme-center-circle.css" />
+    <Content Include="scripts\lib\PACE\themes\red\pace-theme-center-radar.css" />
+    <Content Include="scripts\lib\PACE\themes\red\pace-theme-center-simple.css" />
+    <Content Include="scripts\lib\PACE\themes\red\pace-theme-corner-indicator.css" />
+    <Content Include="scripts\lib\PACE\themes\red\pace-theme-fill-left.css" />
+    <Content Include="scripts\lib\PACE\themes\red\pace-theme-flash.css" />
+    <Content Include="scripts\lib\PACE\themes\red\pace-theme-flat-top.css" />
+    <Content Include="scripts\lib\PACE\themes\red\pace-theme-loading-bar.css" />
+    <Content Include="scripts\lib\PACE\themes\red\pace-theme-mac-osx.css" />
+    <Content Include="scripts\lib\PACE\themes\red\pace-theme-minimal.css" />
+    <Content Include="scripts\lib\PACE\themes\silver\pace-theme-barber-shop.css" />
+    <Content Include="scripts\lib\PACE\themes\silver\pace-theme-big-counter.css" />
+    <Content Include="scripts\lib\PACE\themes\silver\pace-theme-bounce.css" />
+    <Content Include="scripts\lib\PACE\themes\silver\pace-theme-center-atom.css" />
+    <Content Include="scripts\lib\PACE\themes\silver\pace-theme-center-circle.css" />
+    <Content Include="scripts\lib\PACE\themes\silver\pace-theme-center-radar.css" />
+    <Content Include="scripts\lib\PACE\themes\silver\pace-theme-center-simple.css" />
+    <Content Include="scripts\lib\PACE\themes\silver\pace-theme-corner-indicator.css" />
+    <Content Include="scripts\lib\PACE\themes\silver\pace-theme-fill-left.css" />
+    <Content Include="scripts\lib\PACE\themes\silver\pace-theme-flash.css" />
+    <Content Include="scripts\lib\PACE\themes\silver\pace-theme-flat-top.css" />
+    <Content Include="scripts\lib\PACE\themes\silver\pace-theme-loading-bar.css" />
+    <Content Include="scripts\lib\PACE\themes\silver\pace-theme-mac-osx.css" />
+    <Content Include="scripts\lib\PACE\themes\silver\pace-theme-minimal.css" />
+    <Content Include="scripts\lib\PACE\themes\white\pace-theme-barber-shop.css" />
+    <Content Include="scripts\lib\PACE\themes\white\pace-theme-big-counter.css" />
+    <Content Include="scripts\lib\PACE\themes\white\pace-theme-bounce.css" />
+    <Content Include="scripts\lib\PACE\themes\white\pace-theme-center-atom.css" />
+    <Content Include="scripts\lib\PACE\themes\white\pace-theme-center-circle.css" />
+    <Content Include="scripts\lib\PACE\themes\white\pace-theme-center-radar.css" />
+    <Content Include="scripts\lib\PACE\themes\white\pace-theme-center-simple.css" />
+    <Content Include="scripts\lib\PACE\themes\white\pace-theme-corner-indicator.css" />
+    <Content Include="scripts\lib\PACE\themes\white\pace-theme-fill-left.css" />
+    <Content Include="scripts\lib\PACE\themes\white\pace-theme-flash.css" />
+    <Content Include="scripts\lib\PACE\themes\white\pace-theme-flat-top.css" />
+    <Content Include="scripts\lib\PACE\themes\white\pace-theme-loading-bar.css" />
+    <Content Include="scripts\lib\PACE\themes\white\pace-theme-mac-osx.css" />
+    <Content Include="scripts\lib\PACE\themes\white\pace-theme-minimal.css" />
+    <Content Include="scripts\lib\PACE\themes\yellow\pace-theme-barber-shop.css" />
+    <Content Include="scripts\lib\PACE\themes\yellow\pace-theme-big-counter.css" />
+    <Content Include="scripts\lib\PACE\themes\yellow\pace-theme-bounce.css" />
+    <Content Include="scripts\lib\PACE\themes\yellow\pace-theme-center-atom.css" />
+    <Content Include="scripts\lib\PACE\themes\yellow\pace-theme-center-circle.css" />
+    <Content Include="scripts\lib\PACE\themes\yellow\pace-theme-center-radar.css" />
+    <Content Include="scripts\lib\PACE\themes\yellow\pace-theme-center-simple.css" />
+    <Content Include="scripts\lib\PACE\themes\yellow\pace-theme-corner-indicator.css" />
+    <Content Include="scripts\lib\PACE\themes\yellow\pace-theme-fill-left.css" />
+    <Content Include="scripts\lib\PACE\themes\yellow\pace-theme-flash.css" />
+    <Content Include="scripts\lib\PACE\themes\yellow\pace-theme-flat-top.css" />
+    <Content Include="scripts\lib\PACE\themes\yellow\pace-theme-loading-bar.css" />
+    <Content Include="scripts\lib\PACE\themes\yellow\pace-theme-mac-osx.css" />
+    <Content Include="scripts\lib\PACE\themes\yellow\pace-theme-minimal.css" />
+    <Content Include="scripts\lib\sammy\.gitignore" />
+    <Content Include="scripts\lib\sammy\examples\backend\public\javascripts\app.js" />
+    <Content Include="scripts\lib\sammy\examples\backend\public\javascripts\jquery.cloudkit.js" />
+    <Content Include="scripts\lib\sammy\examples\backend\public\javascripts\jquery.js" />
+    <Content Include="scripts\lib\sammy\examples\backend\public\javascripts\sammy.js" />
+    <Content Include="scripts\lib\sammy\examples\backend\public\javascripts\sammy.json.js" />
+    <Content Include="scripts\lib\sammy\examples\backend\public\javascripts\sammy.storage.js" />
+    <Content Include="scripts\lib\sammy\examples\backend\public\javascripts\sammy.template.js" />
+    <Content Include="scripts\lib\sammy\examples\ejs\index.html" />
+    <Content Include="scripts\lib\sammy\examples\form_handling\files\form.html" />
+    <Content Include="scripts\lib\sammy\examples\form_handling\index.html" />
+    <Content Include="scripts\lib\sammy\examples\hello_world\index.html" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.cache-0.7.6.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.cache-latest.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.data_location_proxy-0.7.6.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.data_location_proxy-latest.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.ejs-0.7.6.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.ejs-latest.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.exceptional-0.7.6.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.exceptional-latest.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.flash-0.7.6.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.flash-latest.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.form-0.7.6.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.form-latest.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.form_2_json-0.7.6.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.form_2_json-latest.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.googleanalytics-0.7.6.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.googleanalytics-latest.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.haml-0.7.6.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.haml-latest.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.handlebars-0.7.6.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.handlebars-latest.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.hogan-0.7.6.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.hogan-latest.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.hoptoad-0.7.6.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.hoptoad-latest.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.json-0.7.6.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.json-latest.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.kissmetrics-0.7.6.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.kissmetrics-latest.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.meld-0.7.6.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.meld-latest.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.mixpanel-0.7.6.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.mixpanel-latest.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.mustache-0.7.6.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.mustache-latest.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.nested_params-0.7.6.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.nested_params-latest.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.oauth2-0.7.6.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.oauth2-latest.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.path_location_proxy-0.7.6.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.path_location_proxy-latest.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.pure-0.7.6.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.pure-latest.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.push_location_proxy-0.7.6.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.push_location_proxy-latest.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.storage-0.7.6.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.storage-latest.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.template-0.7.6.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.template-latest.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.title-0.7.6.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.title-latest.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.tmpl-0.7.6.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\plugins\sammy.tmpl-latest.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\sammy-0.7.6.min.js" />
+    <Content Include="scripts\lib\sammy\lib\min\sammy-latest.min.js" />
+    <Content Include="scripts\lib\sammy\lib\plugins\sammy.cache.js" />
+    <Content Include="scripts\lib\sammy\lib\plugins\sammy.data_location_proxy.js" />
+    <Content Include="scripts\lib\sammy\lib\plugins\sammy.ejs.js" />
+    <Content Include="scripts\lib\sammy\lib\plugins\sammy.exceptional.js" />
+    <Content Include="scripts\lib\sammy\lib\plugins\sammy.flash.js" />
+    <Content Include="scripts\lib\sammy\lib\plugins\sammy.form.js" />
+    <Content Include="scripts\lib\sammy\lib\plugins\sammy.form_2_json.js" />
+    <Content Include="scripts\lib\sammy\lib\plugins\sammy.googleanalytics.js" />
+    <Content Include="scripts\lib\sammy\lib\plugins\sammy.haml.js" />
+    <Content Include="scripts\lib\sammy\lib\plugins\sammy.handlebars.js" />
+    <Content Include="scripts\lib\sammy\lib\plugins\sammy.hogan.js" />
+    <Content Include="scripts\lib\sammy\lib\plugins\sammy.hoptoad.js" />
+    <Content Include="scripts\lib\sammy\lib\plugins\sammy.json.js" />
+    <Content Include="scripts\lib\sammy\lib\plugins\sammy.kissmetrics.js" />
+    <Content Include="scripts\lib\sammy\lib\plugins\sammy.meld.js" />
+    <Content Include="scripts\lib\sammy\lib\plugins\sammy.mixpanel.js" />
+    <Content Include="scripts\lib\sammy\lib\plugins\sammy.mustache.js" />
+    <Content Include="scripts\lib\sammy\lib\plugins\sammy.nested_params.js" />
+    <Content Include="scripts\lib\sammy\lib\plugins\sammy.oauth2.js" />
+    <Content Include="scripts\lib\sammy\lib\plugins\sammy.path_location_proxy.js" />
+    <Content Include="scripts\lib\sammy\lib\plugins\sammy.pure.js" />
+    <Content Include="scripts\lib\sammy\lib\plugins\sammy.push_location_proxy.js" />
+    <Content Include="scripts\lib\sammy\lib\plugins\sammy.storage.js" />
+    <Content Include="scripts\lib\sammy\lib\plugins\sammy.template.js" />
+    <Content Include="scripts\lib\sammy\lib\plugins\sammy.title.js" />
+    <Content Include="scripts\lib\sammy\lib\plugins\sammy.tmpl.js" />
+    <Content Include="scripts\lib\sammy\lib\sammy.js" />
+    <Content Include="scripts\lib\toastr\toastr.css" />
+    <Content Include="scripts\lib\toastr\toastr.js" />
+    <Content Include="scripts\lib\toastr\toastr.min.css" />
+    <Content Include="scripts\lib\toastr\toastr.min.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="images\" />
+    <Folder Include="styles\" />
+    <Folder Include="templates\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>28123</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:28123/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
