@@ -25,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3DB7BB2F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BillableHoursWebApp.Services.Tests", "Tests\BillableHoursWebApp.Services.Tests\BillableHoursWebApp.Services.Tests.csproj", "{647CD3A3-EB8A-42E1-947E-5C3A96CEA16F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{543466AD-2B80-4EF4-836B-771F3367F072}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

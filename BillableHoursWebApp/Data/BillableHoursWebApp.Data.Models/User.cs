@@ -9,6 +9,7 @@
 
     public class User : IdentityUser
     {
+        [Required]
         [MaxLength(25)]
         public string FirstName { get; set; }
 

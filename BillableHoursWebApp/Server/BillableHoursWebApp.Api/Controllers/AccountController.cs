@@ -328,7 +328,16 @@
                 return BadRequest(ModelState);
             }
 
-            var user = new User() { UserName = model.Email, Email = model.Email };
+            User user;
+
+            if (model.IsEmployee)
+            {
+                user = new Employee {UserName = model.Email, Email = model.Email};
+            }
+            else
+            {
+                user = new Client {UserName = model.Email, Email = model.Email};
+            }
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 

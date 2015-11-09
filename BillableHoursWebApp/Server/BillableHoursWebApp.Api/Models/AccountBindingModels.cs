@@ -48,6 +48,15 @@
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        public bool IsEmployee { get; set; }
+
+        [Required]
+        [MaxLength(25)]
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
     }
 
     public class RegisterExternalBindingModel
