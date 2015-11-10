@@ -34,10 +34,10 @@
 
     public class RegisterBindingModel
     {
+        [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
         [MaxLength(20)]
         [Display(Name = "Username")]
         public string Username { get; set; }

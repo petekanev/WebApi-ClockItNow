@@ -5,14 +5,14 @@ var usersController = function () {
                 context.$element().html(template());
                 $('#btn-register').on('click', function () {
                     var user = {
-                        Username: $('#reg-username').val(),
+                        Email: $('#reg-email').val(),
                         FirstName: $('#reg-fname').val(),
                         LastName: $('#reg-lname').val(),
                         Password: $('#reg-password').val(),
                         ConfirmPassword: $('#reg-confirmpassword').val()
                     };
 
-                    if ($('#reg-type-client')) {
+                    if ($('#reg-type-client').is(':checked')) {
                         user.IsEmployee = false;
                     } else {
                         user.IsEmployee = true;
@@ -27,9 +27,14 @@ var usersController = function () {
                         },
                             function (error) {
                                 var response = error.responseJSON.ModelState;
-                                for (var err in response) {
-                                    if (response.hasOwnProperty(err)) {
-                                        toastr.error(response[err][0]);
+
+                                if (!response) {
+                                    toastr.error(error.statusText);
+                                } else {
+                                    for (var err in response) {
+                                        if (response.hasOwnProperty(err)) {
+                                            toastr.error(response[err][0]);
+                                        }
                                     }
                                 }
                             });
@@ -60,7 +65,7 @@ var usersController = function () {
                             toastr.success('Logged in successfully!');
                             context.redirect('#/');
                             // reload page
-                            context.reload();
+                            window.reload(true);
                         },
                             function (error) {
                                 toastr.error(error.error_description);

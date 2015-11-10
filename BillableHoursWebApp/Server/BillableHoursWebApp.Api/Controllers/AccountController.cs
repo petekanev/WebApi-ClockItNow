@@ -335,14 +335,12 @@
 
             if (model.IsEmployee)
             {
-                user = new Employee { UserName = model.Username, FirstName = model.FirstName, LastName = model.LastName };
+                user = new Employee { Email = model.Email, UserName = model.Email, FirstName = model.FirstName, LastName = model.LastName };
             }
             else
             {
-                user = new Client { UserName = model.Username, FirstName = model.FirstName, LastName = model.LastName };
+                user = new Client { Email = model.Email, UserName = model.Email, FirstName = model.FirstName, LastName = model.LastName };
             }
-
-            user.Email = model.Username;
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 

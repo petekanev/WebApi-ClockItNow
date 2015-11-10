@@ -6,12 +6,14 @@
         url = constants.server.SERVER_URL + url;
 
         var headers = options.headers || { 'Cache-Control': 'no-cache' },
-            data = options.data || undefined,
+            data = JSON.stringify(options.data) || undefined,
             contentType = options.contentType || 'application/json';
 
-        if (!options.noStringify) {
-            data = JSON.stringify(options.data);
+        if (options.noStringify) {
+            data = options.data;
         }
+
+        console.log(data);
 
         var promise = new Promise(function (resolve, reject) {
             $.ajax({
@@ -21,7 +23,6 @@
                 headers: headers,
                 data: data,
                 success: function (res) {
-                    console.log(res);
                     resolve(res);
                 },
                 error: function (err) {
