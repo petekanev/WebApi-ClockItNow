@@ -1,0 +1,22 @@
+<div class="container container-width-30 center-block form-container">
+    <form class="form-signin">
+        <h2 class="form-signin-heading">Please sign up</h2>
+        <input type="text" class="form-control required-input" id="reg-username" placeholder="Username" required="" autofocus="">
+        <input type="text" class="form-control required-input" id="reg-fname" placeholder="First Name" required="">
+        <input type="text" class="form-control" id="reg-lname" placeholder="Last Name">
+        <input type="password" class="form-control sign-in-password-input required-input" id="reg-password" placeholder="Password" required="">
+        <input type="password" class="form-control sign-in-confirm-password-input required-input" id="reg-confirmpassword" placeholder="Confirm Password" required="">
+
+        <h4 class="text-center">
+            You are an 
+            <label for="reg-type-employee" class="sr-only-focusable">Employee</label>
+            <input name="user-type" type="radio" id="reg-type-employee" />
+            <label for="reg-type-client" class="sr-only-focusable">Client</label>
+            <input name="user-type" type="radio" id="reg-type-client" checked="checked" />
+        </h4>
+
+        <button class="btn btn-lg btn-primary btn-block sign-in-button" id="btn-register">
+            Sign up
+        </button>
+    </form>
+</div>

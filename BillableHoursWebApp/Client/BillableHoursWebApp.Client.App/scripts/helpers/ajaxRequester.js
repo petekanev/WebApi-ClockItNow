@@ -2,22 +2,30 @@
 
     function send(method, url, options) {
         options = options || {};
-        url = constants.SERVER_URL + url;
-        console.log(url);
+
+        url = constants.server.SERVER_URL + url;
+
         var headers = options.headers || { 'Cache-Control': 'no-cache' },
-            data = options.data || undefined;
+            data = options.data || undefined,
+            contentType = options.contentType || 'application/json';
+
+        if (!options.noStringify) {
+            data = JSON.stringify(options.data);
+        }
 
         var promise = new Promise(function (resolve, reject) {
             $.ajax({
                 url: url,
                 method: method,
-                contentType: 'application/json',
+                contentType: contentType,
                 headers: headers,
-                data: JSON.stringify(data),
+                data: data,
                 success: function (res) {
+                    console.log(res);
                     resolve(res);
                 },
                 error: function (err) {
+                    console.log(err);
                     reject(err);
                 }
             });

@@ -1,0 +1,24 @@
+.container-width-30 {
+    width: 30%;
+}
+
+form input {
+    margin-top: 15px;
+}
+
+form button {
+    padding: 0px;
+    margin-top: 10px;
+}
+
+.navbar-default {
+    background-color: #FCE49D;
+    /*background-color: FFBF00*/
+}
+
+.form-container {
+    background-color: #EAEBE5;
+    height: auto;
+    padding: 20px;
+    color: #7e8c8d;
+}

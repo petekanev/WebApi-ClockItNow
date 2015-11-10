@@ -20,6 +20,7 @@
     using Data.Models;
     using Results;
 
+    [EnableCors("*", "*", "*")]
     [Authorize]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
@@ -334,12 +335,14 @@
 
             if (model.IsEmployee)
             {
-                user = new Employee { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
+                user = new Employee { UserName = model.Username, FirstName = model.FirstName, LastName = model.LastName };
             }
             else
             {
-                user = new Client { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
+                user = new Client { UserName = model.Username, FirstName = model.FirstName, LastName = model.LastName };
             }
+
+            user.Email = model.Username;
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 

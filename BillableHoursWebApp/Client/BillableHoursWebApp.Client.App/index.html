@@ -2,13 +2,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Billable Hours ClockIt</title>
 
     <link rel="stylesheet" href="scripts/lib/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="scripts/lib/toastr/toastr.css">
     <link rel="stylesheet" href="scripts/lib/PACE/themes/green/pace-theme-corner-indicator.css">
-
+    
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
     <link rel="stylesheet" href="styles/styles.css">
+
 </head>
 <body>
     <div class="navbar navbar-default">
@@ -50,13 +54,13 @@
     <div class="panel-footer navbar-fixed-bottom">
         <footer class="text-center">
             <small>
-                <a href="https://github.com/">Web Services Team Nike</a>
+                <a href="https://github.com/Team-Nike/WebServices-Team-Nike">Web Services Team Nike</a>
                 &#169; 2015,
                 <a href="http://telerikacademy.com/">Telerik Academy</a>
             </small>
             <br />
             <small>
-                <a href="https://github.com/">Open Source Project at GitHub</a>
+                <a href="https://github.com/Team-Nike/WebServices-Team-Nike">Open Source Project at GitHub</a>
             </small>
         </footer>
     </div>
@@ -70,7 +74,13 @@
     <script type="text/javascript" src="scripts/lib/PACE/pace.min.js"></script>
 
     <!-- Controllers go here -->
-    <!-- Loaders/Helpers go here -->
+    <script type="text/javascript" src="scripts/controllers/usersController.js"></script>
+    <script type="text/javascript" src="scripts/controllers/homeController.js"></script>
+    <script type="text/javascript" src="scripts/controllers/projectsController.js"></script>
+    <script type="text/javascript" src="scripts/controllers/userProjectsController.js"></script>
+
+<!-- Loaders/Helpers go here -->
+    <script type="text/javascript" src="scripts/app/data.js"></script>
     <script type="text/javascript" src="scripts/helpers/constants.js"></script>
     <script type="text/javascript" src="scripts/helpers/ajaxRequester.js"></script>
     <script type="text/javascript" src="scripts/helpers/templates.js"></script>

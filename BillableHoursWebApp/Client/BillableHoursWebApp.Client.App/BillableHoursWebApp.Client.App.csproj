@@ -196,7 +196,9 @@
     <Content Include="scripts\lib\toastr\toastr.js.map" />
     <Content Include="scripts\lib\toastr\toastr.less" />
     <Content Include="scripts\lib\toastr\toastr.scss" />
-    <Content Include="templates\login.handlebars" />
+    <Content Include="styles\bootstrap.min.css" />
+    <Content Include="templates\login.html" />
+    <Content Include="templates\register.html" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

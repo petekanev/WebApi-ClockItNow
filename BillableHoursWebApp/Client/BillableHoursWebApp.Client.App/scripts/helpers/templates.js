@@ -10,7 +10,7 @@ var templates = function () {
                 return;
             }
 
-            var url = 'partials/' + name + '.html';
+            var url = 'templates/' + name + '.html';
             $.get(url, function (html) {
                 var template = handlebars.compile(html);
                 cache[name] = template;

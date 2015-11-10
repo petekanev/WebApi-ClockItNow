@@ -18,6 +18,8 @@
 
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
         {
+            context.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
+
             var manager = new ApplicationUserManager(new UserStore<User>(context.Get<BillableHoursWebAppDbContext>()));
             // Configure validation logic for usernames
             manager.UserValidator = new UserValidator<User>(manager)

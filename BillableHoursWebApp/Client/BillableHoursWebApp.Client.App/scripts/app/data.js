@@ -1,14 +1,35 @@
 var data = function() {
     function register(user) {
-        
+        var options = {};
+        options.data = user;
+
+        return ajaxRequester.post('/api/account/register', options);
     }
 
     function login(user) {
-        
+        var options = {};
+        options.contentType = 'application/x-www-form-urlencoded';
+        options.noStringify = true;
+        // options.data = 'grant_type=password&username=' + user.username + '&password=' + user.password;
+        options.data = user;
+
+        return ajaxRequester.post('/token', options);
     }
 
     function logout(user) {
         
+    }
+
+    function allCategories() {
+
+    }
+
+    function addCategory(category) {
+
+    }
+
+    function getCategory(id) {
+
     }
 
     function createProject(project) {
@@ -60,6 +81,11 @@ var data = function() {
             register: register,
             login: login,
             logout: logout
+        },
+        categories: {
+            all: allCategories,
+            add: addCategory,
+            get: getCategory
         },
         projects: {
             all: allProjects,
