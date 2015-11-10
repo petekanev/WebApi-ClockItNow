@@ -13,8 +13,6 @@
             this.invoices = new HashSet<Invoice>();
         }
 
-        public bool IsOrganization { get; set; }
-
         public virtual ICollection<Project> Projects
         {
             get { return this.projects; }

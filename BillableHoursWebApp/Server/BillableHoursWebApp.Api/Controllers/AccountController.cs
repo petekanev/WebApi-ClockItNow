@@ -126,7 +126,7 @@
 
             IdentityResult result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword,
                 model.NewPassword);
-            
+
             if (!result.Succeeded)
             {
                 return GetErrorResult(result);
@@ -259,9 +259,9 @@
             if (hasRegistered)
             {
                 Authentication.SignOut(DefaultAuthenticationTypes.ExternalCookie);
-                
-                 ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
-                    OAuthDefaults.AuthenticationType);
+
+                ClaimsIdentity oAuthIdentity = await user.GenerateUserIdentityAsync(UserManager,
+                   OAuthDefaults.AuthenticationType);
                 ClaimsIdentity cookieIdentity = await user.GenerateUserIdentityAsync(UserManager,
                     CookieAuthenticationDefaults.AuthenticationType);
 
@@ -334,11 +334,11 @@
 
             if (model.IsEmployee)
             {
-                user = new Employee {UserName = model.Email, Email = model.Email};
+                user = new Employee { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
             }
             else
             {
-                user = new Client {UserName = model.Email, Email = model.Email};
+                user = new Client { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
             }
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);
@@ -379,7 +379,7 @@
             result = await UserManager.AddLoginAsync(user.Id, info.Login);
             if (!result.Succeeded)
             {
-                return GetErrorResult(result); 
+                return GetErrorResult(result);
             }
             return Ok();
         }
