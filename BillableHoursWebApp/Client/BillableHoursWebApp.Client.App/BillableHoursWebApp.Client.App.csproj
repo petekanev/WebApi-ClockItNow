@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="scripts\helpers\constants.js" />
     <Content Include="scripts\lib\bootstrap\.bower.json" />
     <Content Include="scripts\lib\bootstrap\bower.json" />
     <Content Include="scripts\lib\bootstrap\dist\css\bootstrap-theme.css.map" />
@@ -195,6 +196,7 @@
     <Content Include="scripts\lib\toastr\toastr.js.map" />
     <Content Include="scripts\lib\toastr\toastr.less" />
     <Content Include="scripts\lib\toastr\toastr.scss" />
+    <Content Include="templates\login.handlebars" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -206,7 +208,7 @@
     <Content Include="index.html" />
     <Content Include="scripts\app.js" />
     <Content Include="scripts\app\data.js" />
-    <Content Include="scripts\app\templates.js" />
+    <Content Include="scripts\helpers\templates.js" />
     <Content Include="scripts\controllers\homeController.js" />
     <Content Include="scripts\controllers\projectsController.js" />
     <Content Include="scripts\controllers\userProjectsController.js" />
@@ -572,15 +574,15 @@
     <Content Include="scripts\lib\toastr\toastr.js" />
     <Content Include="scripts\lib\toastr\toastr.min.css" />
     <Content Include="scripts\lib\toastr\toastr.min.js" />
+    <Content Include="styles\styles.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="scripts\helpers\ajaxRequester.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="images\" />
-    <Folder Include="styles\" />
-    <Folder Include="templates\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

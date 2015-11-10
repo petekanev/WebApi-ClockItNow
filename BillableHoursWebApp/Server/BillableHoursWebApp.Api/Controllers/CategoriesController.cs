@@ -2,12 +2,14 @@
 {
     using System.Linq;
     using System.Web.Http;
+    using System.Web.Http.Cors;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
     using Data;
     using Data.Models;
     using DataTransferModels;
 
+    [EnableCors("*", "*", "*")]
     public class CategoriesController : ApiController
     {
         private IBillableHoursWebAppData data;

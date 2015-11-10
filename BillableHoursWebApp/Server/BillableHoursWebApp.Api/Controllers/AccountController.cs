@@ -8,6 +8,7 @@
     using System.Threading.Tasks;
     using System.Web;
     using System.Web.Http;
+    using System.Web.Http.Cors;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Microsoft.AspNet.Identity.Owin;
@@ -318,6 +319,7 @@
             return logins;
         }
 
+        [EnableCors("*", "*", "*")]
         // POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]

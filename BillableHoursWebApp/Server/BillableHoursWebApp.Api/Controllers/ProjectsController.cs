@@ -5,6 +5,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Web.Http;
+    using System.Web.Http.Cors;
     using System.Web.Security;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
@@ -12,6 +13,7 @@
     using Data.Models;
     using DataTransferModels.Project;
 
+    [EnableCors("*", "*", "*")]
     public class ProjectsController : ApiController
     {
         private IBillableHoursWebAppData data;
