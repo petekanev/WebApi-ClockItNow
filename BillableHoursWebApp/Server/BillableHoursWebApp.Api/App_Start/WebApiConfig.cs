@@ -2,6 +2,9 @@
 {
     using System.Web.Http;
     using System.Web.Http.Cors;
+    using AutoMapper;
+    using Data.Models;
+    using DataTransferModels.Project;
     using Microsoft.Owin.Security.OAuth;
 
     public static class WebApiConfig

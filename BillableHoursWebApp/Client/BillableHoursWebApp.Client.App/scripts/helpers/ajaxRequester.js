@@ -13,8 +13,6 @@
             data = options.data;
         }
 
-        console.log(data);
-
         var promise = new Promise(function (resolve, reject) {
             $.ajax({
                 url: url,

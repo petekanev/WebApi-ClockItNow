@@ -12,6 +12,7 @@
     using Data;
     using Data.Models;
     using DataTransferModels.Project;
+    using Microsoft.AspNet.Identity;
 
     [EnableCors("*", "*", "*")]
     public class ProjectsController : ApiController
@@ -61,13 +62,9 @@
                 return this.BadRequest(this.ModelState);
             }
 
-            /*
-            var currentUser = Membership.GetUser(User.Identity.Name);
-            string username = currentUser.UserName; //** get UserName
-            var userId = currentUser.ProviderUserKey.ToString(); //** get user ID
+            var currentUserId = User.Identity.GetUserId();
 
-            model.ClientId = userId;
-            */
+            model.ClientId = currentUserId;
 
             var projectToAdd = Mapper.Map<Project>(model);
 

@@ -9,13 +9,19 @@
     using System.Reflection;
     using System.Web.Http.Dispatcher;
     using App_Start;
+    using AutoMapper;
     using Common;
+    using Data.Models;
+    using DataTransferModels;
+    using DataTransferModels.Project;
 
     public class WebApiApplication : HttpApplication
     {
         protected void Application_Start()
         {
             AutoMapperConfig.RegisterMappings(Assembly.Load(Constants.DataTransferModelsAssembly));
+            Mapper.CreateMap<AttachmentRequestModel, Attachment>();
+            Mapper.CreateMap<ProjectRequestModel, Project>();
 
             DatabaseConfig.Initialize();
 

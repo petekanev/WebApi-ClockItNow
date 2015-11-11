@@ -1,4 +1,4 @@
-var data = function() {
+var data = function () {
     function register(user) {
         var options = {};
         options.data = user;
@@ -15,7 +15,7 @@ var data = function() {
 
         return ajaxRequester.post('/token', options);
     }
-    
+
     function allCategories() {
 
     }
@@ -29,47 +29,52 @@ var data = function() {
     }
 
     function createProject(project) {
-        
+        var options = {};
+        options.data = project;
+        options.headers = {};
+        options.headers.Authorization = 'Bearer ' + localStorage.getItem(constants.localStorage.LOCAL_STORAGE_TOKEN);
+
+        return ajaxRequester.post('/api/projects', options);
     }
 
     function allProjects() {
-        
+
     }
 
     function getProject(id) {
-        
+
     }
 
     function updateProject(id, project) {
-        
+
     }
 
     function deleteProject(id, project) {
-        
+
     }
 
     function commentProject(id, comment) {
-        
+
     }
 
     function addAttachmentToProject(id, attachment) {
-        
+
     }
 
     function enrollInProject(id) {
-        
+
     }
 
     function startProjectSession(id, workLog) {
-        
+
     }
 
     function finishProjectSession(id, workLog) {
-        
+
     }
 
     function finalizeProject(id) {
-        
+
     }
 
     return {
