@@ -197,6 +197,7 @@
     <Content Include="scripts\lib\toastr\toastr.less" />
     <Content Include="scripts\lib\toastr\toastr.scss" />
     <Content Include="styles\bootstrap.min.css" />
+    <Content Include="templates\createProjectModal.html" />
     <Content Include="templates\login.html" />
     <Content Include="templates\register.html" />
     <None Include="Web.Debug.config">

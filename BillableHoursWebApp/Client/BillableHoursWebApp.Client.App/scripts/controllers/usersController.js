@@ -65,7 +65,7 @@ var usersController = function () {
                             toastr.success('Logged in successfully!');
                             context.redirect('#/');
                             // reload page
-                            window.reload(true);
+                            location.reload(true);
                         },
                             function (error) {
                                 toastr.error(error.error_description);
@@ -77,7 +77,11 @@ var usersController = function () {
     }
 
     function logout(context) {
+        localStorage.removeItem(constants.localStorage.LOCAL_STORAGE_TOKEN);
+        localStorage.removeItem(constants.localStorage.LOCAL_STORAGE_USERNAME);
 
+        context.redirect('#/');
+        location.reload(true);
     }
 
     return {

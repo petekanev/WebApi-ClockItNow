@@ -7,8 +7,9 @@
         this.get('#/home', homeController.all);
 
         this.get('#/projects', projectsController.all);
+        this.get('#/projects/add', projectsController.add);
 
-        this.get('#/users/projects', userProjectsController);
+        this.get('#/users/projects', userProjectsController.all);
 
         this.notFound = function () {
             location.assign('#/home');

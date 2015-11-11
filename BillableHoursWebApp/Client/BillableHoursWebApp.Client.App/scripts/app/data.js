@@ -15,11 +15,7 @@ var data = function() {
 
         return ajaxRequester.post('/token', options);
     }
-
-    function logout(user) {
-        
-    }
-
+    
     function allCategories() {
 
     }
@@ -79,8 +75,7 @@ var data = function() {
     return {
         users: {
             register: register,
-            login: login,
-            logout: logout
+            login: login
         },
         categories: {
             all: allCategories,

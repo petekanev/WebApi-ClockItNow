@@ -1,0 +1,98 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" href="#postcollapse">
+                            <span class="glyphicon glyphicon-file">
+                            </span>POST NEW PROJECT
+                        </a>
+                    </h4>
+                </div>
+                <div id="postcollapse" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="text" id="input-title" class="form-control" placeholder="Title" required />
+                                </div>
+                                <div class="form-group">
+                                    <textarea id="input-description" class="form-control" placeholder="Project Description" rows="5" required></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="input-category">
+                                        Category
+                                    </label>
+                                    <!-- ADD CATEGORIES FROM DB -->
+                                    <select class="form-control" id="input-category">
+                                        <option>ASP.NET Web API</option>
+                                        <option>Graphical Design</option>
+                                        <option>Video Editting</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="input-payment">
+                                        Pay/Hour $
+                                    </label>
+                                    <!-- ADD CATEGORIES FROM DB -->
+                                    <input type="text" id="input-payment" class="form-control " value="20" placeholder="20" required />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="input-duedate">
+                                        Due Date
+                                    </label>
+                                    <!-- ADD DATEPICKER -->
+                                    <input type="text" id="input-duedate" class="form-control " value="12/12/2016" placeholder="12/12/2016" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 ">
+                                <div class="well well-sm well-primary">
+                                    <form class="form form-inline">
+                                        <div id="input-attachments" class="form-group">
+                                            <div class="well well-sm attachment-container">
+                                                <input type="text" class="form-control attachment-name" value="" placeholder="Attachment Name" />
+                                                <input type="text" class="form-control attachment-url" value="" placeholder="example.com/attachment1.zip" />
+                                            </div>
+                                        </div>
+                                        <button id="btn-addinput" class="btn btn-success btn-sm">
+                                            <span class="glyphicon glyphicon-plus"></span>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="well well-sm well-primary">
+                                    <form class="form form-inline">
+                                        <div class="form-group">
+                                            <button id="btn-post" class="btn btn-success btn-md">
+                                                <span class="glyphicon glyphicon-floppy-disk">
+                                                </span> Post
+                                            </button>
+                                            <button id="btn-clear" class="btn btn-danger btn-md">
+                                                <span class="glyphicon glyphicon-trash">
+                                                </span> Clear
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

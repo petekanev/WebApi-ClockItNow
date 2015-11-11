@@ -22,3 +22,7 @@ form button {
     padding: 20px;
     color: #7e8c8d;
 }
+
+.form button {
+    margin-top: 0
+}
