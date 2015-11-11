@@ -12,17 +12,85 @@ form button {
 }
 
 .navbar-default {
-    background-color: #FCE49D;
+    background-color: #0B89B3;
+    background-color: rgba(11, 137, 179, 0.7);
+    border: 0;
     /*background-color: FFBF00*/
+}
+
+    .navbar-default .container a {
+        color: #000;
+    }
+
+        .navbar-default .container .navbar-nav li a {
+        color: #000;
+    }
+
+.navbar-fixed-bottom {
+    background-color: #0B89B3;
+    background-color: rgba(11, 137, 179, 0.7);
 }
 
 .form-container {
     background-color: #EAEBE5;
+    background-color: rgba(255, 234, 235, 0.5);
     height: auto;
     padding: 20px;
     color: #7e8c8d;
 }
 
+.glass {
+    background-color: #EAEBE5;
+    background-color: rgba(255, 234, 235, 0.5);
+}
+
 .form button {
-    margin-top: 0
+    margin-top: 0;
+}
+
+.container-with-bg {
+    background: url("../images/home-background.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: #000;
+    background-color: #333;
+}
+
+::-webkit-input-placeholder {
+    font-size: 14px;
+    color: #000;
+    color: rgba(0,0,0,.6);
+    text-transform: uppercase;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+:-moz-placeholder { /* older Firefox*/
+    font-size: 14px;
+    color: #000;
+    color: rgba(0,0,0,.6);
+    text-transform: uppercase;
+    text-align: center;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+    font-size: 14px;
+    color: #000;
+    color: rgba(0,0,0,.6);
+    text-transform: uppercase;
+    text-align: center;
+}
+
+:-ms-input-placeholder {
+    font-size: 14px;
+    color: #000;
+    color: rgba(0,0,0,.6);
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.limit-bottom {
+    margin-bottom: 80px;
 }

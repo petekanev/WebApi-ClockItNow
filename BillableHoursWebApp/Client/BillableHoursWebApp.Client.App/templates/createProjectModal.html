@@ -1,7 +1,7 @@
-﻿<div class="container">
+﻿<div class="container limit-bottom">
     <div class="row">
         <div class="col-md-12">
-            <div class="panel panel-default">
+            <div class="panel panel-default glass">
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <a data-toggle="collapse" href="#postcollapse">
@@ -30,9 +30,9 @@
                                     </label>
                                     <!-- ADD CATEGORIES FROM DB -->
                                     <select class="form-control" id="input-category">
-                                        <option>ASP.NET Web API</option>
-                                        <option>Graphical Design</option>
-                                        <option>Video Editting</option>
+                                        {{#each this}}
+                                        <option data-catid="{{Id}}">{{Name}}</option>
+                                        {{/each}}
                                     </select>
                                 </div>
                             </div>

@@ -2,12 +2,23 @@ var projectsController = function () {
     function add(context) {
         // get categories from DB and send them as a parameter to the template() call
 
-        templates.get('createProjectModal')
+        var categories;
+
+        data.categories.all()
+            .then(function (res) {
+                categories = res;
+
+                return templates.get('createProjectModal');
+            },
+            function(err) {
+                toastr.error('An error occurred while trying to fetch information from the server...');
+                context.redirect('/#');
+            })
             .then(function (template) {
-                context.$element().html(template());
+                context.$element().html(template(categories));
+
                 $('#btn-addinput').on('click', function () {
                     // append another div of inputs
-
                     var attachmentContainer = $('<div class="well well-sm attachment-container">')
                       .append('<input type="text" class="form-control attachment-name" value="" placeholder="Attachment Name" />')
                       .append('<input type="text" class="form-control attachment-url" value="" placeholder="example.com/attachment1.zip" />');
@@ -21,12 +32,14 @@ var projectsController = function () {
                     var project = {};
                     project.Name = $('#input-title').val();
                     project.Description = $('#input-description').val();
-                    project.CategoryId = 1; // GET FROM DATA ATTRIBUTE
+                    project.CategoryId = Number($('#input-category').find(":selected").attr('data-catid'));
                     // project.DueDate = Date.parse($('#input-duedate').val()) || null;
                     project.DueDate = null;
                     project.IsComplete = false;
                     project.PricePerHour = Number($('#input-payment').val());
                     project.Attachments = [];
+
+                    console.log(project);
 
                     var attachments = $('#input-attachments').children();
 
@@ -60,6 +73,18 @@ var projectsController = function () {
                                     }
                                 }
                             });
+
+                    return false;
+                });
+
+                $('#btn-clear').on('click', function () {
+                    $('#input-attachments').empty().append($('<div class="well well-sm attachment-container">')
+                      .append('<input type="text" class="form-control attachment-name" value="" placeholder="Attachment Name" />')
+                      .append('<input type="text" class="form-control attachment-url" value="" placeholder="example.com/attachment1.zip" />'));
+                    $('#input-payment').val('');
+                    $('#input-title').val('');
+                    $('#input-description').val('');
+                    $('#input-title').val('');
 
                     return false;
                 });

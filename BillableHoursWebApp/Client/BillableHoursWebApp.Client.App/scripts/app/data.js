@@ -17,7 +17,7 @@ var data = function () {
     }
 
     function allCategories() {
-
+        return ajaxRequester.get('/api/categories');
     }
 
     function addCategory(category) {

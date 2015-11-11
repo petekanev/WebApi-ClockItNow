@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\home-background.jpg" />
     <Content Include="scripts\helpers\constants.js" />
     <Content Include="scripts\lib\bootstrap\.bower.json" />
     <Content Include="scripts\lib\bootstrap\bower.json" />
@@ -584,9 +585,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="scripts\helpers\ajaxRequester.js" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="images\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
