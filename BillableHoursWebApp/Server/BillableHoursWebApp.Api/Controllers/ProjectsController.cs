@@ -55,6 +55,19 @@
             return this.Ok(resultModel);
         }
 
+        [EnableCors("*", "*", "*")]
+        [Route("~/api/projects/category/{id}")]
+        [HttpGet]
+        public IHttpActionResult GetByCategory(int id)
+        {
+            var result = this.data.Projects
+                .Find(x => x.CategoryId == id && !x.IsComplete)
+                .ProjectTo<ProjectResponseModel>()
+                .ToList();
+
+            return this.Ok(result);
+        }
+
         [Authorize]
         public IHttpActionResult Post([FromBody] ProjectRequestModel model)
         {
@@ -62,7 +75,7 @@
             {
                 return this.BadRequest(this.ModelState);
             }
-            
+
             var currentUserId = User.Identity.GetUserId();
 
             var user = this.data.Clients.Find(x => x.Id == currentUserId).FirstOrDefault();

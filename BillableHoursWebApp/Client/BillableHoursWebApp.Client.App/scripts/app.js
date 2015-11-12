@@ -22,13 +22,16 @@
         this.get('#/users/register', usersController.register);
         this.get('#/users/logout', usersController.logout);
 
-        this.get('#/home', homeController.all);
         this.get('#/', homeController.all);
+        this.get('#/home', homeController.all);
 
         this.get('#/projects', projectsController.all);
         this.get('#/projects/add', projectsController.add);
+        this.get('#/projects/:id', projectsController.getById);
+        this.get('#/projects/category/:id', projectsController.getByCategory);
 
         this.get('#/users/projects', userProjectsController.all);
+        this.get('#/users/projects/:id', userProjectsController.getById);
 
         this.notFound = function () {
             location.assign('#/');
@@ -47,8 +50,7 @@
             $('#btn-nav-myprojects').hide();
             $('#btn-nav-addproject').hide();
         } else {
-
-            if (localStorage.getItem(constants.localStorage.LOCAL_STORAGE_ROLE === "1")) {
+            if (localStorage.getItem(constants.localStorage.LOCAL_STORAGE_ROLE) === "1") {
                 $('#btn-nav-addproject').hide();
             }
 

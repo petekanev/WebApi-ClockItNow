@@ -1,0 +1,52 @@
+﻿{{#if this}}
+{{#each this}}
+<div class="panel panel-default glass">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a data-toggle="collapse" href="#postcollapse-{{Id}}">
+                {{Name}}
+            </a>
+        </h4>
+    </div>
+
+    <div id="postcollapse-{{Id}}" class="panel-collapse collapse in">
+        <div class="panel-body">
+            <p><a class="">Posted by: {{Client.Email}}</a></p>
+            <p>Posted on: {{TimePublished}}</p>
+            <p>Pay/Hour: ${{PricePerHour}}</p>
+            <p><a href="#/projects/{{Id}}">Go to full project page</a></p>
+            <div class="col-md-8">
+                <div class="long-text">
+                    <p>
+                        Description:
+                        {{Description}}
+                    </p>
+                </div>
+                <div>
+                    <span>Attachments:</span>
+                    <ul>
+                        {{#each Attachments}}
+                        <li>
+                            <a href="{{Url}}">{{Name}}</a>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                {{#if Employee}}
+                <p class="alert-danger text-capitalize text-center text-danger">IS BEING WORKED ON!</p>
+                {{else}}
+                <p class="alert-info text-capitalize text-center text-info">IS NOT BEING WORKED ON.</p>
+                {{/if}}
+            </div>
+        </div>
+
+    </div>
+</div>
+{{/each}}
+{{else}}
+<div class="panel panel-default">
+    <div class="text-center">NO ENTRIES IN THIS CATEGORY!</div>
+</div>
+{{/if}}

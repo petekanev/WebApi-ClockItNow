@@ -6,6 +6,10 @@ form input {
     margin-top: 15px;
 }
 
+p.long-text {
+    overflow: auto;
+}
+
 form button {
     padding: 0px;
     margin-top: 10px;
@@ -33,7 +37,7 @@ form button {
 
 .form-container {
     background-color: #EAEBE5;
-    background-color: rgba(255, 234, 235, 0.5);
+    background-color: rgba(255, 234, 235, 0.7);
     height: auto;
     padding: 20px;
     color: #7e8c8d;
@@ -41,7 +45,7 @@ form button {
 
 .glass {
     background-color: #EAEBE5;
-    background-color: rgba(255, 234, 235, 0.5);
+    background-color: rgba(255, 234, 235, 0.7);
 }
 
 .form button {

@@ -3,7 +3,14 @@ var userProjectsController = function() {
         
     }
 
+    // this is the view where you would edit a project
+    function getById(context) {
+        var id = context.params['id'];
+
+    }
+
     return {
-        all: all
+        all: all,
+        getById: getById
     }
 }();

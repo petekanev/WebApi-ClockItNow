@@ -53,6 +53,12 @@ var data = function () {
 
     }
 
+    function getByCategory(id) {
+        var options = {};
+
+        return ajaxRequester.get('/api/projects/category/' + id, options);
+    }
+
     function updateProject(id, project) {
 
     }
@@ -99,6 +105,7 @@ var data = function () {
         projects: {
             all: allProjects,
             get: getProject,
+            getByCategory: getByCategory,
             create: createProject,
             update: updateProject,
             delete: deleteProject

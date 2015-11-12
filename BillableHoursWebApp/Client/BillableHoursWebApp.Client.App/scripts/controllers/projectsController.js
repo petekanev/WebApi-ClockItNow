@@ -1,8 +1,6 @@
 var projectsController = function () {
     function add(context) {
-        // get categories from DB and send them as a parameter to the template() call
-
-        if (localStorage.getItem(constants.localStorage.LOCAL_STORAGE_ROLE === "1")) {
+        if (localStorage.getItem(constants.localStorage.LOCAL_STORAGE_ROLE) === "1") {
             context.redirect('/#');
             toastr.info('You cannot add a project as an employee!');
         }
@@ -15,7 +13,7 @@ var projectsController = function () {
 
                 return templates.get('createProjectModal');
             },
-            function(err) {
+            function (err) {
                 toastr.error('An error occurred while trying to fetch information from the server...');
                 context.redirect('/#');
             })
@@ -44,8 +42,6 @@ var projectsController = function () {
                     project.PricePerHour = Number($('#input-payment').val());
                     project.Attachments = [];
 
-                    console.log(project);
-
                     var attachments = $('#input-attachments').children();
 
                     //foreach attachments and append to project.Attachments
@@ -53,6 +49,10 @@ var projectsController = function () {
                         var attachment = {};
                         attachment.Name = attachments[i].firstElementChild.value;
                         attachment.Url = attachments[i].lastElementChild.value;
+
+                        if (attachment.Name.length <= 0 || attachment.Url.length <= 1) {
+                            continue;
+                        }
 
                         project.Attachments.push(attachment);
                     }
@@ -97,11 +97,56 @@ var projectsController = function () {
     }
 
     function all(context) {
+        var categories;
 
+        data.categories.all()
+            .then(function (res) {
+                categories = res;
+
+                return templates.get('categories');
+            })
+        .then(function (template) {
+            context.$element().html(template(categories));
+        }, function (err) {
+            toastr.error('An error occurred while trying to fetch information from the server...');
+            context.redirect('/#');
+        });
+    }
+
+    function getById(context) {
+        var id = context.params['id'];
+
+    }
+
+    function getByCategory(context) {
+        var id = context.params['id'];
+
+        var projects;
+
+        data.projects.getByCategory(id)
+            .then(function (res) {
+                projects = res;
+                    console.log(res);
+                return templates.get('projects');
+            },
+                function (err) {
+                    toastr.error('Something hapened...');
+                    console.log(err);
+                    return false;
+                })
+            .then(function (template) {
+                context.$element().find('#projects-list').html(template(projects));
+            }, function (err) {
+                toastr.error('An error occurred while trying to fetch information from the server...');
+                context.redirect('/#');
+                console.log(err);
+            });
     }
 
     return {
         add: add,
-        all: all
+        all: all,
+        getById: getById,
+        getByCategory: getByCategory
     }
 }();
