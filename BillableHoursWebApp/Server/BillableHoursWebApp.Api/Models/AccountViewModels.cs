@@ -1,6 +1,7 @@
 ﻿namespace BillableHoursWebApp.Api.Models
 {
     using System.Collections.Generic;
+    using Data.Models;
 
     // Models returned by AccountController actions.
 
@@ -31,6 +32,8 @@
         public bool HasRegistered { get; set; }
 
         public string LoginProvider { get; set; }
+
+        public UType UType { get; set; }
     }
 
     public class UserLoginInfoViewModel

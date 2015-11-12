@@ -11,6 +11,7 @@
     using AutoMapper.QueryableExtensions;
     using Data;
     using Data.Models;
+    using DataTransferModels;
     using DataTransferModels.Project;
     using Microsoft.AspNet.Identity;
 
@@ -61,12 +62,14 @@
             {
                 return this.BadRequest(this.ModelState);
             }
-
+            
             var currentUserId = User.Identity.GetUserId();
 
-            model.ClientId = currentUserId;
+            var user = this.data.Clients.Find(x => x.Id == currentUserId).FirstOrDefault();
 
             var projectToAdd = Mapper.Map<Project>(model);
+
+            projectToAdd.Client = user;
 
             projectToAdd.TimePublished = DateTime.Now;
 
@@ -97,10 +100,10 @@
                 return this.Ok(result);
             }
 
-            var mappedAttachments = Mapper.Map<ICollection<Attachment>>(model.Attachments);
+            //var mappedAttachments = Mapper.Map<ICollection<Attachment>>(model.Attachments);
 
             result.CategoryId = model.CategoryId;
-            result.Attachments = mappedAttachments;
+            // result.Attachments = mappedAttachments;
             result.Description = model.Description;
             result.IsComplete = model.IsComplete;
             result.PricePerHour = model.PricePerHour;

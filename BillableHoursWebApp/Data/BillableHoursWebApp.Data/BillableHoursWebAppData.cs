@@ -21,12 +21,18 @@
             this.Categories = new Repository<Category>(this.context);
             this.Comments = new Repository<Comment>(this.context);
             this.Attachments = new Repository<Attachment>(this.context);
+            this.Clients = new Repository<Client>(this.context);
+            this.Employees = new Repository<Employee>(this.context);
         }
 
         public BillableHoursWebAppData()
             : this(new BillableHoursWebAppDbContext())
         {
         }
+
+        public IRepository<Client> Clients { get; set; }
+
+        public IRepository<Employee> Employees { get; set; }
 
         public IRepository<Project> Projects { get; set; }
 

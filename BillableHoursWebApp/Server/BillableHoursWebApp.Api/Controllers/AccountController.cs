@@ -60,11 +60,14 @@
         {
             ExternalLoginData externalLogin = ExternalLoginData.FromIdentity(User.Identity as ClaimsIdentity);
 
+            var user = UserManager.FindByName(User.Identity.Name);
             return new UserInfoViewModel
             {
                 Email = User.Identity.GetUserName(),
                 HasRegistered = externalLogin == null,
-                LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
+                LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null,
+                
+                UType = user.UType
             };
         }
 
@@ -335,11 +338,11 @@
 
             if (model.IsEmployee)
             {
-                user = new Employee { Email = model.Email, UserName = model.Email, FirstName = model.FirstName, LastName = model.LastName };
+                user = new Employee { Email = model.Email, UserName = model.Email, FirstName = model.FirstName, LastName = model.LastName, UType = UType.Employee };
             }
             else
             {
-                user = new Client { Email = model.Email, UserName = model.Email, FirstName = model.FirstName, LastName = model.LastName };
+                user = new Client { Email = model.Email, UserName = model.Email, FirstName = model.FirstName, LastName = model.LastName, UType = UType.Client };
             }
 
             IdentityResult result = await UserManager.CreateAsync(user, model.Password);

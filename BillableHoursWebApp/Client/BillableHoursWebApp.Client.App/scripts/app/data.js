@@ -16,6 +16,14 @@ var data = function () {
         return ajaxRequester.post('/token', options);
     }
 
+    function getUserRole() {
+        var options = {};
+        options.headers = {};
+        options.headers.Authorization = 'Bearer ' + localStorage.getItem(constants.localStorage.LOCAL_STORAGE_TOKEN);
+
+        return ajaxRequester.get('/api/Account/UserInfo', options);
+    }
+
     function allCategories() {
         return ajaxRequester.get('/api/categories');
     }
@@ -80,7 +88,8 @@ var data = function () {
     return {
         users: {
             register: register,
-            login: login
+            login: login,
+            getRole: getUserRole
         },
         categories: {
             all: allCategories,

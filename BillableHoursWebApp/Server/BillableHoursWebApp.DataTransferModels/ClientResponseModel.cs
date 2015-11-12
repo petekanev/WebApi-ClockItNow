@@ -19,7 +19,7 @@
 
         public bool IsOrganization { get; set; }
 
-        public IEnumerable<ProjectResponseModel> Projects { get; set; }
+        // public IEnumerable<ProjectResponseModel> Projects { get; set; }
 
         public IEnumerable<InvoiceResponseModel> Invoices { get; set; } 
     }

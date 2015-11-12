@@ -16,6 +16,8 @@
         [MaxLength(25)]
         public string LastName { get; set; }
 
+        public UType UType { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager, string authenticationType)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType

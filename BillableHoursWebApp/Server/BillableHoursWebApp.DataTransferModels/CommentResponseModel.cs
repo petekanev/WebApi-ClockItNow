@@ -1,8 +1,10 @@
 ﻿namespace BillableHoursWebApp.DataTransferModels
 {
     using System;
+    using Common.Mapping;
+    using Data.Models;
 
-    public class CommentResponseModel
+    public class CommentResponseModel : IMapFrom<Comment>
     {
         public int Id { get; set; }
 

@@ -2,6 +2,11 @@ var projectsController = function () {
     function add(context) {
         // get categories from DB and send them as a parameter to the template() call
 
+        if (localStorage.getItem(constants.localStorage.LOCAL_STORAGE_ROLE === "1")) {
+            context.redirect('/#');
+            toastr.info('You cannot add a project as an employee!');
+        }
+
         var categories;
 
         data.categories.all()

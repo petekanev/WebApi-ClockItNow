@@ -62,14 +62,22 @@ var usersController = function () {
                             localStorage.setItem(constants.localStorage.LOCAL_STORAGE_TOKEN, res.access_token);
                             localStorage.setItem(constants.localStorage.LOCAL_STORAGE_USERNAME, res.userName);
 
-                            toastr.success('Logged in successfully!');
-                            context.redirect('#/');
-                            // reload page
-                            location.reload(true);
+                            return data.users.getRole();
                         },
                             function (error) {
                                 toastr.error(error.error_description);
-                            });
+                            })
+                    .then(function (res) {
+                        localStorage.setItem(constants.localStorage.LOCAL_STORAGE_ROLE, res.UType);
+
+                        toastr.success('Logged in successfully!');
+                        context.redirect('#/');
+                        // reload page
+                        location.reload(true);
+                    },
+                    function (error) {
+                        toastr.error(error.error_description);
+                    });
 
                     return false;
                 });
@@ -79,6 +87,7 @@ var usersController = function () {
     function logout(context) {
         localStorage.removeItem(constants.localStorage.LOCAL_STORAGE_TOKEN);
         localStorage.removeItem(constants.localStorage.LOCAL_STORAGE_USERNAME);
+        localStorage.removeItem(constants.localStorage.LOCAL_STORAGE_ROLE);
 
         context.redirect('#/');
         location.reload(true);

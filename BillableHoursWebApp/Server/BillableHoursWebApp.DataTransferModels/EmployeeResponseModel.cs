@@ -19,6 +19,6 @@
 
         public bool IsCompany { get; set; }
 
-        public IEnumerable<ProjectResponseModel> Projects { get; set; } 
+        // public IEnumerable<ProjectResponseModel> Projects { get; set; } 
     }
 }
