@@ -19,6 +19,20 @@ var usersController = function () {
                     }
 
                     // validate input data here, use toastr for messages, return if validation fails
+                    if (!validator.validEmail(user.Email)) {
+                        toastr.error('Invalid Email!');
+                        return;
+                    }
+
+                    if (!(validator.validName(user.FirstName) && validator.validName(user.LastName))) {
+                        toastr.error('Invalid FirstName or LastName! Must be between 3 & 20 chars a-z, A-Z');
+                        return;
+                    }
+
+                    if (!validator.validUserNamePassword(user.Password)) {
+                        toastr.error('Invalid Password! Must be between 6 & 20 symbols a-z, A-Z, 0-9');
+                        return;
+                    }
 
                     data.users.register(user)
                         .then(function (res) {
@@ -56,6 +70,16 @@ var usersController = function () {
                     };
 
                     // validate input
+
+                    if (!validator.validEmail(user.username)) {
+                        toastr.error('Invalid Username! Use Email as username');
+                        return;
+                    }
+
+                    if (!validator.validUserNamePassword(user.password)) {
+                        toastr.error('Invalid Password! Must be between 6 & 20 symbols a-z, A-Z, 0-9');
+                        return;
+                    }
 
                     data.users.login(user)
                         .then(function (res) {
