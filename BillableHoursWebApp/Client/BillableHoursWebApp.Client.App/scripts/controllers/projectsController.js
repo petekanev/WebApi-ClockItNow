@@ -58,6 +58,20 @@ var projectsController = function () {
                     }
 
                     // validate data
+                    if (project.Name.length < 1) {
+                        toastr.error('Project name is required')
+                        return;
+                    }
+
+                    if (project.Description.length < 1) {
+                        toastr.error('Project description is required')
+                        return;
+                    }
+
+                    if (isNaN(project.PricePerHour)) {
+                        toastr.error('Pay/Hour must be valid number');
+                        return;
+                    }
 
                     data.projects.create(project)
                         .then(function (res) {
