@@ -6,8 +6,8 @@ form input {
     margin-top: 15px;
 }
 
-p.long-text {
-    overflow: auto;
+.long-text > p {
+    text-overflow: ellipsis;
 }
 
 form button {
@@ -26,7 +26,7 @@ form button {
         color: #000;
     }
 
-        .navbar-default .container .navbar-nav li a {
+    .navbar-default .container .navbar-nav li a {
         color: #000;
     }
 
@@ -97,4 +97,17 @@ form button {
 
 .limit-bottom {
     margin-bottom: 80px;
+}
+
+.height-300 {
+    height: 300px;
+}
+
+.height-50p {
+    height: 50%;
+}
+
+.float-left {
+    float: left;
+    width: 100%
 }
