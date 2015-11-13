@@ -72,7 +72,7 @@ var usersController = function () {
                     // validate input
 
                     if (!validator.validEmail(user.username)) {
-                        toastr.error('Invalid Username! Use Email as username');
+                        toastr.error('Invalid Username! Use the Email you registered with as username');
                         return;
                     }
 
