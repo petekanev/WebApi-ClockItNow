@@ -24,11 +24,6 @@ var usersController = function () {
                         return;
                     }
 
-                    if (!(validator.validName(user.FirstName) && validator.validName(user.LastName))) {
-                        toastr.error('Invalid FirstName or LastName! Must be between 3 & 20 chars a-z, A-Z');
-                        return;
-                    }
-
                     if (!validator.validUserNamePassword(user.Password)) {
                         toastr.error('Invalid Password! Must be between 6 & 20 symbols a-z, A-Z, 0-9');
                         return;

@@ -10,8 +10,6 @@
 
         IQueryable<T> Find(Expression<Func<T, bool>> conditions);
 
-        T GetById(object id);
-
         void Add(T entity);
 
         void Update(T entity);

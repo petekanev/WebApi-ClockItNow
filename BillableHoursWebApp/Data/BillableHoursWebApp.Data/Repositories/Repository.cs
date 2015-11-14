@@ -29,11 +29,6 @@
             return this.All().Where(conditions);
         }
 
-        public T GetById(object id)
-        {
-            return this.All().FirstOrDefault(x => x.Equals(id));
-        }
-
         public void Add(T entity)
         {
             this.set.Add(entity);

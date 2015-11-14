@@ -7,7 +7,17 @@ form input {
 }
 
 .long-text > p {
+    -moz-text-overflow: ellipsis;
     text-overflow: ellipsis;
+}
+
+.center-block {
+    float: none;
+    margin: 0 auto;
+}
+
+.padded {
+    padding: 15px 25px;
 }
 
 form button {
@@ -16,23 +26,27 @@ form button {
 }
 
 .navbar-default {
-    background-color: #0B89B3;
-    background-color: rgba(11, 137, 179, 0.7);
+    /*background-color: #0B89B3;*/
+    /*background-color: rgba(11, 137, 179, 0.7);*/
+    background-color: #22df80;
+    background-color: rgba(34,223,128, 0.7);
     border: 0;
     /*background-color: FFBF00*/
 }
 
-    .navbar-default .container a {
+/*.navbar-default .container a {
         color: #000;
     }
 
     .navbar-default .container .navbar-nav li a {
         color: #000;
-    }
+    }*/
 
 .navbar-fixed-bottom {
-    background-color: #0B89B3;
-    background-color: rgba(11, 137, 179, 0.7);
+    /*background-color: #0B89B3;
+    background-color: rgba(11, 137, 179, 0.7);*/
+    background-color: #22df80;
+    background-color: rgba(34,223,128, 0.7);
 }
 
 .form-container {
@@ -109,5 +123,10 @@ form button {
 
 .float-left {
     float: left;
-    width: 100%
+    width: 100%;
+}
+
+.padding-top-bottom {
+    padding-top: 25px;
+    padding-bottom: 25px;
 }

@@ -1,8 +1,8 @@
 var projectsController = function () {
     function add(context) {
-        if (localStorage.getItem(constants.localStorage.LOCAL_STORAGE_ROLE) === "1") {
+        if (localStorage.getItem(constants.localStorage.LOCAL_STORAGE_ROLE) !== "2") {
             context.redirect('/#');
-            toastr.info('You cannot add a project as an employee!');
+            toastr.info('You cannot add a project if you are not registered as a Client!');
         }
 
         var categories;
@@ -130,6 +130,25 @@ var projectsController = function () {
     function getById(context) {
         var id = context.params['id'];
 
+        var project;
+
+        data.projects.get(id)
+            .then(function (res) {
+                project = res;
+                return templates.get('project');
+            },
+                function (err) {
+                    toastr.error('Something hapened...');
+                    console.log(err);
+                    return false;
+                })
+            .then(function (template) {
+                context.$element().html(template(project));
+            }, function (err) {
+                toastr.error('An error occurred while trying to fetch information from the server...');
+                context.redirect('/#');
+                console.log(err);
+            });
     }
 
     function getByCategory(context) {
@@ -140,7 +159,6 @@ var projectsController = function () {
         data.projects.getByCategory(id)
             .then(function (res) {
                 projects = res;
-                    console.log(res);
                 return templates.get('projects');
             },
                 function (err) {
@@ -149,7 +167,12 @@ var projectsController = function () {
                     return false;
                 })
             .then(function (template) {
-                context.$element().find('#projects-list').html(template(projects));
+                var container = context.$element().find('#projects-list');
+                if (container.length !== 1) {
+                    context.$element().html(template(projects));
+                } else {
+                    container.html(template(projects));
+                }
             }, function (err) {
                 toastr.error('An error occurred while trying to fetch information from the server...');
                 context.redirect('/#');

@@ -1,7 +1,5 @@
-﻿{{#if this}}
-{{#each this}}
-<div class="col-md-12 col-sm-12">
-    <div class="thumbnail float-left clearfix">
+﻿<div class="col-md-10 col-sm-10 center-block">
+    <div class="thumbnail padded">
         <div>
             <div class="panel-heading">
                 <h4 class="panel-title">
@@ -14,7 +12,7 @@
             <p>Posted on: {{TimePublished}}</p>
             <p>Pay/Hour: ${{PricePerHour}}</p>
             <p>
-                <a href="#/projects/{{Id}}">Go to full project page</a>
+                Category: <a href="#/projects/category/{{Category.Id}}">{{Category.Name}}</a>
             </p>
         </div>
         <div class="caption">
@@ -24,6 +22,7 @@
                     {{Description}} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel risus nulla. Nullam vel leo lacinia, malesuada turpis in, dignissim libero. Cras sagittis sapien at dui vulputate, non eleifend massa pulvinar. Nunc massa ante, consectetur quis turpis quis, varius venenatis lacus. Morbi magna velit, gravida a dui non, rhoncus rutrum tortor. Nam luctus lectus vitae mi congue sagittis. Nulla facilisi. Fusce vitae consectetur nunc, eget lacinia diam.
                 </p>
             </div>
+            {{#if Attachments}}
             <div>
                 <span>Attachments:</span>
                 <ul>
@@ -34,25 +33,21 @@
                     {{/each}}
                 </ul>
             </div>
+            {{/if}}
         </div>
         <div class="caption">
             <div>
                 {{#if IsComplete}}
-                <p class="alert-success text-capitalize text-center text-success padding-top-bottom">HAS BEEN COMPLETED!</p>
+                <p class="alert-success text-capitalize text-center text-success padding-top-bottom">HAS BEEN COMPLETED by {{Employee.Email}}!</p>
                 {{else}}
                 {{#if Employee}}
-                <p class="alert-danger text-capitalize text-center text-danger padding-top-bottom">IS BEING WORKED ON!</p>
+                <p class="alert-danger text-capitalize text-center text-danger padding-top-bottom">IS BEING WORKED ON by {{Employee.Email}}!</p>
                 {{else}}
-                <p class="alert-info text-capitalize text-center text-info padding-top-bottom">IS NOT BEING WORKED ON.</p>
+                <p class="alert-info text-capitalize text-center text-info padding-top-bottom">IS NOT BEING WORKED ON. 
+                <a href="#/users/projects/add/{{Id}}">Begin working on this project now!</a></p>
                 {{/if}}
                 {{/if}}
             </div>
         </div>
     </div>
 </div>
-{{/each}}
-{{else}}
-<div class="panel panel-default">
-    <div class="text-center padding-top-bottom">NO ENTRIES IN THIS CATEGORY!</div>
-</div>
-{{/if}}

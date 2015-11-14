@@ -17,8 +17,6 @@
 
         public string Email { get; set; }
 
-        public bool IsOrganization { get; set; }
-
         // public IEnumerable<ProjectResponseModel> Projects { get; set; }
 
         public IEnumerable<InvoiceResponseModel> Invoices { get; set; } 

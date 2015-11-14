@@ -32,6 +32,7 @@
 
         this.get('#/users/projects', userProjectsController.all);
         this.get('#/users/projects/:id', userProjectsController.getById);
+        this.get('#/users/projects/add/:id', userProjectsController.begin);
 
         this.notFound = function () {
             location.assign('#/');

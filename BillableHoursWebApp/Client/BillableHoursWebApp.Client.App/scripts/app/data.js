@@ -50,7 +50,9 @@ var data = function () {
     }
 
     function getProject(id) {
+        var options = {};
 
+        return ajaxRequester.get('/api/projects/' + id, options);
     }
 
     function getByCategory(id) {
@@ -76,7 +78,11 @@ var data = function () {
     }
 
     function enrollInProject(id) {
+        var options = {};
+        options.headers = {};
+        options.headers.Authorization = 'Bearer ' + localStorage.getItem(constants.localStorage.LOCAL_STORAGE_TOKEN);
 
+        return ajaxRequester.put('/api/projects/' + id, options);
     }
 
     function startProjectSession(id, workLog) {

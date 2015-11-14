@@ -39,7 +39,7 @@
         public IHttpActionResult Get(int id)
         {
             var result = this.data.Categories
-                .GetById(id);
+                .Find(x => x.Id == id).FirstOrDefault();
 
             if (result == null)
             {
@@ -76,7 +76,7 @@
         public IHttpActionResult Put(int id, [FromBody] CategoryRequestModel model)
         {
             var result = this.data.Categories
-                .GetById(id);
+                .Find(x => x.Id == id).FirstOrDefault();
 
             if (result == null)
             {
@@ -100,7 +100,7 @@
         public IHttpActionResult Delete(int id)
         {
             var result = this.data.Categories
-                   .GetById(id);
+                .Find(x => x.Id == id).FirstOrDefault();
 
             if (result == null)
             {

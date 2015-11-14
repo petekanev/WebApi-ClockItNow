@@ -43,7 +43,7 @@
         public IHttpActionResult Get(int id)
         {
             var result = this.data.Projects
-                .GetById(id);
+                .Find(x => x.Id == id).FirstOrDefault();
 
             if (result == null)
             {
@@ -80,6 +80,11 @@
 
             var user = this.data.Clients.Find(x => x.Id == currentUserId).FirstOrDefault();
 
+            if (user == null)
+            {
+                return this.BadRequest("Only clients can post projects!");
+            }
+
             var projectToAdd = Mapper.Map<Project>(model);
 
             projectToAdd.Client = user;
@@ -93,33 +98,27 @@
         }
 
         [Authorize]
-        public IHttpActionResult Put(int id, [FromBody] ProjectRequestModel model)
+        public IHttpActionResult Put(int id)
         {
             var result = this.data.Projects
-                .GetById(id);
+                .Find(x => x.Id == id).FirstOrDefault();
 
             if (result == null)
             {
                 return this.BadRequest("No project with that id is present.");
             }
 
-            if (model.IsComplete)
+            var currentUserId = User.Identity.GetUserId();
+
+            var user = this.data.Employees.Find(x => x.Id == currentUserId).FirstOrDefault();
+
+            if (user == null)
             {
-                result.IsComplete = true;
-
-                this.data.Projects.Update(result);
-                this.data.SaveChanges();
-
-                return this.Ok(result);
+                return this.BadRequest("Only employees can work on projects!");
             }
 
-            //var mappedAttachments = Mapper.Map<ICollection<Attachment>>(model.Attachments);
-
-            result.CategoryId = model.CategoryId;
-            // result.Attachments = mappedAttachments;
-            result.Description = model.Description;
-            result.IsComplete = model.IsComplete;
-            result.PricePerHour = model.PricePerHour;
+            result.Employee = user;
+            result.Employee.Projects.Add(result);
 
             this.data.Projects.Update(result);
             this.data.SaveChanges();
@@ -131,7 +130,7 @@
         public IHttpActionResult Delete(int id)
         {
             var result = this.data.Projects
-                               .GetById(id);
+                .Find(x => x.Id == id).FirstOrDefault();
 
             if (result == null)
             {

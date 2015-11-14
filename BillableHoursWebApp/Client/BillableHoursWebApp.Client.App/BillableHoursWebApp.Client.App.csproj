@@ -203,6 +203,7 @@
     <Content Include="templates\categories.html" />
     <Content Include="templates\createProjectModal.html" />
     <Content Include="templates\login.html" />
+    <Content Include="templates\project.html" />
     <Content Include="templates\projects.html" />
     <Content Include="templates\register.html" />
     <None Include="Web.Debug.config">
