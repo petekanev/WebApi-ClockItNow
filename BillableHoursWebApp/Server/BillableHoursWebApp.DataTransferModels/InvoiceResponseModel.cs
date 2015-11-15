@@ -17,11 +17,17 @@
         // consider referencing an Employee Object
         public string EmployeeName { get; set; }
 
+        public string EmployeeEmail { get; set; }
+
         // consider referencing a Client Object
         public string ClientName { get; set; }
 
-        public CategoryResponseModel Category { get; set; }
+        public string ClientEmail { get; set; }
 
-        public IEnumerable<WorkLogResponseModel> WorkLogs { get; set; } 
+        public decimal PricePerHour { get; set; }
+
+        public string CategoryName { get; set; }
+
+        public IEnumerable<WorkLogResponseModel> WorkLogs { get; set; }
     }
 }

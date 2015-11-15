@@ -33,6 +33,8 @@ var userProjectsController = function () {
     function getById(context) {
         var id = context.params['id'];
 
+        var container;
+
         validateState(context);
 
         var project;
@@ -57,14 +59,26 @@ var userProjectsController = function () {
 
                 // clients view buttons
                 $('#btn-project-invoice').on('click', function () {
+                    var id = $(this).attr('data-projid');
+
+                    data.projectsActions.getInvoice(id)
+                        .then(function (res) {
+                            console.log(res);
+                        }, function (error) {
+                            console.log(error);
+                        });
 
                     return false;
                 });
 
+                if ($('#btn-worklog-end').length > 0) {
+                    $('#btn-worklog-createForm').hide();
+                }
+
                 // employees view buttons
                 $('#btn-worklog-createForm').on('click', function () {
 
-                    var container = $('#form-worklog-create');
+                    container = $('#form-worklog-create');
 
                     var input = $('<input type="text" class="col-md-9" id="form-worklog-shortDesc" placeholder="Short Description">');
                     var btn = $('<button class="btn btn-sm btn-success col-md-3" id="btn-worklog-start">').text('Start Session');
@@ -83,7 +97,7 @@ var userProjectsController = function () {
 
                         data.projectsActions.startSession(projectId, worklog)
                         .then(function (res) {
-                            container.hide();
+                            $('#project-view').hide();
                             toastr.info('Started a session.');
                         }, function (error) {
                             var response = error.responseJSON.ModelState;
@@ -102,35 +116,54 @@ var userProjectsController = function () {
                         return false;
                     });
 
-                    $('#btn-worklog-end').on('click', function () {
-                        var worklogId = $(this.parentNode).attr('data-logid');
+                    return false;
+                });
 
-                        data.projectsActions.finishSession(worklogId)
-                            .then(function (res) {
-                                toastr.info('Ended a session');
-                            }, function (error) {
-                                var response = error.responseJSON.ModelState;
+                $('#btn-worklog-end').on('click', function () {
+                    var worklogId = $(this.parentNode.parentNode).attr('data-logid');
 
-                                if (!response) {
-                                    toastr.error(error.statusText);
-                                } else {
-                                    for (var err in response) {
-                                        if (response.hasOwnProperty(err)) {
-                                            toastr.error(response[err][0]);
-                                        }
+                    data.projectsActions.finishSession(worklogId)
+                        .then(function (res) {
+                            $('#project-view').hide();
+                            toastr.info('Ended a session');
+                            context.redirect('#/users/projects');
+                        }, function (error) {
+                            var response = error.responseJSON.ModelState;
+
+                            if (!response) {
+                                toastr.error(error.statusText);
+                            } else {
+                                for (var err in response) {
+                                    if (response.hasOwnProperty(err)) {
+                                        toastr.error(response[err][0]);
                                     }
                                 }
-                            });
-
-                        return false;
-                    });
+                            }
+                        });
 
                     return false;
                 });
 
-
                 $('#btn-project-finalize').on('click', function () {
+                    var projectId = $('#project-title').attr('data-projid');
 
+                    data.projectsActions.finalize(id)
+                        .then(function (res) {
+                            toastr.info('Successfully completed the project! Payment is pending!');
+                            context.redirect('#/users/projects');
+                        }, function (error) {
+                            var response = error.responseJSON.ModelState;
+
+                            if (!response) {
+                                toastr.error(error.statusText);
+                            } else {
+                                for (var err in response) {
+                                    if (response.hasOwnProperty(err)) {
+                                        toastr.error(response[err][0]);
+                                    }
+                                }
+                            }
+                        });
 
                     return false;
                 });

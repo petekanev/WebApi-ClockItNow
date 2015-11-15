@@ -35,15 +35,15 @@
         <div class="caption">
             <p class="panel-heading">Activity Log of: <span class="bg-info">{{Employee.Email}}</span></p>
             <div class="row text-center">
-                <div class="col-md-6">Session:</div>
-                <div class="col-md-3">From:</div>
-                <div class="col-md-3">To:</div>
+                <div class="col-md-4">Session:</div>
+                <div class="col-md-4">From:</div>
+                <div class="col-md-4">To:</div>
             </div>
-            {{#each WorkLog}}
+            {{#each WorkLogs}}
             <div class="row">
-                <div class="col-md-6">{{ShortDescription}}</div>
-                <div class="col-md-3">{{StartTime}}</div>
-                <div class="col-md-3">{{EndTime}}</div>
+                <div class="col-md-4 bold">{{ShortDescription}}</div>
+                <div class="col-md-4">{{StartTime}}</div>
+                <div class="col-md-4">{{EndTime}}</div>
             </div>
             {{/each}}
         </div>
@@ -51,7 +51,7 @@
             <div>
                 {{#if IsComplete}}
                 <p class="alert-success text-capitalize text-center text-success padding-top-bottom">This project has been completed by {{Employee.Email}}</p>
-                <button class="btn btn-block btn-success" id="btn-project-invoice">Download Invoice and Detailed Activity!</button>
+                <button class="btn btn-block btn-success" id="btn-project-invoice" data-projid="{{Id}}">Download Invoice and Detailed Activity!</button>
                 {{/if}}
             </div>
         </div>

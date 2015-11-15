@@ -8,6 +8,7 @@
     using AutoMapper.QueryableExtensions;
     using Data;
     using Data.Models;
+    using DataTransferModels;
     using DataTransferModels.Project;
     using Microsoft.AspNet.Identity;
 
@@ -124,6 +125,79 @@
             this.data.SaveChanges();
 
             return this.Ok(projectToAdd.Id);
+        }
+
+        [Authorize]
+        [Route("~/api/projects/complete/{id}")]
+        [HttpPut]
+        public IHttpActionResult FinalizeProject(int id)
+        {
+            var result = this.data.Projects
+                .Find(x => x.Id == id).FirstOrDefault();
+
+            if (result == null)
+            {
+                return this.BadRequest("No project with that id is present.");
+            }
+
+            result.IsComplete = true;
+            result.TimeFinished = DateTime.Now;
+
+            var invoice = new Invoice
+            {
+                ProjectId = result.Id,
+                ProjectTitle = result.Name,
+                IssuedOn = DateTime.Now,
+                EmployeeEmail = result.Employee.Email,
+                EmployeeName = result.Employee.FirstName + " " + result.Employee.LastName,
+                ClientEmail = result.Client.Email,
+                ClientName = result.Client.FirstName + " " + result.Client.LastName,
+                PricePerHour = result.PricePerHour,
+                CategoryName = result.Category.Name,
+                WorkLogs = result.WorkLogs
+            };
+
+            result.Client.Invoices.Add(invoice);
+
+            data.Projects.Update(result);
+            data.SaveChanges();
+
+            return this.Ok();
+        }
+
+        [Authorize]
+        [Route("~/api/projects/complete/{id}")]
+        [HttpGet]
+        public IHttpActionResult GetInvoiceFromFinalizedProject(int id)
+        {
+            var currentUserId = User.Identity.GetUserId();
+            var project = this.data.Projects.Find(x => x.Id == id).FirstOrDefault();
+
+            if (project == null)
+            {
+                return this.BadRequest("No project with that id is present.");
+            }
+
+            if (!project.IsComplete)
+            {
+                return this.BadRequest("Project is not finished yet.");
+            }
+
+            if (project.ClientId != currentUserId)
+            {
+                return this.BadRequest("You are not authorized to meddle in other people's business... begone!");
+            }
+
+            var result = project.Client.Invoices.FirstOrDefault(x => x.ProjectId == project.Id);
+
+            if (result == null)
+            {
+                return this.BadRequest("No invoice for this project.");
+            }
+
+            var mappedResult = Mapper.Map<InvoiceResponseModel>(result);
+
+            return this.Ok(mappedResult);
         }
 
         [Authorize]

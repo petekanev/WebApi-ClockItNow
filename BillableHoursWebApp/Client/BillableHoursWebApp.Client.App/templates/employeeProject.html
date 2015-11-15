@@ -38,18 +38,18 @@
         <div class="caption">
             <p class="panel-heading">Your Activity Log:</p>
             <div class="row text-center">
-                <div class="col-md-6">Session:</div>
-                <div class="col-md-3">From:</div>
-                <div class="col-md-3">To:</div>
+                <div class="col-md-4">Session:</div>
+                <div class="col-md-4">From:</div>
+                <div class="col-md-4">To:</div>
             </div>
             {{#each WorkLogs}}
             <div class="row" data-logid="{{Id}}">
-                <div class="col-md-6">{{ShortDescription}}</div>
-                <div class="col-md-3">{{StartTime}}</div>
+                <div class="col-md-4 bold">{{ShortDescription}}</div>
+                <div class="col-md-4">{{StartTime}}</div>
                 {{#if EndTime}}
-                <div class="col-md-3">{{EndTime}}</div>
+                <div class="col-md-4">{{EndTime}}</div>
                 {{else}}
-                <div class="col-md-3"><button class="btn btn-sm btn-danger" id="btn-worklog-end">End Session</button>
+                <div class="col-md-4"><button class="btn btn-sm btn-danger" id="btn-worklog-end">End Session</button>
                 </div>
                 {{/if}}
             </div>

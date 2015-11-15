@@ -23,6 +23,7 @@
             Mapper.CreateMap<AttachmentRequestModel, Attachment>();
             Mapper.CreateMap<ProjectRequestModel, Project>();
             Mapper.CreateMap<ProjectWorkLogRequestModel, WorkLog>();
+            // Mapper.CreateMap<Invoice, InvoiceResponseModel>();
 
             DatabaseConfig.Initialize();
 

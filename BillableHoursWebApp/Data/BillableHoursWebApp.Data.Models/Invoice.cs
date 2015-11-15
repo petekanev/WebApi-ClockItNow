@@ -14,6 +14,8 @@
 
         public int Id { get; set; }
 
+        public int ProjectId { get; set; }
+
         // consider referencing a Project Object
         public string ProjectTitle { get; set; }
 
@@ -22,12 +24,16 @@
         // consider referencing an Employee Object
         public string EmployeeName { get; set; }
 
+        public string EmployeeEmail { get; set; }
+
         // consider referencing a Client Object
         public string ClientName { get; set; }
 
-        public int CategoryId { get; set; }
+        public string ClientEmail { get; set; }
 
-        public virtual Category Category { get; set; }
+        public decimal PricePerHour { get; set; }
+
+        public string CategoryName { get; set; }
 
         public virtual ICollection<WorkLog> WorkLogs
         {

@@ -111,7 +111,19 @@ var data = function () {
     }
 
     function finalizeProject(id) {
+        var options = {};
+        options.headers = {};
+        options.headers.Authorization = 'Bearer ' + localStorage.getItem(constants.localStorage.LOCAL_STORAGE_TOKEN);
 
+        return ajaxRequester.put('/api/projects/complete/' + id, options);
+    }
+
+    function getProjectInvoice(id) {
+        var options = {};
+        options.headers = {};
+        options.headers.Authorization = 'Bearer ' + localStorage.getItem(constants.localStorage.LOCAL_STORAGE_TOKEN);
+
+        return ajaxRequester.get('/api/projects/complete/' + id, options);
     }
 
     return {
@@ -140,7 +152,8 @@ var data = function () {
             enroll: enrollInProject,
             startSession: startProjectSession,
             finishSession: finishProjectSession,
-            finalize: finalizeProject
+            finalize: finalizeProject,
+            getInvoice: getProjectInvoice
         }
     }
 }();

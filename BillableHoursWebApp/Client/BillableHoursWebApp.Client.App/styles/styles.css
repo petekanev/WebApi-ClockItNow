@@ -20,6 +20,10 @@ form input {
     padding: 15px 25px;
 }
 
+.bold {
+    font-weight: bold
+}
+
 form button {
     padding: 0px;
     margin-top: 10px;
