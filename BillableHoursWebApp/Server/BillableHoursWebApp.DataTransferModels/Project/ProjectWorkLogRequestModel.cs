@@ -1,18 +1,19 @@
 ﻿namespace BillableHoursWebApp.DataTransferModels.Project
 {
     using System;
+    using System.ComponentModel.DataAnnotations;
 
     public class ProjectWorkLogRequestModel
     {
         public int ProjectId { get; set; }
 
+        [MinLength(5)]
+        [MaxLength(25)]
+        [Required]
         public string ShortDescription { get; set; }
 
-        public DateTime StartTime { get; set; }
+        public DateTime? StartTime { get; set; }
 
         public DateTime? EndDate { get; set; }
-
-        // may prove to be unnecessary, as lots of other chunks of code
-        public string EmployeeId { get; set; }
     }
 }

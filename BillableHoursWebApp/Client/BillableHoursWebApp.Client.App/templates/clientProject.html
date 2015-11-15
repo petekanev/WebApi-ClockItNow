@@ -25,7 +25,7 @@
                 <ul>
                     {{#each Attachments}}
                     <li>
-                        <a href="{{Url}}">{{Name}}</a>
+                        <a href="http://{{Url}}">{{Name}}</a>
                     </li>
                     {{/each}}
                 </ul>
@@ -51,6 +51,7 @@
             <div>
                 {{#if IsComplete}}
                 <p class="alert-success text-capitalize text-center text-success padding-top-bottom">This project has been completed by {{Employee.Email}}</p>
+                <button class="btn btn-block btn-success" id="btn-project-invoice">Download Invoice and Detailed Activity!</button>
                 {{/if}}
             </div>
         </div>

@@ -1,17 +1,13 @@
 ﻿namespace BillableHoursWebApp.Api.Controllers
 {
     using System;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Web.Http;
     using System.Web.Http.Cors;
-    using System.Web.Security;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
     using Data;
     using Data.Models;
-    using DataTransferModels;
     using DataTransferModels.Project;
     using Microsoft.AspNet.Identity;
 
@@ -133,7 +129,7 @@
         [Authorize]
         [EnableCors("*", "*", "*")]
         [Route("~/api/projects/session/{id}")]
-        [HttpPut]
+        [HttpPost]
         public IHttpActionResult BeginWorkLogSession(int id, [FromBody] ProjectWorkLogRequestModel model)
         {
             if (!this.ModelState.IsValid)
@@ -159,12 +155,39 @@
             }
 
             var workLog = Mapper.Map<WorkLog>(model);
+            workLog.StartTime = DateTime.Now;
 
             result.WorkLogs.Add(workLog);
             data.Projects.Update(result);
             data.SaveChanges();
 
             return this.Ok(workLog.Id);
+        }
+
+        [Authorize]
+        [EnableCors("*", "*", "*")]
+        [Route("~/api/projects/session/{id}")]
+        [HttpPut]
+        public IHttpActionResult EndWorkLogSession(int id)
+        {
+            var result = this.data.WorkLogs
+                .Find(x => x.Id == id).FirstOrDefault();
+
+            if (result == null)
+            {
+                return this.BadRequest("No worklog with that Id is active.");
+            }
+
+            if (result.EndTime != null)
+            {
+                return this.BadRequest("You cannot edit a recorded session!");
+            }
+
+            result.EndTime = DateTime.Now;
+            data.WorkLogs.Update(result);
+            data.SaveChanges();
+
+            return this.Ok();
         }
 
         [Authorize]

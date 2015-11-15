@@ -94,11 +94,20 @@ var data = function () {
     }
 
     function startProjectSession(id, workLog) {
+        var options = {};
+        options.data = workLog;
+        options.headers = {};
+        options.headers.Authorization = 'Bearer ' + localStorage.getItem(constants.localStorage.LOCAL_STORAGE_TOKEN);
 
+        return ajaxRequester.post('/api/projects/session/' + id, options);
     }
 
-    function finishProjectSession(id, workLog) {
+    function finishProjectSession(id) {
+        var options = {};
+        options.headers = {};
+        options.headers.Authorization = 'Bearer ' + localStorage.getItem(constants.localStorage.LOCAL_STORAGE_TOKEN);
 
+        return ajaxRequester.put('/api/projects/session/' + id, options);
     }
 
     function finalizeProject(id) {

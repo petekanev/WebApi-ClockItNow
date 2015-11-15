@@ -2,7 +2,7 @@
     <div class="thumbnail padded">
         <div>
             <div class="panel-heading">
-                <h4 class="panel-title">
+                <h4 class="panel-title" id="project-title" data-projid="{{Id}}">
                     {{Name}}
                 </h4>
             </div>
@@ -28,7 +28,7 @@
                 <ul>
                     {{#each Attachments}}
                     <li>
-                        <a href="{{Url}}">{{Name}}</a>
+                        <a href="http://{{Url}}">{{Name}}</a>
                     </li>
                     {{/each}}
                 </ul>
@@ -36,30 +36,37 @@
             {{/if}}
         </div>
         <div class="caption">
-            <p class="panel-heading">Your Activity Log: <span class="bg-info">{{Employee.Email}}</span></p>
+            <p class="panel-heading">Your Activity Log:</p>
             <div class="row text-center">
                 <div class="col-md-6">Session:</div>
                 <div class="col-md-3">From:</div>
                 <div class="col-md-3">To:</div>
             </div>
-            {{#each WorkLog}}
-            <div class="row">
+            {{#each WorkLogs}}
+            <div class="row" data-logid="{{Id}}">
                 <div class="col-md-6">{{ShortDescription}}</div>
                 <div class="col-md-3">{{StartTime}}</div>
+                {{#if EndTime}}
                 <div class="col-md-3">{{EndTime}}</div>
+                {{else}}
+                <div class="col-md-3"><button class="btn btn-sm btn-danger" id="btn-worklog-end">End Session</button>
+                </div>
+                {{/if}}
             </div>
             {{/each}}
-            <button class="btn btn-md btn-primary" id="form-wl-beginsession">Begin Session</button>
         </div>
-        <div class="caption">
-            <p>Are you ready with the project already?</p>
-            <button class="btn btn-block btn-success">Finalize project and send Invoice!</button>
-        </div>
-        <div class="caption" id="form-register-wl"></div>
+        <form class="caption row" id="form-worklog-create">
+            <button class="btn btn-md btn-primary" id="btn-worklog-createForm">Begin Session</button>
+        </form>
         <div class="caption">
             <div>
                 {{#if IsComplete}}
-                <p class="alert-success text-capitalize text-center text-success padding-top-bottom">This project has been completed by {{Employee.Email}}</p>
+                <p class="alert-success text-capitalize text-center text-success padding-top-bottom">This project has been completed!</p>
+                {{else}}
+                <div class="caption">
+                    <p>Are you ready with the project already?</p>
+                    <button class="btn btn-block btn-success" id="btn-project-finalize">Finalize project and send Invoice!</button>
+                </div>
                 {{/if}}
             </div>
         </div>

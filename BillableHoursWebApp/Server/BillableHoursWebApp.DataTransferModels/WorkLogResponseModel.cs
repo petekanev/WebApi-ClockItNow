@@ -1,6 +1,7 @@
 ﻿namespace BillableHoursWebApp.DataTransferModels
 {
     using System;
+    using System.ComponentModel.DataAnnotations;
     using Common.Mapping;
     using Data.Models;
 
