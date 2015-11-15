@@ -1,0 +1,58 @@
+﻿<div class="col-md-10 col-sm-10 center-block">
+    <div class="thumbnail padded">
+        <div>
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    {{Name}}
+                </h4>
+            </div>
+            <p>Posted on: {{TimePublished}}</p>
+            <p>Pay/Hour: ${{PricePerHour}}</p>
+            <p>
+                Category: <a href="#/projects/category/{{Category.Id}}">{{Category.Name}}</a>
+            </p>
+        </div>
+        <div class="caption">
+            <div class="long-text">
+                <p>
+                    Description:
+                    {{Description}} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel risus nulla. Nullam vel leo lacinia, malesuada turpis in, dignissim libero. Cras sagittis sapien at dui vulputate, non eleifend massa pulvinar. Nunc massa ante, consectetur quis turpis quis, varius venenatis lacus. Morbi magna velit, gravida a dui non, rhoncus rutrum tortor. Nam luctus lectus vitae mi congue sagittis. Nulla facilisi. Fusce vitae consectetur nunc, eget lacinia diam.
+                </p>
+            </div>
+            {{#if Attachments}}
+            <div>
+                <span>Attachments:</span>
+                <ul>
+                    {{#each Attachments}}
+                    <li>
+                        <a href="{{Url}}">{{Name}}</a>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+            {{/if}}
+        </div>
+        <div class="caption">
+            <p class="panel-heading">Activity Log of: <span class="bg-info">{{Employee.Email}}</span></p>
+            <div class="row text-center">
+                <div class="col-md-6">Session:</div>
+                <div class="col-md-3">From:</div>
+                <div class="col-md-3">To:</div>
+            </div>
+            {{#each WorkLog}}
+            <div class="row">
+                <div class="col-md-6">{{ShortDescription}}</div>
+                <div class="col-md-3">{{StartTime}}</div>
+                <div class="col-md-3">{{EndTime}}</div>
+            </div>
+            {{/each}}
+        </div>
+        <div class="caption">
+            <div>
+                {{#if IsComplete}}
+                <p class="alert-success text-capitalize text-center text-success padding-top-bottom">This project has been completed by {{Employee.Email}}</p>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>

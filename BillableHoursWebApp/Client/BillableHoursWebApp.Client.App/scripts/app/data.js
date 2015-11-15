@@ -55,6 +55,14 @@ var data = function () {
         return ajaxRequester.get('/api/projects/' + id, options);
     }
 
+    function getUserProjects() {
+        var options = {};
+        options.headers = {};
+        options.headers.Authorization = 'Bearer ' + localStorage.getItem(constants.localStorage.LOCAL_STORAGE_TOKEN);
+
+        return ajaxRequester.get('/api/users/projects', options);
+    }
+
     function getByCategory(id) {
         var options = {};
 
@@ -111,6 +119,7 @@ var data = function () {
         projects: {
             all: allProjects,
             get: getProject,
+            getUserProjects: getUserProjects,
             getByCategory: getByCategory,
             create: createProject,
             update: updateProject,
