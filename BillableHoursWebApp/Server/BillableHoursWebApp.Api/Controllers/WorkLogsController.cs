@@ -2,32 +2,37 @@
 {
     using System;
     using System.Web.Http;
+    using System.Web.Http.Cors;
+    using DataTransferModels.Project;
+    using Microsoft.AspNet.Identity;
 
+    [EnableCors("*", "*", "*")]
     public class WorkLogsController : ApiController
     {
         public IHttpActionResult Get()
         {
-            throw new NotImplementedException();
+            return this.NotFound();
         }
 
         public IHttpActionResult Get(int id)
         {
-            throw new NotImplementedException();
+            return this.NotFound();
         }
 
-        public IHttpActionResult Post()
+        [Authorize]
+        public IHttpActionResult Post([FromBody] ProjectWorkLogRequestModel model)
         {
-            throw new NotImplementedException();
+            return this.NotFound();
         }
 
         public IHttpActionResult Put()
         {
-            throw new NotImplementedException();
+            return this.NotFound();
         }
 
         public IHttpActionResult Delete()
         {
-            throw new NotImplementedException();
+            return this.NotFound();
         }
     }
 }

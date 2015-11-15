@@ -55,6 +55,39 @@
             return this.Ok(resultModel);
         }
 
+        [Authorize]
+        [EnableCors("*", "*", "*")]
+        [Route("~/api/users/projects")]
+        [HttpGet]
+        public IHttpActionResult GetUserProjects()
+        {
+            var currentUserId = User.Identity.GetUserId();
+
+            Client client = this.data.Clients.Find(x => x.Id == currentUserId).FirstOrDefault();
+            Employee employee;
+
+            if (client == null)
+            {
+                var result = this.data.Employees
+                    .Find(x => x.Id == currentUserId)
+                    .SelectMany(x => x.Projects)
+                    .ProjectTo<ProjectResponseModel>()
+                    .ToList();
+
+                return this.Ok(result);
+            }
+            else
+            {
+                var result = this.data.Clients
+                    .Find(x => x.Id == currentUserId)
+                    .SelectMany(x => x.Projects)
+                    .ProjectTo<ProjectResponseModel>()
+                    .ToList();
+
+                return this.Ok(result);
+            }
+        }
+
         [EnableCors("*", "*", "*")]
         [Route("~/api/projects/category/{id}")]
         [HttpGet]
@@ -95,6 +128,43 @@
             this.data.SaveChanges();
 
             return this.Ok(projectToAdd.Id);
+        }
+
+        [Authorize]
+        [EnableCors("*", "*", "*")]
+        [Route("~/api/projects/session/{id}")]
+        [HttpPut]
+        public IHttpActionResult BeginWorkLogSession(int id, [FromBody] ProjectWorkLogRequestModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.BadRequest(this.ModelState);
+            }
+
+            var result = this.data.Projects
+                .Find(x => x.Id == id).FirstOrDefault();
+
+            if (result == null)
+            {
+                return this.BadRequest("No project with that id is present.");
+            }
+
+            var currentUserId = User.Identity.GetUserId();
+
+            var user = this.data.Employees.Find(x => x.Id == currentUserId).FirstOrDefault();
+
+            if (user == null)
+            {
+                return this.BadRequest("Only employees can work on projects!");
+            }
+
+            var workLog = Mapper.Map<WorkLog>(model);
+
+            result.WorkLogs.Add(workLog);
+            data.Projects.Update(result);
+            data.SaveChanges();
+
+            return this.Ok(workLog.Id);
         }
 
         [Authorize]

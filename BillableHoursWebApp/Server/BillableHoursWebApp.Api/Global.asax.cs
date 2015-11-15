@@ -22,6 +22,7 @@
             AutoMapperConfig.RegisterMappings(Assembly.Load(Constants.DataTransferModelsAssembly));
             Mapper.CreateMap<AttachmentRequestModel, Attachment>();
             Mapper.CreateMap<ProjectRequestModel, Project>();
+            Mapper.CreateMap<ProjectWorkLogRequestModel, WorkLog>();
 
             DatabaseConfig.Initialize();
 
