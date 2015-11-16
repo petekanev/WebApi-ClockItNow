@@ -11,15 +11,19 @@
     using DataTransferModels;
     using DataTransferModels.Project;
     using Microsoft.AspNet.Identity;
+    using PubNubMessaging.Core;
+    using Constants = Common.Constants;
 
     [EnableCors("*", "*", "*")]
     public class ProjectsController : ApiController
     {
         private IBillableHoursWebAppData data;
+        private Pubnub pubnubClient;
 
         public ProjectsController(IBillableHoursWebAppData data)
         {
             this.data = data;
+            pubnubClient = new Pubnub(Constants.PubnubPublishKey, Constants.PubnubSubscribeKey);
         }
 
         public ProjectsController()
@@ -124,6 +128,11 @@
             this.data.Projects.Add(projectToAdd);
             this.data.SaveChanges();
 
+            var message = string.Format("Post activity: User {0} created project {1} | {2}", user.Email, projectToAdd.Name, "/projects");
+            pubnubClient.Publish<string>(channel: Constants.PubnubChannelActivityFeed, message: message, errorCallback:
+                str => { }, userCallback:
+                s => { });
+
             return this.Ok(projectToAdd.Id);
         }
 
@@ -161,6 +170,11 @@
 
             data.Projects.Update(result);
             data.SaveChanges();
+
+            var message = string.Format("Project activity: User {0} finalized {1}'s project | {2}", invoice.EmployeeEmail, invoice.ClientEmail, "/projects");
+            pubnubClient.Publish<string>(channel: Constants.PubnubChannelActivityFeed, message: message, errorCallback:
+                str => { }, userCallback:
+                s => { });
 
             return this.Ok();
         }
@@ -235,6 +249,11 @@
             data.Projects.Update(result);
             data.SaveChanges();
 
+            var message = string.Format("Project session activity: User {0} began session at {1} on {2}'s project | {3}", user.Email, workLog.StartTime, result.Client.Email, "/projects");
+            pubnubClient.Publish<string>(channel: Constants.PubnubChannelActivityFeed, message: message, errorCallback:
+                str => { }, userCallback:
+                s => { });
+
             return this.Ok(workLog.Id);
         }
 
@@ -260,6 +279,11 @@
             result.EndTime = DateTime.Now;
             data.WorkLogs.Update(result);
             data.SaveChanges();
+
+            var message = string.Format("Project session activity: A user finished session at {0} | {1}", result.EndTime, "/projects");
+            pubnubClient.Publish<string>(channel: Constants.PubnubChannelActivityFeed, message: message, errorCallback:
+                str => { }, userCallback:
+                s => { });
 
             return this.Ok();
         }
@@ -289,6 +313,11 @@
 
             this.data.Projects.Update(result);
             this.data.SaveChanges();
+
+            var message = string.Format("Project activity: User {0} began working on {1}'s project | {2}", user.Email, result.Client.Email, "/projects");
+            pubnubClient.Publish<string>(channel: Constants.PubnubChannelActivityFeed, message: message, errorCallback:
+                str => { }, userCallback:
+                s => { });
 
             return this.Ok(result.Id);
         }

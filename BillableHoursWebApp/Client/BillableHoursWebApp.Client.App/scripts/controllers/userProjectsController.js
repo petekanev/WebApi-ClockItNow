@@ -93,12 +93,11 @@ var userProjectsController = function () {
                         var worklog = {};
                         worklog.ShortDescription = $('#form-worklog-shortDesc').val();
 
-                        console.log(projectId);
-
                         data.projectsActions.startSession(projectId, worklog)
                         .then(function (res) {
                             $('#project-view').hide();
                             toastr.info('Started a session.');
+                            context.redirect('#/users/projects');
                         }, function (error) {
                             var response = error.responseJSON.ModelState;
 

@@ -4,7 +4,7 @@
     pubnub.history({
         channel: constants.Pubnub.ACTIVITY_CHANNEL,
         callback: appendActivity,
-        count: 10,
+        count: 5,
         reverse: false
     });
 
@@ -13,12 +13,13 @@
         message: function (message) {
             var nameIndex = message.indexOf(':');
             var name = message.substring(0, nameIndex);
-            var messageContent = message.substring(nameIndex + 1, 250);
-            S
+            var separator = message.indexOf('|');
+            var messageContent = message.substring(nameIndex + 1, separator - 1);
+            var link = message.substring(separator + 2, 250);
+
             ul.append('<li class="shoutbox-whole-comment">' +
                 '<span class="shoutbox-username text-info bold">' + name + '</span>' +
-                '<p class="shoutbox-comment">' + messageContent + '</p>' +
-                '<div class="shoutbox-comment-details"><span class="shoutbox-comment-reply text-primary" data-name="' + name + '">REPLY</span>' +
+                '<p class="shoutbox-comment">' + messageContent + '<a href="#' + link + '"> View project</a>' + '</p>' +
             '</li>');
         },
         error: function (error) {
@@ -36,8 +37,7 @@
 
             ul.append('<li class="shoutbox-whole-comment">' +
                 '<span class="shoutbox-username text-info bold">' + name + '</span>' +
-                '<p class="shoutbox-comment">' + messageContent + '</p>' +
-                '<div class="shoutbox-comment-details"> <a href="/' + link + '>View project</a>' +
+                '<p class="shoutbox-comment">' + messageContent + '<a href="#' + link + '"> View project</a>' + '</p>' +
             '</li>');
         });
     }
