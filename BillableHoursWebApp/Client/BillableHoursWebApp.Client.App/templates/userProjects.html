@@ -6,9 +6,6 @@
                 {{#each this}}
                 <a href="#/users/projects/{{Id}}" class="list-group-item">{{#if IsComplete}}<span class="text-success">[Finished] </span>{{else}} {{#if Employee}}<span class="text-warning">[Active] </span>{{else}}<span class="text-danger">[Inactive] </span>{{/if}}{{/if}}{{Name}}</a>
                 {{/each}}
-                <div class="panel panel-default">
-                    <div class="text-center padding-top-bottom">NO ENTRIES IN THIS CATEGORY!</div>
-                </div>
             </div>
         </div>
         <div class="col-md-9 row">

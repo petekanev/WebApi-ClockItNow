@@ -3,7 +3,7 @@
 }
 
 .container-width-60 {
-    width: 60%
+    width: 60%;
 }
 
 form input {
@@ -25,7 +25,7 @@ form input {
 }
 
 .bold {
-    font-weight: bold
+    font-weight: bold;
 }
 
 form button {
@@ -141,11 +141,15 @@ form button {
 
 .shoutbox-content ul,
 .activityfeed-content ul {
-    list-style-type: none
+    list-style-type: none;
 }
 
 .shoutbox-whole-comment {
     list-style-type: none;
     padding-bottom: 10px;
     padding-right: -20px;
+}
+
+div.navbar.navbar-default {
+    padding-top: 5px;
 }

@@ -21,6 +21,8 @@
                 '<span class="shoutbox-username text-info bold">' + name + '</span>' +
                 '<p class="shoutbox-comment">' + messageContent + '<a href="#' + link + '"> View project</a>' + '</p>' +
             '</li>');
+
+            ul.scrollTop(ul[0].scrollHeight);
         },
         error: function (error) {
             toastr.error('Something happened while attempting to fetch the messages...');

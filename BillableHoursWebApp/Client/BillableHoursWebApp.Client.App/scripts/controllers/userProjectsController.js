@@ -85,7 +85,7 @@ var userProjectsController = function () {
 
                     container.append(input).append(btn);
 
-                    $('#btn-worklog-createForm').hide();
+                    $('#btn-worklog-createForm').remove();
 
                     $('#btn-worklog-start').on('click', function () {
                         // validate input field with id #form-worklog-shortDesc

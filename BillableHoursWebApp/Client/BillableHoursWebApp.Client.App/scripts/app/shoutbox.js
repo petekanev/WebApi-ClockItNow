@@ -29,6 +29,8 @@
                 '<p class="shoutbox-comment">' + messageContent + '</p>' +
                 '<div class="shoutbox-comment-details"><span class="shoutbox-comment-reply text-primary" data-name="' + name + '">REPLY</span>' +
             '</li>');
+
+            ul.scrollTop(ul[0].scrollHeight);
         },
         error: function (error) {
             toastr.error('Something happened while attempting to fetch the messages...');
