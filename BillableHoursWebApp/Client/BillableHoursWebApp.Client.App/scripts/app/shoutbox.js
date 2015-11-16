@@ -1,14 +1,8 @@
 ﻿$(function () {
-
-    var pubnub = PUBNUB({
-        subscribe_key: constants.Pubnub.SKEY,
-        publish_key: constants.Pubnub.PKEY
-    });
-
     pubnub.history({
         channel: constants.Pubnub.DEFAULT_CHANNEL,
         callback: appendComments,
-        count: 10, // 100 is the default
+        count: 5, // 100 is the default
         reverse: false // false is the default
     });
 
@@ -19,6 +13,9 @@
      nameElement = form.find('#shoutbox-name'),
      commentElement = form.find('#shoutbox-comment'),
      ul = $('ul.shoutbox-content');
+
+    nameElement.val(localStorage.getItem(constants.localStorage.LOCAL_STORAGE_USERNAME) || 'Anonymous');
+    nameElement.prop('disabled', true);
 
     pubnub.subscribe({
         channel: constants.Pubnub.DEFAULT_CHANNEL,

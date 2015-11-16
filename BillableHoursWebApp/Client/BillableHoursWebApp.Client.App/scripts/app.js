@@ -1,3 +1,8 @@
+var pubnub = PUBNUB({
+    subscribe_key: constants.Pubnub.SKEY,
+    publish_key: constants.Pubnub.PKEY
+});
+
 (function () {
     toastr.options = {
         "closeButton": false,

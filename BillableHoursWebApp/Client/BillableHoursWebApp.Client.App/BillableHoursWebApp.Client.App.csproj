@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\home-background.jpg" />
+    <Content Include="scripts\app\activityfeed.js" />
     <Content Include="scripts\app\shoutbox.js" />
     <Content Include="scripts\helpers\constants.js" />
     <Content Include="scripts\helpers\validator.js" />

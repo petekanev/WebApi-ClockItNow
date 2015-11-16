@@ -139,7 +139,8 @@ form button {
     padding-bottom: 25px;
 }
 
-.shoutbox-content ul {
+.shoutbox-content ul,
+.activityfeed-content ul {
     list-style-type: none
 }
 
