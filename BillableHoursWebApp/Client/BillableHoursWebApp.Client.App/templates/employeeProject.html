@@ -49,15 +49,20 @@
                 {{#if EndTime}}
                 <div class="col-md-4">{{EndTime}}</div>
                 {{else}}
-                <div class="col-md-4"><button class="btn btn-sm btn-danger" id="btn-worklog-end">End Session</button>
+                <div class="col-md-4">
+                    <button class="btn btn-sm btn-danger" id="btn-worklog-end">End Session</button>
                 </div>
                 {{/if}}
             </div>
             {{/each}}
         </div>
+        {{#if IsComplete}}
+        <br />
+        {{else}}
         <form class="caption row" id="form-worklog-create">
             <button class="btn btn-md btn-primary" id="btn-worklog-createForm">Begin Session</button>
         </form>
+        {{/if}}
         <div class="caption">
             <div>
                 {{#if IsComplete}}

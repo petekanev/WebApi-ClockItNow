@@ -2,6 +2,10 @@
     width: 30%;
 }
 
+.container-width-60 {
+    width: 60%
+}
+
 form input {
     margin-top: 15px;
 }
@@ -133,4 +137,14 @@ form button {
 .padding-top-bottom {
     padding-top: 25px;
     padding-bottom: 25px;
+}
+
+.shoutbox-content ul {
+    list-style-type: none
+}
+
+.shoutbox-whole-comment {
+    list-style-type: none;
+    padding-bottom: 10px;
+    padding-right: -20px;
 }

@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="images\home-background.jpg" />
+    <Content Include="scripts\app\shoutbox.js" />
     <Content Include="scripts\helpers\constants.js" />
     <Content Include="scripts\helpers\validator.js" />
     <Content Include="scripts\lib\bootstrap\.bower.json" />
@@ -204,6 +205,7 @@
     <Content Include="templates\clientProject.html" />
     <Content Include="templates\createProjectModal.html" />
     <Content Include="templates\employeeProject.html" />
+    <Content Include="templates\home.html" />
     <Content Include="templates\login.html" />
     <Content Include="templates\project.html" />
     <Content Include="templates\projects.html" />

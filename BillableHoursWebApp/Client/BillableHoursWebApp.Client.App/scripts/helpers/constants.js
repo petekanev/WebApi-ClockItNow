@@ -12,6 +12,11 @@
         },
         headers: {
             BEARER: "Bearer"
+        },
+        Pubnub: {
+            SKEY: "sub-c-d96ad3e0-8c48-11e5-83e3-02ee2ddab7fe",
+            PKEY: "pub-c-a7abcd95-879f-4933-b9fd-cefb7f1e0641",
+            DEFAULT_CHANNEL: "clockit-webapi-history-client"
         }
     }
 }();
