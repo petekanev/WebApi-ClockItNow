@@ -78,6 +78,20 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\BillableHoursWebApp.Data.Models\BillableHoursWebApp.Data.Models.csproj">
+      <Project>{a78ebb90-f418-47f4-8b7c-cfcf9290eabd}</Project>
+      <Name>BillableHoursWebApp.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\BillableHoursWebApp.Data\BillableHoursWebApp.Data.csproj">
+      <Project>{7ce8feb3-be5f-4635-8073-6822969f7e66}</Project>
+      <Name>BillableHoursWebApp.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Server\BillableHoursWebApp.Api\BillableHoursWebApp.Api.csproj">
+      <Project>{8fd5e7f8-bdf5-4820-bb9a-9da9b48bfe80}</Project>
+      <Name>BillableHoursWebApp.Api</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
