@@ -13,5 +13,13 @@
         public const string PubnubSecurityKey = "sec-c-ZmQ0YjQ1NDktMzdmOS00M2UxLThmM2MtNTExNjVlYTA0YTlm";
 
         public const string PubnubChannelActivityFeed = "clockit-webapi-activity-client";
+
+        public const string DropboxAppKey = "o2zbelkdy1xc2fw";
+
+        public const string DropboxAppSecret = "9pbojz40zog153g";
+
+        public const string DropboxAppToken = "7e9z8zswjd5src7o";
+
+        public const string DropboxAppTokenSecret = "ifk4alxtibnlf5p";
     }
 }

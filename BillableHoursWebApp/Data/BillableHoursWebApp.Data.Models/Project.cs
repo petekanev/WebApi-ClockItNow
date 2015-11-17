@@ -48,6 +48,11 @@
 
         public decimal PricePerHour { get; set; }
 
+        public int? InvoiceId { get; set; }
+
+        [ForeignKey("InvoiceId")]
+        public virtual Invoice Invoice { get; set; }
+
         public virtual ICollection<Attachment> Attachments
         {
             get { return this.attachments; }

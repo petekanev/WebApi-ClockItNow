@@ -35,6 +35,8 @@
 
         public string CategoryName { get; set; }
 
+        public string Url { get; set; }
+
         public virtual ICollection<WorkLog> WorkLogs
         {
             get { return this.logs; }

@@ -1,11 +1,14 @@
 ﻿namespace BillableHoursWebApp.Api.Controllers
 {
     using System;
+    using System.IO;
     using System.Linq;
+    using System.Threading.Tasks;
     using System.Web.Http;
     using System.Web.Http.Cors;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
+    using Common;
     using Data;
     using Data.Models;
     using DataTransferModels;
@@ -166,8 +169,19 @@
                 WorkLogs = result.WorkLogs
             };
 
-            result.Client.Invoices.Add(invoice);
+            var fileName = invoice.ClientEmail + "__" + invoice.IssuedOn.Ticks;
 
+            // opens a new thread to write invoice to disk, upload to dropbox and then delete the file
+            var pdf = PdfInvoiceWriter.GeneratePdf(invoice);
+
+            var dropbox = new DropboxHelper();
+
+            var link = dropbox.UploadFileEntry(pdf, string.Format("/Invoices/{0}{1}", fileName, ".pdf"));
+
+            invoice.Url = link;
+
+            result.Invoice = invoice;
+            result.Client.Invoices.Add(invoice);
             data.Projects.Update(result);
             data.SaveChanges();
 

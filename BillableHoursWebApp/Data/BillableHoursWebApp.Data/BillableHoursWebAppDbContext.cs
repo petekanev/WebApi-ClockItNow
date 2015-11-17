@@ -7,8 +7,11 @@
 
     public class BillableHoursWebAppDbContext : IdentityDbContext<User>, IBillableHoursWebAppDbContext
     {
+        private const string localsqldb = "DefaultConnection";
+        private const string azuresqldb = "AzureConnection";
+
         public BillableHoursWebAppDbContext()
-            : base("DefaultConnection")
+            : base(azuresqldb)
         {
         }
 

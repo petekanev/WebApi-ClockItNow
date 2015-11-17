@@ -211,6 +211,7 @@
     <Content Include="templates\project.html" />
     <Content Include="templates\projects.html" />
     <Content Include="templates\register.html" />
+    <None Include="Properties\PublishProfiles\clockitnow.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -17,7 +17,7 @@
 
         public EmployeeResponseModel Employee { get; set; }
 
-        public ClientResponseModel Client {get; set; }
+        public ClientResponseModel Client { get; set; }
 
         public DateTime TimePublished { get; set; }
 
@@ -28,6 +28,8 @@
         public bool IsComplete { get; set; }
 
         public decimal PricePerHour { get; set; }
+
+        public InvoiceResponseModel Invoice { get; set; }
 
         public IEnumerable<AttachmentResponseModel> Attachments { get; set; }
 

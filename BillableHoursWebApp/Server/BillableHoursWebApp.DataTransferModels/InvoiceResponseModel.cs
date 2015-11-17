@@ -28,6 +28,8 @@
 
         public string CategoryName { get; set; }
 
+        public string Url { get; set; }
+
         public IEnumerable<WorkLogResponseModel> WorkLogs { get; set; }
     }
 }

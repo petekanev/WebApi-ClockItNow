@@ -51,7 +51,7 @@
             <div>
                 {{#if IsComplete}}
                 <p class="alert-success text-capitalize text-center text-success padding-top-bottom">This project has been completed by {{Employee.Email}}</p>
-                <button class="btn btn-block btn-success" id="btn-project-invoice" data-projid="{{Id}}">Download Invoice and Detailed Activity!</button>
+                <a href="{{Invoice.Url}}" target="_blank" class="btn btn-block btn-success" data-projid="{{Id}}">Download Invoice and Detailed Activity!</a>
                 {{/if}}
             </div>
         </div>
