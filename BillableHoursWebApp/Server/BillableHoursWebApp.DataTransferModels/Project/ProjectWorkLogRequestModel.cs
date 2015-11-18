@@ -8,7 +8,7 @@
         public int ProjectId { get; set; }
 
         [MinLength(5)]
-        [MaxLength(25)]
+        [MaxLength(50)]
         [Required]
         public string ShortDescription { get; set; }
 

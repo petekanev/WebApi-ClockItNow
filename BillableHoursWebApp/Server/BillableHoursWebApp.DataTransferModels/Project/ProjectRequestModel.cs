@@ -7,9 +7,13 @@
     public class ProjectRequestModel
     {
         [Required]
+        [MinLength(10)]
+        [MaxLength(50)]
         public string Name { get; set; }
 
         [Required]
+        [MinLength(50)]
+        [MaxLength(1000)]
         public string Description { get; set; }
 
         public int CategoryId { get; set; }

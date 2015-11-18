@@ -1,10 +1,6 @@
 ﻿namespace BillableHoursWebApp.Api
 {
     using System.Web.Http;
-    using System.Web.Http.Cors;
-    using AutoMapper;
-    using Data.Models;
-    using DataTransferModels.Project;
     using Microsoft.Owin.Security.OAuth;
 
     public static class WebApiConfig
@@ -15,9 +11,6 @@
             // Configure Web API to use only bearer token authentication.
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
-
-            // var cors = new EnableCorsAttribute("*", "*", "*");
-            // config.EnableCors();
 
             // Web API routes
             config.MapHttpAttributeRoutes();

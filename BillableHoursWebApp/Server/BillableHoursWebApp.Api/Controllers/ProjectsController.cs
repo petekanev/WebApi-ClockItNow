@@ -1,9 +1,7 @@
 ﻿namespace BillableHoursWebApp.Api.Controllers
 {
     using System;
-    using System.IO;
     using System.Linq;
-    using System.Threading.Tasks;
     using System.Web.Http;
     using System.Web.Http.Cors;
     using AutoMapper;
@@ -14,19 +12,18 @@
     using DataTransferModels;
     using DataTransferModels.Project;
     using Microsoft.AspNet.Identity;
-    using PubNubMessaging.Core;
     using Constants = Common.Constants;
 
     [EnableCors("*", "*", "*")]
     public class ProjectsController : ApiController
     {
         private IBillableHoursWebAppData data;
-        private Pubnub pubnubClient;
+        private IPubnubBroadcaster pubnubClient;
 
         public ProjectsController(IBillableHoursWebAppData data)
         {
             this.data = data;
-            pubnubClient = new Pubnub(Constants.PubnubPublishKey, Constants.PubnubSubscribeKey);
+            pubnubClient = new PubnubBroadcaster(Constants.PubnubPublishKey, Constants.PubnubSubscribeKey);
         }
 
         public ProjectsController()
@@ -132,9 +129,8 @@
             this.data.SaveChanges();
 
             var message = string.Format("Post activity: User {0} created project {1} | {2}", user.Email, projectToAdd.Name, "/projects");
-            pubnubClient.Publish<string>(channel: Constants.PubnubChannelActivityFeed, message: message, errorCallback:
-                str => { }, userCallback:
-                s => { });
+
+            pubnubClient.Broadcast(Constants.PubnubChannelActivityFeed, message, str => { }, s => { });
 
             return this.Ok(projectToAdd.Id);
         }
@@ -186,9 +182,8 @@
             data.SaveChanges();
 
             var message = string.Format("Project activity: User {0} finalized {1}'s project | {2}", invoice.EmployeeEmail, invoice.ClientEmail, "/projects");
-            pubnubClient.Publish<string>(channel: Constants.PubnubChannelActivityFeed, message: message, errorCallback:
-                str => { }, userCallback:
-                s => { });
+
+            pubnubClient.Broadcast(Constants.PubnubChannelActivityFeed, message, str => { }, s => { });
 
             return this.Ok();
         }
@@ -263,10 +258,9 @@
             data.Projects.Update(result);
             data.SaveChanges();
 
-            var message = string.Format("Project session activity: User {0} began session at {1} on {2}'s project | {3}", user.Email, workLog.StartTime, result.Client.Email, "/projects");
-            pubnubClient.Publish<string>(channel: Constants.PubnubChannelActivityFeed, message: message, errorCallback:
-                str => { }, userCallback:
-                s => { });
+            var message = string.Format("Project session activity: User {0} started a work session at {1} on {2}'s project | {3}", user.Email, workLog.StartTime, result.Client.Email, "/projects");
+            
+            pubnubClient.Broadcast(Constants.PubnubChannelActivityFeed, message, str => { }, s => { });
 
             return this.Ok(workLog.Id);
         }
@@ -295,9 +289,8 @@
             data.SaveChanges();
 
             var message = string.Format("Project session activity: A user finished session at {0} | {1}", result.EndTime, "/projects");
-            pubnubClient.Publish<string>(channel: Constants.PubnubChannelActivityFeed, message: message, errorCallback:
-                str => { }, userCallback:
-                s => { });
+
+            pubnubClient.Broadcast(Constants.PubnubChannelActivityFeed, message, str => { }, s => { });
 
             return this.Ok();
         }
@@ -329,9 +322,8 @@
             this.data.SaveChanges();
 
             var message = string.Format("Project activity: User {0} began working on {1}'s project | {2}", user.Email, result.Client.Email, "/projects");
-            pubnubClient.Publish<string>(channel: Constants.PubnubChannelActivityFeed, message: message, errorCallback:
-                str => { }, userCallback:
-                s => { });
+
+            pubnubClient.Broadcast(Constants.PubnubChannelActivityFeed, message, str => { }, s => { });
 
             return this.Ok(result.Id);
         }

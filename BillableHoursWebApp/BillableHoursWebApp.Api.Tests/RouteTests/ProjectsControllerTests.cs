@@ -1,15 +1,19 @@
-﻿namespace SourceControlSystem.Api.Tests.RouteTests
+﻿namespace BillableHoursWebApp.Api.Tests.RouteTests
 {
+    using System.Net.Http;
+    using Controllers;
+    using DataTransferModels.Project;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using MyTested.WebApi;
-    using BillableHoursWebApp.Api.Controllers;
-    using BillableHoursWebApp.Api.Models;
-    using System.Net.Http;
-    using BillableHoursWebApp.DataTransferModels.Project;
 
     [TestClass]
     public class ProjectsControllerTests
     {
+        private const string ValidProjectRequestModelName = "TestProjectName";
+        private const string ValidProjectRequestModelDescription =
+            "TestDescriptionTestDescriptionTestDescription TestDescription TestDescription TestDescription TestDescription TestDescriptionTestDescriptionTestDescription TestDescription";
+        private const string ValidProjectRequestModelJson = @"{ ""Name"": """ + ValidProjectRequestModelName + @""", ""Description"": """ + ValidProjectRequestModelDescription + @""" }";
+
         [TestMethod]
         public void GetShouldMapCorrectly()
         {
@@ -17,6 +21,7 @@
                 .Routes()
                 .ShouldMap("api/projects")
                 .To<ProjectsController>(c => c.Get());
+
         }
 
         [TestMethod]
@@ -44,12 +49,14 @@
                 .Routes()
                 .ShouldMap("api/projects")
                 .WithHttpMethod(HttpMethod.Post)
-                .WithJsonContent(@"{ ""Name"": ""Test"", ""Description"": ""TestDescription"" }")
+                .WithJsonContent(ValidProjectRequestModelJson)
                 .To<ProjectsController>(c => c.Post(new ProjectRequestModel
                 {
-                    Name = "Test",
-                    Description = "TestDescription"
-                }));
+                    Name = ValidProjectRequestModelName,
+                    Description = ValidProjectRequestModelDescription
+                }))
+                .AndAlso()
+                .ToValidModelState();
         }
 
         [TestMethod]
@@ -82,7 +89,9 @@
                 .To<ProjectsController>(c => c.BeginWorkLogSession(5, new ProjectWorkLogRequestModel
                 {
                     ShortDescription = "TestDescription"
-                }));
+                }))
+                .AndAlso()
+                .ToValidModelState();
         }
 
         [TestMethod]

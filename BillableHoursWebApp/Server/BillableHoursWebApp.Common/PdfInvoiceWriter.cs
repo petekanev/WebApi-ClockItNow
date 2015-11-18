@@ -34,16 +34,16 @@
                         document.Add(new Paragraph("Issued on: " + invoiceToWrite.IssuedOn));
                         document.Add(new Paragraph(""));
                         document.Add(new Paragraph("Client: " + invoiceToWrite.ClientName));
-                        document.Add(new Paragraph("\t\t " + invoiceToWrite.ClientEmail));
+                        document.Add(new Paragraph(new string(' ', 10) + invoiceToWrite.ClientEmail));
                         document.Add(new Paragraph("Employee: " + invoiceToWrite.EmployeeName));
-                        document.Add(new Paragraph("\t\t " + invoiceToWrite.EmployeeEmail));
+                        document.Add(new Paragraph(new string(' ', 10) + invoiceToWrite.EmployeeEmail));
                         document.Add(new Paragraph(""));
                         document.Add(new Paragraph("Offered payment/hour: " + invoiceToWrite.PricePerHour));
 
                         document.Add(new Paragraph(""));
                         document.Add(new Paragraph("Detailed Work Log:"));
                         document.Add(new Paragraph(""));
-
+                        document.Add(new Paragraph(""));
 
                         var table = new PdfPTable(5);
 
@@ -61,7 +61,7 @@
 
                         foreach (var workLog in invoiceToWrite.WorkLogs)
                         {
-                            var endTimeUpdated = workLog.EndTime.Value;
+                            var endTimeUpdated = workLog.EndTime.GetValueOrDefault(DateTime.Now);
 
                             table.AddCell(workLog.ShortDescription);
                             table.AddCell(workLog.StartTime.ToShortTimeString());
@@ -75,11 +75,11 @@
 
                             totalPrice += price;
 
-                            table.AddCell(price.ToString(CultureInfo.InvariantCulture));
+                            table.AddCell(string.Format("{0:0.00}", price));
                         }
 
                         document.Add(table);
-                        var priceFooter = (new Paragraph("Total price: " + totalPrice));
+                        var priceFooter = (new Paragraph(string.Format("Total price: {0:0.00}", totalPrice)));
                         priceFooter.Alignment = 1;
                         document.Add(priceFooter);
                         document.Add(new Paragraph(""));

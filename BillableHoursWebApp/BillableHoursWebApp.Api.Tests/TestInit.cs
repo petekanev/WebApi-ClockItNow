@@ -1,10 +1,10 @@
-﻿namespace BillableHoursWebApp.Api
+﻿namespace BillableHoursWebApp.Api.Tests
 {
     using System.Reflection;
     using System.Web.Http;
+    using App_Start;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using MyTested.WebApi;
-    using App_Start;
 
     [TestClass]
     public class TestInit

@@ -1,12 +1,10 @@
 ﻿namespace BillableHoursWebApp.Api.Tests.RouteTests
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using MyTested.WebApi;
-    using BillableHoursWebApp.Api.Controllers;
-    using BillableHoursWebApp.Api.Models;
+    using Controllers;
     using System.Net.Http;
-    using BillableHoursWebApp.DataTransferModels.Project;
     using DataTransferModels;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class CategoriesControllerTests
@@ -40,7 +38,9 @@
                 .To<CategoriesController>(c => c.Post(new CategoryRequestModel
                 {
                     Name = "Test"
-                }));
+                }))
+                .AndAlso()
+                .ToValidModelState();
         }
 
         [TestMethod]
@@ -54,7 +54,9 @@
                 .To<CategoriesController>(c => c.Put(5, new CategoryRequestModel
                 {
                     Name = "Test"
-                }));
+                }))
+                .AndAlso()
+                .ToValidModelState();
         }
     }
 }
