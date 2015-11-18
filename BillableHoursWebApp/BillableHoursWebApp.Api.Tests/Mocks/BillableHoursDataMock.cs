@@ -11,7 +11,7 @@
         public static IBillableHoursWebAppData Create(IRepository<Project> projectsRepository)
         {
             var data = new Mock<IBillableHoursWebAppData>();
-            data.Setup(x => x.SaveChanges()).Callback(() => { });
+            data.Setup(x => x.SaveChanges()).Verifiable();
             data.SetupAllProperties();
             data.Object.Projects = projectsRepository;
 

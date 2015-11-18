@@ -57,7 +57,6 @@
         }
 
         [Authorize]
-        [EnableCors("*", "*", "*")]
         [Route("~/api/users/projects")]
         [HttpGet]
         public IHttpActionResult GetUserProjects()
@@ -89,7 +88,6 @@
             }
         }
 
-        [EnableCors("*", "*", "*")]
         [Route("~/api/projects/category/{id}")]
         [HttpGet]
         public IHttpActionResult GetByCategory(int id)
