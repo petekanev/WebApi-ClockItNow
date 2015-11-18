@@ -9,17 +9,17 @@
 
         IRepository<Client> Clients { get; set; }
 
-        IRepository<Project> Projects { get; }
+        IRepository<Project> Projects { get; set; }
 
-        IRepository<WorkLog> WorkLogs { get; }
+        IRepository<WorkLog> WorkLogs { get; set; }
 
-        IRepository<Invoice> Invoices { get; }
+        IRepository<Invoice> Invoices { get; set; }
 
-        IRepository<Category> Categories { get; }
+        IRepository<Category> Categories { get; set; }
 
-        IRepository<Comment> Comments { get; }
+        IRepository<Comment> Comments { get; set; }
 
-        IRepository<Attachment> Attachments { get; }
+        IRepository<Attachment> Attachments { get; set; }
 
         void SaveChanges();
     }

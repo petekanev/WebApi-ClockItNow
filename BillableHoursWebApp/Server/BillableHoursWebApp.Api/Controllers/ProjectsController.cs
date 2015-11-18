@@ -20,14 +20,14 @@
         private IBillableHoursWebAppData data;
         private IPubnubBroadcaster pubnubClient;
 
-        public ProjectsController(IBillableHoursWebAppData data)
+        public ProjectsController(IBillableHoursWebAppData data, IPubnubBroadcaster broadcaster)
         {
             this.data = data;
-            pubnubClient = new PubnubBroadcaster(Constants.PubnubPublishKey, Constants.PubnubSubscribeKey);
+            pubnubClient = broadcaster;
         }
 
         public ProjectsController()
-            : this(new BillableHoursWebAppData())
+            : this(new BillableHoursWebAppData(), new PubnubBroadcaster(Constants.PubnubPublishKey, Constants.PubnubSubscribeKey))
         {
         }
 
@@ -259,7 +259,7 @@
             data.SaveChanges();
 
             var message = string.Format("Project session activity: User {0} started a work session at {1} on {2}'s project | {3}", user.Email, workLog.StartTime, result.Client.Email, "/projects");
-            
+
             pubnubClient.Broadcast(Constants.PubnubChannelActivityFeed, message, str => { }, s => { });
 
             return this.Ok(workLog.Id);

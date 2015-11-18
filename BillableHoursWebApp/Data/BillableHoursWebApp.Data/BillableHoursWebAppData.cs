@@ -14,15 +14,6 @@
         {
             this.context = context;
             this.repositories = new Dictionary<Type, object>();
-
-            this.Projects = new Repository<Project>(this.context);
-            this.WorkLogs = new Repository<WorkLog>(this.context);
-            this.Invoices = new Repository<Invoice>(this.context);
-            this.Categories = new Repository<Category>(this.context);
-            this.Comments = new Repository<Comment>(this.context);
-            this.Attachments = new Repository<Attachment>(this.context);
-            this.Clients = new Repository<Client>(this.context);
-            this.Employees = new Repository<Employee>(this.context);
         }
 
         public BillableHoursWebAppData()
@@ -30,21 +21,53 @@
         {
         }
 
-        public IRepository<Client> Clients { get; set; }
+        public IRepository<Client> Clients
+        {
+            get { return this.GetRepository<Client>(); }
+            set { }
+        }
 
-        public IRepository<Employee> Employees { get; set; }
+        public IRepository<Employee> Employees
+        {
+            get { return this.GetRepository<Employee>(); }
+            set { }
+        }
 
-        public IRepository<Project> Projects { get; set; }
+        public IRepository<Project> Projects
+        {
+            get { return this.GetRepository<Project>(); }
+            set { }
+        }
 
-        public IRepository<WorkLog> WorkLogs { get; set; }
+        public IRepository<WorkLog> WorkLogs
+        {
+            get { return this.GetRepository<WorkLog>(); }
+            set { }
+        }
 
-        public IRepository<Invoice> Invoices { get; set; }
+        public IRepository<Invoice> Invoices
+        {
+            get { return this.GetRepository<Invoice>(); }
+            set { }
+        }
 
-        public IRepository<Category> Categories { get; set; }
+        public IRepository<Category> Categories
+        {
+            get { return this.GetRepository<Category>(); }
+            set { }
+        }
 
-        public IRepository<Comment> Comments { get; set; }
+        public IRepository<Comment> Comments
+        {
+            get { return this.GetRepository<Comment>(); }
+            set { }
+        }
 
-        public IRepository<Attachment> Attachments { get; set; }
+        public IRepository<Attachment> Attachments
+        {
+            get { return this.GetRepository<Attachment>(); }
+            set { }
+        }
 
         public void SaveChanges()
         {
@@ -57,9 +80,9 @@
 
             if (!this.repositories.ContainsKey(typeOfModel))
             {
-                var type = typeof(IRepository<T>);
+                var type = typeof(Repository<T>);
 
-                this.repositories.Add(typeOfModel, Activator.CreateInstance(type, new object[] { this.context }));
+                this.repositories.Add(typeOfModel, Activator.CreateInstance(type, this.context));
             }
 
             return (IRepository<T>)this.repositories[typeOfModel];

@@ -7,7 +7,7 @@
     using MyTested.WebApi;
 
     [TestClass]
-    public class ProjectsControllerTests
+    public class ProjectsControllerRoutesTests
     {
         private const string ValidProjectRequestModelName = "TestProjectName";
         private const string ValidProjectRequestModelDescription =
