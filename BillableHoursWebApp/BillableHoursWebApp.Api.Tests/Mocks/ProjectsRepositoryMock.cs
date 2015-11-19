@@ -32,7 +32,18 @@
                     Id = i,
                     PricePerHour = 30m,
                     Category = categories[i % categories.Count],
-                    CategoryId = categories[i % categories.Count].Id
+                    CategoryId = categories[i % categories.Count].Id,
+                    Client = new Client
+                    {
+                        Email = i + "TestClient@" + i + ".com",
+                        FirstName = "TestClientFirstName" + i,
+                        Invoices = new List<Invoice>()
+                    },
+                    Employee = new Employee
+                    {
+                        Email = i + "TestEmployee@" + i + ".com",
+                        FirstName = "TestEmployeeFirstName" + i
+                    }
                 });
             }
 
@@ -42,7 +53,12 @@
             repo.Setup(x => x.All()).Returns(projectsAsQueryable);
             repo.Setup(x => x.Find(It.IsAny<Expression<Func<Project, bool>>>()))
                 .Returns<Expression<Func<Project, bool>>>(id => projectsAsQueryable.Where(id));
-            repo.Setup(x => x.Add(It.IsAny<Project>())).Callback<Project>(p => { projectsList.Add(p); });
+            repo.Setup(x => x.Add(It.IsAny<Project>())).Callback<Project>(p =>
+            {
+                p.Id = projectsList.Last().Id + 1;
+                projectsList.Add(p);
+            });
+            repo.Setup(x => x.Update(It.IsAny<Project>())).Verifiable();
 
             return repo.Object;
         }

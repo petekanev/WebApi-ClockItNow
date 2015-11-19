@@ -18,6 +18,16 @@
             get { return ClientsRepositoryMock.Create(); }
         }
 
+        public static IRepository<Employee> EmployeesRepository
+        {
+            get { return EmployeesRepositoryMock.Create(); }
+        }
+
+        public static IRepository<WorkLog> WorkLogsRepository
+        {
+            get { return WorkLogsRepositoryMock.Create(); }
+        }
+
         public static ApplicationUserManager ApplicationUserManager
         {
             get { return ApplicationUserManagerMock.Create(); }
@@ -30,7 +40,12 @@
 
         public static IBillableHoursWebAppData BillableHoursWebAppData
         {
-            get { return BillableHoursDataMock.Create(ProjectsRepository); }
+            get { return BillableHoursDataMock.Create(ProjectsRepository, ClientsRepository, EmployeesRepository, WorkLogsRepository); }
+        }
+
+        public static IDropboxHelper DropboxHelper
+        {
+            get { return DropboxHelperMock.Create(); }
         }
     }
 }

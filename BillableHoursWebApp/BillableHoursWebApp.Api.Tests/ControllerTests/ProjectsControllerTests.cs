@@ -8,6 +8,7 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Mocks;
     using MyTested.WebApi;
+    using TestObjects;
 
     [TestClass]
     public class ProjectsControllerTests
@@ -21,7 +22,8 @@
             this.controller = MyWebApi
                 .Controller<ProjectsController>()
                 .WithResolvedDependencyFor(MocksFactory.BillableHoursWebAppData)
-                .WithResolvedDependencyFor(MocksFactory.PubnubBroadcaster);
+                .WithResolvedDependencyFor(MocksFactory.PubnubBroadcaster)
+                .WithResolvedDependencyFor(MocksFactory.DropboxHelper);
         }
 
         [TestMethod]
@@ -75,6 +77,121 @@
                     Assert.IsTrue(p.Count > 1);
                     Assert.IsTrue(p.First().Category.Id == 2);
                 });
+        }
+
+        [TestMethod]
+        public void ReturnOkProjectIdPostActionWithCorrectModelAndAuthorizedUser()
+        {
+            this.controller
+                .Calling(c => c.Post(TestObjectsFactory.ValidProjectRequestModel))
+                .ShouldHave()
+                .ValidModelState()
+                .AndAlso()
+                .ShouldHave()
+                .ActionAttributes(attr => attr.RestrictingForAuthorizedRequests())
+                .AndAlso()
+                .ShouldReturn()
+                .Ok()
+                .WithResponseModel(21);
+        }
+
+        [TestMethod]
+        public void ReturnBadRequestPostActionWithInvalidModelAndAuthorizedUser()
+        {
+            this.controller
+                .Calling(c => c.Post(TestObjectsFactory.InvalidProjectRequestModel))
+                .ShouldReturn()
+                .BadRequest()
+                .WithModelStateFor<ProjectRequestModel>()
+                .ContainingModelStateErrorFor(p => p.Name)
+                .AndAlso()
+                .ContainingModelStateErrorFor(p => p.Description)
+                .AndAlso()
+                .ContainingModelStateErrorFor(p => p.PricePerHour);
+        }
+
+        [TestMethod]
+        public void ReturnOkFinalizeProjectPutAction()
+        {
+            this.controller
+                .Calling(c => c.FinalizeProject(1))
+                .ShouldHave()
+                .ActionAttributes(attr => attr.RestrictingForRequestsWithMethod(HttpMethod.Put))
+                .AndAlso()
+                .ShouldHave()
+                .ActionAttributes(attr => attr.ChangingRouteTo("~/api/projects/complete/{id}"))
+                .AndAlso()
+                .ShouldHave()
+                .ActionAttributes(attr => attr.RestrictingForAuthorizedRequests())
+                .AndAlso()
+                .ShouldReturn()
+                .Ok();
+        }
+
+        [TestMethod]
+        public void ReturnBadRequestWhenProjectIsNotCompleteGetInvoiceFromFinalizedProjectGetAction()
+        {
+            this.controller
+                .Calling(c => c.GetInvoiceFromFinalizedProject(15))
+                .ShouldHave()
+                .ActionAttributes(attr => attr.ChangingRouteTo("~/api/projects/complete/{id}"))
+                .AndAlso()
+                .ShouldHave()
+                .ActionAttributes(attr => attr.RestrictingForRequestsWithMethod(HttpMethod.Get))
+                .AndAlso()
+                .ShouldHave()
+                .ActionAttributes(attr => attr.RestrictingForAuthorizedRequests())
+                .AndAlso()
+                .ShouldReturn()
+                .BadRequest()
+                .WithErrorMessage("Project is not finished yet.");
+        }
+
+        [TestMethod]
+        public void ReturnWorkLogIdPostActionBeginWorkLogSessionWithCorrectModelAndAuthorizedUser()
+        {
+            this.controller
+                .Calling(c => c.BeginWorkLogSession(1, TestObjectsFactory.ValidProjectWorkLogRequestModel))
+                .ShouldHave()
+                .ActionAttributes(attr => attr.ChangingRouteTo("~/api/projects/session/{id}"))
+                .AndAlso()
+                .ShouldHave()
+                .ActionAttributes(attr => attr.RestrictingForRequestsWithMethod(HttpMethod.Post))
+                .AndAlso()
+                .ShouldHave()
+                .ActionAttributes(attr => attr.RestrictingForAuthorizedRequests())
+                .AndAlso()
+                .ShouldReturn()
+                .Ok()
+                .WithResponseModelOfType<int>();
+        }
+
+        [TestMethod]
+        public void ReturnOkPutActionEndWorkLogSessionAndAuthorizedUser()
+        {
+            this.controller
+                .Calling(c => c.EndWorkLogSession(1))
+                .ShouldHave()
+                .ActionAttributes(attr => attr.ChangingRouteTo("~/api/projects/session/{id}"))
+                .AndAlso()
+                .ShouldHave()
+                .ActionAttributes(attr => attr.RestrictingForRequestsWithMethod(HttpMethod.Put))
+                .AndAlso()
+                .ShouldHave()
+                .ActionAttributes(attr => attr.RestrictingForAuthorizedRequests())
+                .AndAlso()
+                .ShouldReturn()
+                .Ok();
+        }
+
+        [TestMethod]
+        public void ReturnBadRequestPutActionEndWorkLogSessionAndAuthorizedUser()
+        {
+            this.controller
+                .Calling(c => c.EndWorkLogSession(25))
+                .ShouldReturn()
+                .BadRequest()
+                .WithErrorMessage("You cannot edit a recorded session!");
         }
     }
 }

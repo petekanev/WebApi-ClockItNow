@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="Constants.cs" />
     <Compile Include="DropboxHelper.cs" />
+    <Compile Include="IDropboxHelper.cs" />
     <Compile Include="IPubnubBroadcaster.cs" />
     <Compile Include="Mapping\IHaveCustomMappings.cs" />
     <Compile Include="Mapping\IMapFrom.cs" />
@@ -74,7 +75,6 @@
     <Compile Include="PubnubCore\PubnubCore.cs" />
     <Compile Include="PubnubCore\PubnubWin.cs" />
     <Compile Include="PubnubCore\ReconnectState.cs" />
-    <Compile Include="PubnubExample.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

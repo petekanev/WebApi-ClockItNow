@@ -30,6 +30,7 @@
 
         public bool IsComplete { get; set; }
 
+        [Range(5, 300)]
         public decimal PricePerHour { get; set; }
 
         public IEnumerable<AttachmentRequestModel> Attachments { get; set; }

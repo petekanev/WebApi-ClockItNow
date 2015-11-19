@@ -36,6 +36,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
@@ -111,13 +115,19 @@
     <Compile Include="Mocks\ApplicationUserManagerMock.cs" />
     <Compile Include="Mocks\BillableHoursDataMock.cs" />
     <Compile Include="Mocks\ClientsRepositoryMock.cs" />
+    <Compile Include="Mocks\DropboxHelperMock.cs" />
+    <Compile Include="Mocks\EmployeesRepositoryMock.cs" />
     <Compile Include="Mocks\MocksFactory.cs" />
     <Compile Include="Mocks\ProjectsRepositoryMock.cs" />
     <Compile Include="Mocks\PubnubBroadcasterMock.cs" />
-    <Compile Include="RouteTests\CategoriesControllerTests.cs" />
+    <Compile Include="Mocks\WorkLogsRepositoryMock.cs" />
+    <Compile Include="RouteTests\CategoriesControllerRoutesTests.cs" />
     <Compile Include="TestInit.cs" />
     <Compile Include="RouteTests\ProjectsControllerRoutesTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestObjects\ProjectRequestTestModel.cs" />
+    <Compile Include="TestObjects\ProjectWorkLogRequestTestModel.cs" />
+    <Compile Include="TestObjects\TestObjectsFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

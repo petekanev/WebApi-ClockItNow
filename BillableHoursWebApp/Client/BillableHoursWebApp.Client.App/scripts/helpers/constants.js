@@ -3,8 +3,8 @@
         server: {
             SERVER_PORT: "19655",
             // will be replaced by an actual domain when hosted on Azure
-             SERVER_URL: "http://localhost:19655" //local
-            //SERVER_URL: "http://clockit.azurewebsites.net"
+            // SERVER_URL: "http://localhost:19655" //local
+            SERVER_URL: "http://clockit.azurewebsites.net"
         },
         localStorage: {
             LOCAL_STORAGE_USERNAME: "bh-signed-in-user",

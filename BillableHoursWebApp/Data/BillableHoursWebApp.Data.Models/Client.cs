@@ -22,7 +22,7 @@
         public virtual ICollection<Invoice> Invoices
         {
             get { return this.invoices; }
-            set { this.Invoices = value; }
+            set { this.invoices = value; }
         }
     }
 }

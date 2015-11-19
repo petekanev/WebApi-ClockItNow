@@ -8,12 +8,15 @@
 
     public class BillableHoursDataMock
     {
-        public static IBillableHoursWebAppData Create(IRepository<Project> projectsRepository)
+        public static IBillableHoursWebAppData Create(IRepository<Project> projectsRepository, IRepository<Client> clientsRepository, IRepository<Employee> employeesRepository, IRepository<WorkLog> worklogsRepository)
         {
             var data = new Mock<IBillableHoursWebAppData>();
             data.Setup(x => x.SaveChanges()).Verifiable();
             data.SetupAllProperties();
             data.Object.Projects = projectsRepository;
+            data.Object.Clients = clientsRepository;
+            data.Object.Employees = employeesRepository;
+            data.Object.WorkLogs = worklogsRepository;
 
             return data.Object;
         }

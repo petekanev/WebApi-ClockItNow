@@ -7,7 +7,7 @@
     using Spring.Social.Dropbox.Connect;
     using Spring.Social.OAuth1;
 
-    public class DropboxHelper
+    public class DropboxHelper : IDropboxHelper
     {
         private DropboxServiceProvider serviceProvider;
         private IDropbox dropbox;

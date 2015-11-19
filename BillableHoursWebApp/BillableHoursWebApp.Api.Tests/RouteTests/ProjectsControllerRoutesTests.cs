@@ -12,7 +12,7 @@
         private const string ValidProjectRequestModelName = "TestProjectName";
         private const string ValidProjectRequestModelDescription =
             "TestDescriptionTestDescriptionTestDescription TestDescription TestDescription TestDescription TestDescription TestDescriptionTestDescriptionTestDescription TestDescription";
-        private const string ValidProjectRequestModelJson = @"{ ""Name"": """ + ValidProjectRequestModelName + @""", ""Description"": """ + ValidProjectRequestModelDescription + @""" }";
+        private const string ValidProjectRequestModelJson = @"{ ""Name"": """ + ValidProjectRequestModelName + @""", ""Description"": """ + ValidProjectRequestModelDescription + @""", ""PricePerHour"": 20 }";
 
         [TestMethod]
         public void GetShouldMapCorrectly()
@@ -53,7 +53,8 @@
                 .To<ProjectsController>(c => c.Post(new ProjectRequestModel
                 {
                     Name = ValidProjectRequestModelName,
-                    Description = ValidProjectRequestModelDescription
+                    Description = ValidProjectRequestModelDescription,
+                    PricePerHour = 20
                 }))
                 .AndAlso()
                 .ToValidModelState();

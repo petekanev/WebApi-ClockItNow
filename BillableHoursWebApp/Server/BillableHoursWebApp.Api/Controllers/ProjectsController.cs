@@ -19,15 +19,17 @@
     {
         private IBillableHoursWebAppData data;
         private IPubnubBroadcaster pubnubClient;
+        private IDropboxHelper dropbox;
 
-        public ProjectsController(IBillableHoursWebAppData data, IPubnubBroadcaster broadcaster)
+        public ProjectsController(IBillableHoursWebAppData data, IPubnubBroadcaster broadcaster, IDropboxHelper dropbox)
         {
             this.data = data;
-            pubnubClient = broadcaster;
+            this.pubnubClient = broadcaster;
+            this.dropbox = dropbox;
         }
 
         public ProjectsController()
-            : this(new BillableHoursWebAppData(), new PubnubBroadcaster(Constants.PubnubPublishKey, Constants.PubnubSubscribeKey))
+            : this(new BillableHoursWebAppData(), new PubnubBroadcaster(Constants.PubnubPublishKey, Constants.PubnubSubscribeKey), new DropboxHelper())
         {
         }
 
@@ -165,10 +167,7 @@
 
             var fileName = invoice.ClientEmail + "__" + invoice.IssuedOn.Ticks;
 
-            // opens a new thread to write invoice to disk, upload to dropbox and then delete the file
             var pdf = PdfInvoiceWriter.GeneratePdf(invoice);
-
-            var dropbox = new DropboxHelper();
 
             var link = dropbox.UploadFileEntry(pdf, string.Format("/Invoices/{0}{1}", fileName, ".pdf"));
 
@@ -222,7 +221,6 @@
         }
 
         [Authorize]
-        [EnableCors("*", "*", "*")]
         [Route("~/api/projects/session/{id}")]
         [HttpPost]
         public IHttpActionResult BeginWorkLogSession(int id, [FromBody] ProjectWorkLogRequestModel model)
@@ -264,7 +262,6 @@
         }
 
         [Authorize]
-        [EnableCors("*", "*", "*")]
         [Route("~/api/projects/session/{id}")]
         [HttpPut]
         public IHttpActionResult EndWorkLogSession(int id)

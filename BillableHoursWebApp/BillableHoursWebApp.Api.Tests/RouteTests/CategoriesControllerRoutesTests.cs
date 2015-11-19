@@ -7,7 +7,7 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
-    public class CategoriesControllerTests
+    public class CategoriesControllerRoutesTests
     {
         [TestMethod]
         public void GetShouldMapCorrectly()
