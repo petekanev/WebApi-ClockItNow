@@ -28,7 +28,7 @@
 
                         document.Add(header);
                         document.Add(new Paragraph("Project Name: " + invoiceToWrite.ProjectTitle));
-                        document.Add(new Paragraph("Project Id: " + invoiceToWrite.Id));
+                        document.Add(new Paragraph("Project Id: " + invoiceToWrite.ProjectId));
                         document.Add(new Paragraph("Project Category: " + invoiceToWrite.CategoryName));
                         document.Add(new Paragraph(""));
                         document.Add(new Paragraph("Issued on: " + invoiceToWrite.IssuedOn));
@@ -67,7 +67,7 @@
                             table.AddCell(workLog.StartTime.ToShortTimeString());
                             table.AddCell(endTimeUpdated.ToShortTimeString());
 
-                            var minutes = (endTimeUpdated - workLog.StartTime).Minutes;
+                            var minutes = (int)(endTimeUpdated - workLog.StartTime).TotalMinutes;
 
                             table.AddCell(minutes.ToString());
 
