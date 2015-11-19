@@ -58,8 +58,9 @@
             {
                 return this.BadRequest(this.ModelState);
             }
-            
-            if (this.data.Categories.Find(x => x.Name.ToLowerInvariant() == model.Name.ToLowerInvariant()) != null)
+
+            if (this.data.Categories
+                .Find(x => x.Name.ToLowerInvariant() == model.Name.ToLowerInvariant()).FirstOrDefault() != null)
             {
                 return this.BadRequest("A category with that name exists already!");
             }

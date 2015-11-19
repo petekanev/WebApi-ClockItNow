@@ -310,6 +310,11 @@
                 return this.BadRequest("Only employees can work on projects!");
             }
 
+            if (result.Employee != null)
+            {
+                return this.BadRequest("The project is already being worked on!");
+            }
+
             result.Employee = user;
             result.Employee.Projects.Add(result);
 
@@ -331,7 +336,7 @@
 
             if (result == null)
             {
-                return this.BadRequest("No category with that id is present.");
+                return this.BadRequest("No project with that id is present.");
             }
 
             this.data.Projects.Delete(result);

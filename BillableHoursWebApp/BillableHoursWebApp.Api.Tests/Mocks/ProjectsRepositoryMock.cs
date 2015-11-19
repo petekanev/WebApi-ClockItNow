@@ -47,6 +47,23 @@
                 });
             }
 
+            projectsList.Add(new Project
+            {
+                TimePublished = DateTime.Now,
+                Name = "Mock Project version" + 25,
+                Description = 25 + "Mock Project Description " + new string('*', 50 + 25),
+                Id = 25,
+                PricePerHour = 30m,
+                Category = categories[4 % categories.Count],
+                CategoryId = categories[4 % categories.Count].Id,
+                Client = new Client
+                {
+                    Email = 25 + "TestClient@" + 25 + ".com",
+                    FirstName = "TestClientFirstName" + 25,
+                    Invoices = new List<Invoice>()
+                }
+            });
+
             IQueryable<Project> projectsAsQueryable = projectsList.AsQueryable();
 
             var repo = new Mock<IRepository<Project>>();
@@ -58,6 +75,7 @@
                 p.Id = projectsList.Last().Id + 1;
                 projectsList.Add(p);
             });
+            repo.Setup(x => x.Delete(It.IsAny<Project>())).Verifiable();
             repo.Setup(x => x.Update(It.IsAny<Project>())).Verifiable();
 
             return repo.Object;

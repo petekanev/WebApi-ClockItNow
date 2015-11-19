@@ -111,9 +111,12 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ControllerTests\CategoriesControllerTests.cs" />
     <Compile Include="ControllerTests\ProjectsControllerTests.cs" />
+    <Compile Include="IntegrationTests\ProjectsIntegrationTests.cs" />
     <Compile Include="Mocks\ApplicationUserManagerMock.cs" />
     <Compile Include="Mocks\BillableHoursDataMock.cs" />
+    <Compile Include="Mocks\CategoriesRepositoryMock.cs" />
     <Compile Include="Mocks\ClientsRepositoryMock.cs" />
     <Compile Include="Mocks\DropboxHelperMock.cs" />
     <Compile Include="Mocks\EmployeesRepositoryMock.cs" />
@@ -125,6 +128,7 @@
     <Compile Include="TestInit.cs" />
     <Compile Include="RouteTests\ProjectsControllerRoutesTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestObjects\CategoryRequestTestModel.cs" />
     <Compile Include="TestObjects\ProjectRequestTestModel.cs" />
     <Compile Include="TestObjects\ProjectWorkLogRequestTestModel.cs" />
     <Compile Include="TestObjects\TestObjectsFactory.cs" />

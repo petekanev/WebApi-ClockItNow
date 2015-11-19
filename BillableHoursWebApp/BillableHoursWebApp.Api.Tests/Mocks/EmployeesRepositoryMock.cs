@@ -19,7 +19,8 @@
                     Email = "TestEmployee@test.com",
                     UserName = "TestEmployee@test.com",
                     FirstName = "TestName",
-                    Id = "qwerty123456"
+                    Id = "qwerty123456",
+                    Projects = new List<Project>()
                 }
             };
 

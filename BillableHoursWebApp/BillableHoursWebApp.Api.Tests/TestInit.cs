@@ -21,10 +21,13 @@
             Mapper.CreateMap<AttachmentRequestModel, Attachment>();
             Mapper.CreateMap<ProjectRequestModel, Project>();
             Mapper.CreateMap<ProjectWorkLogRequestModel, WorkLog>();
+            Mapper.CreateMap<CategoryRequestModel, Category>();
 
             var config = new HttpConfiguration();
             WebApiConfig.Register(config);
             MyWebApi.IsUsing(config);
+
+            // DatabaseConfig.Initialize();
         }
     }
 }

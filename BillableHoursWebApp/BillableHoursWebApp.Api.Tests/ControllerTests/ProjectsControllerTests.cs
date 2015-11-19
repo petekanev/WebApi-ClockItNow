@@ -13,7 +13,6 @@
     [TestClass]
     public class ProjectsControllerTests
     {
-
         private IControllerBuilder<ProjectsController> controller;
 
         [TestInitialize]
@@ -27,14 +26,14 @@
         }
 
         [TestMethod]
-        public void ReturnTwentyProjectsGetAction()
+        public void ReturnTwentyOrMoreProjectsGetAction()
         {
             this.controller
                 .Calling(c => c.Get())
                 .ShouldReturn()
                 .Ok()
                 .WithResponseModelOfType<List<ProjectResponseModel>>()
-                .Passing(c => c.Count == 20);
+                .Passing(c => c.Count >= 20);
         }
 
         [TestMethod]
@@ -92,7 +91,7 @@
                 .AndAlso()
                 .ShouldReturn()
                 .Ok()
-                .WithResponseModel(21);
+                .WithResponseModelOfType<int>();
         }
 
         [TestMethod]
@@ -192,6 +191,59 @@
                 .ShouldReturn()
                 .BadRequest()
                 .WithErrorMessage("You cannot edit a recorded session!");
+        }
+
+        [TestMethod]
+        public void ReturnProjectIdPutActionOnAProjectNotBeingWorkedOn()
+        {
+            controller
+                .Calling(c => c.Put(25))
+                .ShouldHave()
+                .ActionAttributes(attr => attr.RestrictingForAuthorizedRequests())
+                .AndAlso()
+                .ShouldReturn()
+                .Ok()
+                .WithResponseModel(25);
+        }
+
+        [TestMethod]
+        public void ReturnBadRequestPutActionOnAProjectThatIsBeingWorkedOn()
+        {
+            controller.
+                Calling(c => c.Put(10))
+                .ShouldHave()
+                .ActionAttributes(attr => attr.RestrictingForAuthorizedRequests())
+                .AndAlso()
+                .ShouldReturn()
+                .BadRequest()
+                .WithErrorMessage("The project is already being worked on!");
+        }
+
+        [TestMethod]
+        public void ReturnBadRequestInvalidProjectIdDeleteActionAndAuthorizedUser()
+        {
+            controller.
+                Calling(c => c.Delete(100))
+                .ShouldHave()
+                .ActionAttributes(attr => attr.RestrictingForAuthorizedRequests())
+                .AndAlso()
+                .ShouldReturn()
+                .BadRequest()
+                .WithErrorMessage("No project with that id is present.");
+        }
+
+        [TestMethod]
+        public void ReturnOkDeleteActionAndAuthorizedUser()
+        {
+            controller
+                .Calling(c => c.Delete(1))
+                .ShouldHave()
+                .ActionAttributes(attr => attr.RestrictingForAuthorizedRequests())
+                .AndAlso()
+                .ShouldReturn()
+                .Ok()
+                .WithResponseModelOfType<ProjectResponseModel>()
+                .Passing(p => p.Id = 1);
         }
     }
 }
