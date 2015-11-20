@@ -16,14 +16,6 @@
     {
         protected void Application_Start()
         {
-            AutoMapperConfig.RegisterMappings(Assembly.Load(Constants.DataTransferModelsAssembly));
-            Mapper.CreateMap<AttachmentRequestModel, Attachment>();
-            Mapper.CreateMap<ProjectRequestModel, Project>();
-            Mapper.CreateMap<CategoryRequestModel, Category>();
-            Mapper.CreateMap<ProjectWorkLogRequestModel, WorkLog>();
-
-            DatabaseConfig.Initialize();
-
             GlobalConfiguration.Configure(WebApiConfig.Register);
 
             RouteConfig.RegisterRoutes(RouteTable.Routes);

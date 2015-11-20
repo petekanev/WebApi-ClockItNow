@@ -113,6 +113,7 @@
   <ItemGroup>
     <Compile Include="ControllerTests\CategoriesControllerTests.cs" />
     <Compile Include="ControllerTests\ProjectsControllerTests.cs" />
+    <Compile Include="IntegrationTests\CategoriesIntegrationTests.cs" />
     <Compile Include="IntegrationTests\ProjectsIntegrationTests.cs" />
     <Compile Include="Mocks\ApplicationUserManagerMock.cs" />
     <Compile Include="Mocks\BillableHoursDataMock.cs" />

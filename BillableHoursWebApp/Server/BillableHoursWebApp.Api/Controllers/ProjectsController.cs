@@ -24,7 +24,7 @@
         public ProjectsController(IBillableHoursWebAppData data, IPubnubBroadcaster broadcaster, IDropboxHelper dropbox)
         {
             this.data = data;
-            this.pubnubClient = broadcaster;
+            pubnubClient = broadcaster;
             this.dropbox = dropbox;
         }
 
