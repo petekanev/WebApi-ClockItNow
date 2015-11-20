@@ -1,3 +1,5 @@
+DISCLAIMER: This project was developed as part of a project assignment in the Web and Cloud Services @Telerik Academy and was written entirely for learning purposes
+
 # Billable Hours - Clock It Now
 
 `Project description`
