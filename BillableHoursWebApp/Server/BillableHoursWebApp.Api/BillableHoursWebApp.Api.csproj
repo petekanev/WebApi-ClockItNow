@@ -246,6 +246,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ClassDiagram.cd" />
     <None Include="Properties\PublishProfiles\clockit.pubxml" />
   </ItemGroup>
   <PropertyGroup>
